@@ -1,3 +1,67 @@
 body {
-    background-color: blanchedalmond;
+    background-color: #152238;
 }
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.main-navbar {
+    height: 5em;
+    background-color: transparent;
+    border-bottom: 1px solid #000;
+}
+
+.main-nav-item {
+    text-transform: uppercase;
+    font-size: 1.3em;
+    font-weight: 300;
+    margin: auto;
+    color: ivory;
+}
+
+.main-nav-item::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: currentColor;
+    transition: width .2s;
+    
+}
+
+.main-nav-item:hover {
+    color: ivory;
+}
+
+.main-nav-item:hover::after {
+    width: 100%;
+    color: ivory;
+    transition: width .2s;
+}
+
+.main-nav-scrolled {
+    background-color: ivory;
+    color: #000;
+}
+
+.login-btn {
+    background-color: limegreen;
+    padding:15px 15px;
+    border-radius: 2em;
+    font-weight: 400;
+}
+
+.login-btn:hover {
+    background-color: ivory;
+    transition: .2s ease-in;
+    border: 1px solid currentColor;
+}
+
+.shopping-cart {
+    font-size: 2em;
+    color: ivory;
+    margin: .5em;
+    transition: .2s ease-in-out;
+}
+
