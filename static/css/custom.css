@@ -1,5 +1,6 @@
 body {
     background-color: #152238;
+    overflow-x: hidden;
 }
 
 .uppercase {
@@ -63,5 +64,39 @@ body {
     color: ivory;
     margin: .5em;
     transition: .2s ease-in-out;
+}
+
+.page-main-intro {
+    padding: 35vh 0;
+    background: #0e1d2d url(//unsplash.it/900);
+    background-size: cover;
+    background-blend-mode: multiply;
+    color: white;
+    z-index: -15;
+}
+
+.display-painting {
+    width: 80%;
+    margin-top: -3em;
+    position: absolute
+}
+
+.image-shadow {
+
+    height: 21em;
+    width: 90%;
+    margin-bottom: 1em;
+    background-color: black;
+    z-index: -5;
+    margin-left: 1em;
+}
+
+.main-header {
+    font-size: 3.5em;
+    margin-bottom: 1em;
+}
+
+.header-h2 {
+    font-size: 3em;
 }
 
