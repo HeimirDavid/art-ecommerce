@@ -1,5 +1,4 @@
 body {
-    background-color: #152238;
     overflow-x: hidden;
 }
 
@@ -10,15 +9,14 @@ body {
 .main-navbar {
     height: 5em;
     background-color: transparent;
-    border-bottom: 1px solid #000;
 }
 
 .main-nav-item {
     text-transform: uppercase;
-    font-size: 1.3em;
+    font-size: 1.1em;
     font-weight: 300;
     margin: auto;
-    color: ivory;
+    color: #fefefe;
 }
 
 .main-nav-item::after {
@@ -32,17 +30,17 @@ body {
 }
 
 .main-nav-item:hover {
-    color: ivory;
+    color: #fefefe;
 }
 
 .main-nav-item:hover::after {
     width: 100%;
-    color: ivory;
+    color: #fefefe;
     transition: width .2s;
 }
 
 .main-nav-scrolled {
-    background-color: ivory;
+    background-color: #fefefe;
     color: #000;
 }
 
@@ -54,41 +52,39 @@ body {
 }
 
 .login-btn:hover {
-    background-color: ivory;
+    background-color: #fefefe;
     transition: .2s ease-in;
     border: 1px solid currentColor;
 }
 
 .shopping-cart {
     font-size: 2em;
-    color: ivory;
+    color: #fefefe;
     margin: .5em;
     transition: .2s ease-in-out;
 }
 
 .page-main-intro {
-    padding: 35vh 0;
+    padding: 29vh 0 10vh 0;
     background: #0e1d2d url(//unsplash.it/900);
     background-size: cover;
     background-blend-mode: multiply;
-    color: white;
+    color: #fefefe;
     z-index: -15;
 }
 
 .display-painting {
-    width: 80%;
-    margin-top: -3em;
-    position: absolute
+    width: 70%;
+    position: absolute;
 }
 
 .image-shadow {
-
-    height: 21em;
-    width: 90%;
-    margin-bottom: 1em;
+    height: 25em;
+    width: 80%;
     background-color: black;
     z-index: -5;
     margin-left: 1em;
+    margin-top: -2em;
 }
 
 .main-header {
@@ -100,3 +96,21 @@ body {
     font-size: 3em;
 }
 
+a.nav-item.nav-link.main-nav-item {
+    padding: .8em;
+    letter-spacing: 2px;
+    color: #fefefe;
+}
+
+
+/*** Tablet/Desktop View ***/
+@media (min-width: 992px) {
+    .display-painting {
+        margin-top: -4em;
+    }
+}
+
+@media (min-width: 1440px) {
+    .page-main-intro {
+        padding: 30vh 0;
+}
