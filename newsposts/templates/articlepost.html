@@ -7,7 +7,8 @@
     <p>{{ post.image }}</p>
     <p>{{ post.tag }}</p>
     <p>{{ post.published_date }}</p>
-    <a href="{% url 'news_detail' post.id %}">Back to news!</a>
+    <a href="{% url 'get_newsposts' %}">Back to news!</a>
+    <a href="{% url 'edit_post' post.id %}">Edit post</a>
 
 
 {% endblock %}
