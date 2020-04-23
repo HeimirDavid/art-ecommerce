@@ -1,11 +1,11 @@
-from django import forms
+from django.forms import ModelForm
 from .models import NewsPost
 
 
-class NewsPostForm(forms.ModelForm):
+class NewsPostForm(ModelForm):
     """
     Same Forms design as 'Django Blog Miniproject' from Code Institutes Code Along
     """
     class Meta:
         model = NewsPost
-        fields = ('title', 'content', 'image', 'tag', 'published_date')
+        fields = ['title', 'content', 'image', 'tag', 'published_date']
