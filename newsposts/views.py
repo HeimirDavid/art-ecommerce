@@ -18,13 +18,13 @@ def get_newsposts(request):
 def news_detail(request, pk):
     """
     Create a view that return a single Post based in the post ID
-    and render it to the 'blogpost.html' template.
+    and render it to the 'articepost.html' template.
     or return a 404 error if the post is not found
     """
     post = get_object_or_404(NewsPost, pk=pk)
     post.views += 1
     post.save()
-    return render(request, 'blogpost.html', {'post': post})
+    return render(request, 'articlepost.html', {'post': post})
 
 
 def create_or_edit_newspost(request, pk=None):

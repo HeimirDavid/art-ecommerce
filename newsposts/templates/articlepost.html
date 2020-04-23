@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello Blog site!</h1>
-
-{% for post in posts %}
-    <p>{{ post.title }}</p>
+<h1>You made it!</h1>
+<p>{{ post.title }}</p>
     <p>{{ post.content }}</p>
     <p>{{ post.image }}</p>
     <p>{{ post.tag }}</p>
     <p>{{ post.published_date }}</p>
-    <a href="{% url 'news_detail' post.id %}">Open Article</a>
+    <a href="{% url 'news_detail' post.id %}">Back to news!</a>
 
-
-{% endfor %}
 
 {% endblock %}
