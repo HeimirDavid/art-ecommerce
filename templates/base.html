@@ -23,21 +23,21 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top main-navbar">
+        <nav class="navbar navbar-expand-lg fixed-top main-navbar">
             <a class="navbar-brand" href="#">SL Gallery</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+              <span class="mainNav-burger"><i class="fas fa-bars"></i></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <a class="btn uppercase login-btn" href="#" role="button">Login/Register</a>
+            <div class="collapse navbar-collapse burgerMenu-bg-clr" id="navbarNavAltMarkup">
               <div class="navbar-nav m-auto">
                 <a class="nav-item nav-link main-nav-item" href="#">Home</a>
                 <a class="nav-item nav-link main-nav-item" href="#">About</a>
                 <a class="nav-item nav-link main-nav-item" href="#">Paintings</a>
                 <a class="nav-item nav-link main-nav-item" href="#">News</a>
                 <a class="nav-item nav-link main-nav-item" href="#">Contact</a>
+                <a class="nav-item nav-link main-nav-item shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
               </div>
-              <a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
-              <a class="btn uppercase login-btn" href="#" role="button">Login/Register</a>
             </div>
           </nav>
         
@@ -62,5 +62,7 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <script type="text/Javascript" src="{% static 'js/observers.js' %}"></script>
 </body>
 </html>
