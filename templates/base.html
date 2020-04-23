@@ -31,10 +31,10 @@
             <a class="btn uppercase login-btn" href="#" role="button">Login/Register</a>
             <div class="collapse navbar-collapse burgerMenu-bg-clr" id="navbarNavAltMarkup">
               <div class="navbar-nav m-auto">
-                <a class="nav-item nav-link main-nav-item" href="#">Home</a>
+                <a class="nav-item nav-link main-nav-item" href="{% url 'index' %}">Home</a>
                 <a class="nav-item nav-link main-nav-item" href="#">About</a>
                 <a class="nav-item nav-link main-nav-item" href="#">Paintings</a>
-                <a class="nav-item nav-link main-nav-item" href="#">News</a>
+                <a class="nav-item nav-link main-nav-item" href="{% url 'get_newsposts' %}">News</a>
                 <a class="nav-item nav-link main-nav-item" href="#">Contact</a>
                 <a class="nav-item nav-link main-nav-item shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
               </div>

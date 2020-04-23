@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from django.views.generic import RedirectView
+#from django.views.generic import RedirectView
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 from home.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index)
-    url(r'news/', include('newsposts.urls'))
+    url(r'^$', index, name='index'),
+    url(r'news/', include('newsposts.urls')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT }),
 ]
