@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
 body {
+    font-family: 'Roboto Condensed', sans-serif;
     overflow-x: hidden;
 }
 
@@ -7,7 +10,7 @@ body {
 }
 
 .main-navbar {
-    height: 5em;
+    height: 6em;
     background-color: transparent;
 }
 
@@ -88,18 +91,44 @@ body {
 }
 
 .main-header {
-    font-size: 3.5em;
+    font-size: 4.4em;
     margin-bottom: 1em;
 }
 
 .header-h2 {
-    font-size: 3em;
+    font-size: 3.5em;
+}
+
+.header-h3 {
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.header-h4 {
+    font-size: 2em;
+    font-weight: 600;
 }
 
 a.nav-item.nav-link.main-nav-item {
     padding: .8em;
     letter-spacing: 2px;
     color: #fefefe;
+}
+
+.about-section {
+    background-color: #ececec;
+}
+
+.about-h {
+    margin: .8em 0 0 .2em;
+}
+
+.about-col {
+    padding: 1.5em;
+}
+
+.about-col h4 {
+    padding: .5em 0;
 }
 
 
