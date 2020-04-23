@@ -7,6 +7,10 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    color: currentColor;
+}
+
 .uppercase {
     text-transform: uppercase;
 }
@@ -14,6 +18,11 @@ body {
 .p-text {
     font-size: 1.1em;
     letter-spacing: .8px;
+}
+
+.sub-header {
+    font-weight: 400;
+    margin: 1em 0 2em 0;
 }
 
 
@@ -169,10 +178,42 @@ a.nav-item.nav-link.main-nav-item {
 
 /******* News Section  *******/
 
-.news-h {
+.index-news-h {
     margin: 1em;
 }
 
+.news-h {
+    margin: 1.5em 0 0 .2em;
+}
+
+.news-header-row {
+   background-color:#ececec;
+}
+
+.newspost-container {
+    margin-top: 5em;
+    -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+}
+
+.article-h {
+    font-size: 2em;
+    letter-spacing: 1.5px;
+    margin: .5em 0 0 .5em;
+}
+
+
+.newspost-image {
+    max-height: 10em;
+    max-width: 100%;
+}
+/*
+.prev-blog-text {
+    padding: 1em;
+}
+
+*/
 
 
 /******* Media Queries  *******/
@@ -199,6 +240,36 @@ a.nav-item.nav-link.main-nav-item {
         top: 0;
         margin-right: 1em;
     }
+
+    /* news section */
+    
+    .newspost-container {
+        text-align: ;
+        height: 22em;
+        margin-top: 5em;
+        -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+        box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    }
+
+    .article-h {
+        display: inline-block;
+    }
+    
+    .newspost-image {
+        max-height: 22em;
+        float: right;
+        max-width: 20em;
+    }
+    
+    .prev-blog-text {
+        padding: 1em;
+    }
+
+    .openpost-btn {
+        position: absolute;
+        bottom: 1em;
+    }
 }
 
 @media (min-width: 1440px) {
@@ -215,5 +286,13 @@ a.nav-item.nav-link.main-nav-item {
 
     .burgerMenu-bg-clr-on-scroll {
         background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .newspost-container {
+        text-align: center;
+    }
+
+    .openpost-btn {
+        margin: .5em;
     }
 }

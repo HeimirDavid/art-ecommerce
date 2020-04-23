@@ -30,9 +30,9 @@ def news_detail(request, pk):
 def create_or_edit_newspost(request, pk=None):
     """
     A View that allows us to create or edit a post,
-    varying if the NewPpost ID is null or not 
+    varying if the NewPost ID is null or not
     """
-    post = get_object_or_404(NewsPost, pk=pk)
+    post = get_object_or_404(NewsPost, pk=pk) if pk else None
     if request.method == "POST":
         form = NewsPostForm(request.POST, request.FILES, instance=post)
         if form.is_valid:

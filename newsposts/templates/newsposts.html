@@ -1,15 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello Blog site!</h1>
+<div class="row news-header-row">
+    <div class="col-10 offset-1">
+        <h2 class="header-h3 uppercase news-h">news/blog</h2>
+        <h3 class="sub-header">Read the latest news here!</h3>
+    </div>
+</div>
+
 
 {% for post in posts %}
-    <p>{{ post.title }}</p>
-    <p>{{ post.content }}</p>
-    <p>{{ post.image }}</p>
-    <p>{{ post.tag }}</p>
-    <p>{{ post.published_date }}</p>
-    <a href="{% url 'news_detail' post.id %}">Open Article</a>
+
+    <div class="row">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 newspost-container">
+            <h4 class="article-h">{{ post.title }}</h4>
+            {% if post.image %}
+                <img class="newspost-image" src="/media/{{ post.image }}" alt="image">
+            {% endif %}
+            <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
+            <span class="btn btn-primary openpost-btn">
+                <a href="{% url 'news_detail' post.id %}">Open Article</a>
+            </span>
+        </div>
+    </div>
 
 
 {% endfor %}

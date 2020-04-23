@@ -31,12 +31,33 @@
 
 <section class="news-section">
     <div class="row">
-        <div class="col-sm-10 offset-1">
-            <h3 class="header-h3 uppercase news-h">News</h3>
+        <div class="col-10 offset-1">
+            <h3 class="header-h3 uppercase index-news-h">News</h3>
             <p class="p-text">Read the latest new about upcoming exhibitions, recent paintings, or general thoughts of mine!
                 (I know, im so interesting!)
             </p>
         </div>
     </div>
+
+
+
+
+    {% for post in posts|slice:":3" %}
+
+    <div class="row">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 newspost-container">
+            <h4 class="article-h">{{ post.title }}</h4>
+            {% if post.image %}
+                <img class="newspost-image" src="/media/{{ post.image }}" alt="image">
+            {% endif %}
+            <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
+            <span class="btn btn-primary openpost-btn">
+                <a href="{% url 'news_detail' post.id %}">Open Article</a>
+            </span>
+        </div>
+    </div>
+
+
+    {% endfor %}
 </section>
 {% endblock %}

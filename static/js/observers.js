@@ -14,7 +14,7 @@ mainNavOptions = {
     rootMargin: "-100px 0px 0px 0px"
 };
 
-// cnew intersectionObserver whichs adds/removes a class to change colors of the main navbar when
+// new intersectionObserver whichs adds/removes a class to change colors of the main navbar when
 // it reaches the page content
 const mainNavObserver = new IntersectionObserver(function(
     entries,

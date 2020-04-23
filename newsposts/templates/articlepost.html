@@ -4,9 +4,11 @@
 <h1>You made it!</h1>
 <p>{{ post.title }}</p>
     <p>{{ post.content }}</p>
+    <img src="/media/{{ post.image }}" alt="image">
     <p>{{ post.image }}</p>
     <p>{{ post.tag }}</p>
     <p>{{ post.published_date }}</p>
+    <p>{{ post.views }}</p>
     <a href="{% url 'get_newsposts' %}">Back to news!</a>
     <a href="{% url 'edit_post' post.id %}">Edit post</a>
 
