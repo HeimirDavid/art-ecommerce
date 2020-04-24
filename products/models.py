@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class OriginalPainting(models.Model):
     stock = models.BooleanField(default=True)
@@ -13,10 +14,16 @@ class PrintPainting(models.Model):
     size = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
+    def __unicode__(self):
+        return self.size
+
 
 class CollectionCategory(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
+
+    def __unicode__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -28,6 +35,9 @@ class Product(models.Model):
     print_2 = models.ForeignKey(PrintPainting, on_delete=models.CASCADE, related_name="print_two", blank=True,null=True)
     print_3 = models.ForeignKey(PrintPainting, on_delete=models.CASCADE, related_name="print_three", blank=True,null=True)
     collection = models.ForeignKey(CollectionCategory, on_delete=models.CASCADE)
+    upload_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
 
+    def __unicode__(self):
+        return self.name
 
 

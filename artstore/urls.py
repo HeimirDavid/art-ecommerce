@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', index, name='index'),
     url(r'news/', include('newsposts.urls')),
+    url(r'paintings/', include('products.urls')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT }),
 ]
