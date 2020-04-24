@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>You made it to the products!</h1>
-    {% for product in products %}
-        <p>{{ product.name }}</p>
+<p>{{ product.name }}</p>
         <img src="/media/{{ product.image }}" alt="image">
         <p>{{ product.description }}</p>
-        <!-- 
+        
         <p>{{ product.original_painting.size }}</p>
         <p>{{ product.original_painting.price }}</p>
         <p>{{ product.original_painting.stock }}</p>
@@ -24,9 +22,4 @@
         <p>{{ product.collection.description }}</p>
 
         <p>{{ product.upload_date }}</p>
-         -->
-        <a href="{% url 'get_single_product' product.id %}">Open</a>
-
-    {% endfor %}
 {% endblock %}
-
