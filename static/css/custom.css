@@ -2,6 +2,11 @@
 
 
 /******* General Styles, fonts, etc.  *******/
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Roboto Condensed', sans-serif;
     overflow-x: hidden;
@@ -295,6 +300,7 @@ a.nav-item.nav-link.main-nav-item {
     .openpost-btn {
         position: absolute;
         bottom: 1em;
+        left: 1.8em;
     }
 }
 

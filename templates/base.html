@@ -24,7 +24,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top main-navbar">
-            <a class="navbar-brand" href="#">SL Gallery</a>
+            <a class="navbar-brand" href="{% url 'index' %}">SL Gallery</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="mainNav-burger"><i class="fas fa-bars"></i></span>
             </button>
@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse burgerMenu-bg-clr" id="navbarNavAltMarkup">
               <div class="navbar-nav m-auto">
                 <a class="nav-item nav-link main-nav-item" href="{% url 'index' %}">Home</a>
-                <a class="nav-item nav-link main-nav-item" href="#">About</a>
+                <a class="nav-item nav-link main-nav-item" href="{% url 'index' %}#about_section">About</a>
                 <a class="nav-item nav-link main-nav-item" href="#">Paintings</a>
                 <a class="nav-item nav-link main-nav-item" href="{% url 'get_newsposts' %}">News</a>
                 <a class="nav-item nav-link main-nav-item" href="#">Contact</a>
