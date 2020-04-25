@@ -2,9 +2,19 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-10 offset-1">
+<div class="row news-header-row">
+    <div class="col-8 offset-2">
         <h3 class="header-h3 text-center news-h">View Paintings By Collection</h3>
+        <div class="row"></div>
+        <form>
+        {% for product in products %}
+            <div class="col-12 col-md-4 collection-checkbox-col form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="{{ product.collection.id }}" name="{{ product.collection.id }}" value="{{ product.collection.id }}">
+                    <label class="form-check-label" for="{{ product.collection.id }}">{{ product.collection.name }}</label>
+            </div>
+        {% endfor %}
+        </form>
+        </div>
     </div>
 </div>
 {% for product in products %}

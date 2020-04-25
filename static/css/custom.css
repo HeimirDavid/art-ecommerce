@@ -295,6 +295,12 @@ a.nav-item.nav-link.main-nav-item {
     box-shadow: 2px -2px 5px -5px rgba(0,0,0,0.5);
 }
 
+.collection-checkbox-col {
+    margin: 3em 0;
+    font-size: 1.2em;
+    letter-spacing: 1.2px;
+}
+
 
 /******* Media Queries  *******/
 
