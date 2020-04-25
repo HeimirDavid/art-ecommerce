@@ -2,7 +2,51 @@
 
 {% block content %}
 
-
+<div class="row product-row">
+    <div class="col-12 col-md-7 text-center">
+        <img class="single-prod-img" src="/media/{{ product.image }}" alt="image">
+    </div>
+    <div class="col-12 col-md-5 single-prod-info">
+        <h3 class="header-h3 product-h">{{ product.name }}</h3>
+        <p class="p-text">{{ product.description }}</p>
+        <span class="p-text font-weight-bold">Original Size: </span><p class="p-text">{{ product.original_painting.size }}</p>
+        {% if product.original_painting.stock == True %}
+            <p class="p-text font-italic">Original painting still availible!</p>
+            <p class="p-text">
+                <span class="font-weight-bold">Price for original: </span>
+                <span>{{ product.original_painting.price }}</span>
+            </p>
+        {% endif %}
+        {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+            <p class="p-text font-weight-bold">Choose Print Size:</p>
+            <form action="">
+                <div class="form-check form-check-inline print-size-form">
+                    {% if product.print_1.stock > 0 %}
+                        <div class="checkbox-item">
+                            <input class="form-check-input" type="checkbox" id="{{ product.print_1.size }}" name="{{ product.print_1.size }}" value="{{ product.print_1.price }}">
+                            <label class="form-check-label" for="{{ product.print_1.size }}">{{ product.print_1.size }}</label>
+                        </div>
+                    {% endif %}
+                    {% if product.print_2.stock > 0 %}
+                    <div class="checkbox-item">
+                        <input class="form-check-input" type="checkbox" id="{{ product.print_2.size }}" name="{{ product.print_2.size }}" value="{{ product.print_2.price }}">
+                        <label class="form-check-label" for="{{ product.print_2.size }}">{{ product.print_2.size }}</label>
+                    </div>
+                    {% endif %}
+                    {% if product.print_3.stock > 0 %}
+                    <div class="checkbox-item">
+                        <input class="form-check-input" type="checkbox" id="{{ product.print_3.size }}" name="{{ product.print_3.size }}" value="{{ product.print_3.price }}">
+                        <label class="form-check-label" for="{{ product.print_3.size }}">{{ product.print_3.size }}</label>
+                    </div>
+                    {% endif %}
+                </div>
+            </form>
+        {% else %}
+        <p class="p-text font-weight-bold">Prints are out of stock!</p>
+        {% endif %}
+    </div>
+</div>
+<!-- 
 <p>{{ product.name }}</p>
         <img src="/media/{{ product.image }}" alt="image">
         <p>{{ product.description }}</p>
@@ -27,4 +71,5 @@
         <p>{{ product.collection.description }}</p>
 
         <p>{{ product.upload_date }}</p>
+         -->
 {% endblock %}
