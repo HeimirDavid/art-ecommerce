@@ -27,9 +27,10 @@ a:hover {
     letter-spacing: .8px;
 }
 
-.sub-header {
-    font-weight: 400;
-    margin: 1em 0 2em 0;
+.img-shadow {
+    -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
 }
 
 
@@ -121,7 +122,7 @@ a.nav-item.nav-link.main-nav-item {
 /******* Big picture and heading on the front page  *******/
 
 .page-main-intro {
-    padding: 29vh 0 10vh 0;
+    padding: 34vh 0; /* 29vh 0 10vh 0 with image shadow */
     background: #0e1d2d url(//unsplash.it/900);
     background-size: cover;
     background-blend-mode: multiply;
@@ -132,8 +133,11 @@ a.nav-item.nav-link.main-nav-item {
 .display-painting {
     width: 70%;
     position: absolute;
+    -webkit-box-shadow: 25px 25px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 25px 25px 0px 0px rgba(0,0,0,1);
+    box-shadow: 25px 25px 0px 0px rgba(0,0,0,1);
 }
-
+/*
 .image-shadow {
     height: 25em;
     width: 80%;
@@ -141,7 +145,7 @@ a.nav-item.nav-link.main-nav-item {
     z-index: -5;
     margin-left: 1em;
     margin-top: -2em;
-}
+}*/
 
 /******* Headers styles  *******/
 
@@ -162,6 +166,11 @@ a.nav-item.nav-link.main-nav-item {
 .header-h4 {
     font-size: 2em;
     font-weight: 600;
+}
+
+.sub-header {
+    font-weight: 400;
+    margin: 1em 0 2em 0;
 }
 
 
@@ -246,6 +255,46 @@ a.nav-item.nav-link.main-nav-item {
 .article-info {
     margin: 1em 0 2em 0;
 }
+
+/******* Products Section  *******/
+
+.product-display-row {
+    height: 20em;
+    margin: 4em 2em;
+}
+
+.product-img {
+    max-height: 20em;
+}
+
+.product-h {
+    display: inline-block;
+    margin:.5em 0;
+}
+/*
+.openproduct-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}*/
+
+.product-info {
+    position: absolute;
+    bottom: .5em;
+}
+
+.shadow-left {
+    -webkit-box-shadow: -2px -2px 5px -5px rgba(0,0,0,0.5);
+    -moz-box-shadow: -2px -2px 5px -3px rgba(0,0,0,0.5);
+    box-shadow: -2px -2px 5px -5px rgba(0,0,0,0.5);
+}
+
+.shadow-right {
+    -webkit-box-shadow: 2px 2px 5px -5px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 2px 5px -3px rgba(0,0,0,0.5);
+    box-shadow: 2px -2px 5px -5px rgba(0,0,0,0.5);
+}
+
 
 /******* Media Queries  *******/
 

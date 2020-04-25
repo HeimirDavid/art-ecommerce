@@ -1,32 +1,68 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>You made it to the products!</h1>
-    {% for product in products %}
-        <p>{{ product.name }}</p>
-        <img src="/media/{{ product.image }}" alt="image">
-        <p>{{ product.description }}</p>
-        <!-- 
-        <p>{{ product.original_painting.size }}</p>
-        <p>{{ product.original_painting.price }}</p>
-        <p>{{ product.original_painting.stock }}</p>
 
-        <p>{{ product.print_1.size }}</p>
-        <p>{{ product.print_1.price }}</p>
+<div class="row">
+    <div class="col-10 offset-1">
+        <h3 class="header-h3 text-center news-h">View Paintings By Collection</h3>
+    </div>
+</div>
+{% for product in products %}
+    {% if forloop.counter|divisibleby:2 %}
+    
+    <div class="row product-display-row">
+        <div class="col-7 offset-1 shadow-left">
+            <h4 class="header-h4 product-h">{{ product.name }}</h4>
+            <p class="p-text">{{ product.description }}</p>
+            <div class="product-info">
+                <p class="p-text font-weight-bold">Availible as: </p>
+                <p>Price varies between print sizes and original painting</p>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+            </div>
+        </div>
+        <div class="col-3">
+            <img class="product-img float-right img-shadow" src="/media/{{ product.image }}" alt="image">
+        </div>
+    </div>
+    {% else %}
 
-        <p>{{ product.print_2.size }}</p>
-        <p>{{ product.print_2.price }}</p>
+    <div class="row product-display-row">
+        <div class="col-3 offset-1">
+            <img class="product-img float-right img-shadow" src="/media/{{ product.image }}" alt="image">
+        </div>
+        <div class="col-7 shadow-right">
+            <h4 class="header-h4 product-h">{{ product.name }}</h4>
+            <p class="p-text">{{ product.description }}</p>
+            <div class="product-info">
+                <p class="p-text font-weight-bold">Availible as: </p>
+                <p>Price varies between print sizes and original painting</p>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- 
+    <p>{{ product.original_painting.size }}</p>
+    <p>{{ product.original_painting.price }}</p>
+    <p>{{ product.original_painting.stock }}</p>
 
-        <p>{{ product.print_3.size }}</p>
-        <p>{{ product.print_3.price }}</p>
+    /media/{{ product.image }}
 
-        <p>{{ product.collection.name }}</p>
-        <p>{{ product.collection.description }}</p>
+    <p>{{ product.print_1.size }}</p>
+    <p>{{ product.print_1.price }}</p>
 
-        <p>{{ product.upload_date }}</p>
-         -->
-        <a href="{% url 'get_single_product' product.id %}">Open</a>
+    <p>{{ product.print_2.size }}</p>
+    <p>{{ product.print_2.price }}</p>
 
-    {% endfor %}
+    <p>{{ product.print_3.size }}</p>
+    <p>{{ product.print_3.price }}</p>
+
+    <p>{{ product.collection.name }}</p>
+    <p>{{ product.collection.description }}</p>
+
+    <p>{{ product.upload_date }}</p>
+        -->
+
+{% endfor %}
 {% endblock %}
 
