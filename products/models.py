@@ -13,6 +13,7 @@ class OriginalPainting(models.Model):
 class PrintPainting(models.Model):
     size = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    stock = models.PositiveIntegerField(null=True, blank=True)
 
     def __unicode__(self):
         return self.size

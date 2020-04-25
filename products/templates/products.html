@@ -15,8 +15,18 @@
             <h4 class="header-h4 product-h">{{ product.name }}</h4>
             <p class="p-text">{{ product.description }}</p>
             <div class="product-info">
-                <p class="p-text font-weight-bold">Availible as: </p>
-                <p>Price varies between print sizes and original painting</p>
+                {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+                    <span class="p-text font-italic">Availible as: </span>
+                    <span class="p-text font-weight-bold">Print</span>
+                {% else %}
+                <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
+                {% endif %}
+                {% if product.original_painting.stock == True %}
+                    <p class="p-text font-weight-bold">Original painting still availible!</p>
+                {% else %}
+                <p class="p-text font-weight-bold">Original painting has been sold!</p>
+                {% endif %}
+                <!-- <p>Price varies between print sizes and original painting</p> -->
                 <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
             </div>
         </div>
@@ -34,34 +44,24 @@
             <h4 class="header-h4 product-h">{{ product.name }}</h4>
             <p class="p-text">{{ product.description }}</p>
             <div class="product-info">
-                <p class="p-text font-weight-bold">Availible as: </p>
-                <p>Price varies between print sizes and original painting</p>
+                {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+                    <span class="p-text font-italic">Availible as: </span>
+                    <span class="p-text font-weight-bold">Print</span>
+                {% else %}
+                <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
+                {% endif %}
+                {% if product.original_painting.stock == True %}
+                    <p class="p-text font-weight-bold">Original paingting still availible!</p>
+                {% else %}
+                <p class="p-text font-weight-bold">Original painting has been sold!</p>
+                {% endif %}
+                <!-- <p>Price varies between print sizes and original painting</p> -->
                 <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
             </div>
         </div>
     </div>
     {% endif %}
-    <!-- 
-    <p>{{ product.original_painting.size }}</p>
-    <p>{{ product.original_painting.price }}</p>
-    <p>{{ product.original_painting.stock }}</p>
 
-    /media/{{ product.image }}
-
-    <p>{{ product.print_1.size }}</p>
-    <p>{{ product.print_1.price }}</p>
-
-    <p>{{ product.print_2.size }}</p>
-    <p>{{ product.print_2.price }}</p>
-
-    <p>{{ product.print_3.size }}</p>
-    <p>{{ product.print_3.price }}</p>
-
-    <p>{{ product.collection.name }}</p>
-    <p>{{ product.collection.description }}</p>
-
-    <p>{{ product.upload_date }}</p>
-        -->
 
 {% endfor %}
 {% endblock %}
