@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'home',
     'newsposts',
     'products',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media' # From 'Set yourself up for success'
+                'django.template.context_processors.media', # From 'Set yourself up for success'
+                'cart.contexts.cart_contents', # From 'Storing shopping cart items in a session'
             ],
         },
     },
