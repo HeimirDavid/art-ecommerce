@@ -16,7 +16,7 @@
             <p class="p-text font-italic">Original painting still availible!</p>
             <p class="p-text">
                 <span class="font-weight-bold">Price for original: </span>
-                <span>{{ product.original_painting.price }}</span>
+                <span>{{ product.original_painting.price }} €</span>
             </p>
         {% endif %}
 
@@ -38,50 +38,33 @@
         <div class="input-group select-size-menu">
             <input id="quantity" type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
             <span class="input-group-btn">
-                <button onclick="getPriceForPrints()" class="btn btn-success" id="addPrints" type="submit">Add</button>
+                <button onclick="getPriceForPrints()" class="btn btn-info" id="addPrints" type="submit">Add</button>
             </span>
             
         </div>
         <p class="p-text">
             <span class="font-weight-bold">Price for prints: </span>
-            <span id="displayPrice"></span>
+            <span id="displayPrice">Select a size and quantity</span>
             <span id="currency-euro"></span>
         </p>
-        
-        
-          
-            <!-- 
-            <p class="p-text font-weight-bold">Choose Print Size:</p>
-            <form action="" class="size-radio-btns">
-                    {% if product.print_1.stock > 0 %}
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" id="{{ product.print_1.size }}" name="sizeOptions" value="{{ product.print_1.price }}">
-                        <label class="custom-control-label" for="{{ product.print_1.size }}">{{ product.print_1.size }}</label>
-                    </div>
-
-                    {% endif %}
-                    {% if product.print_2.stock > 0 %}
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" id="{{ product.print_2.size }}" name="sizeOptions" value="{{ product.print_2.price }}">
-                        <label class="custom-control-label" for="{{ product.print_2.size }}">{{ product.print_2.size }}</label>
-                    </div>
-
-                    {% endif %}
-                    {% if product.print_3.stock > 0 %}
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" id="{{ product.print_3.size }}" name="sizeOptions" value="{{ product.print_3.price }}">
-                        <label class="custom-control-label" for="{{ product.print_3.size }}">{{ product.print_3.size }}</label>
-                    </div>
-
-                    {% endif %}
-            </form>
-            
-             -->
-
         {% else %}
         <p class="p-text font-weight-bold">Prints are out of stock!</p>
         {% endif %}
+        
+        <div class="p-text">
+            {% if product.original_painting.stock == True %}
+                <a class="btn btn-success m-auto" href="#" role="button">Add Original To Cart!</a>
+            {% endif %}
+            {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+                <a class="btn btn-success m-auto" href="#" role="button">Add Prints To Cart!</a>
+            {% endif %}
+        </div>
+        
+          
+          
+       
     </div>
+    
 </div>
 
 

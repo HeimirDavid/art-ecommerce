@@ -46,6 +46,7 @@ function getPriceForPrints() {
     
     if(isNaN(priceForPrints) || priceForPrints == 0) {
         document.getElementById('displayPrice').innerHTML = "You need to pick both a size and wished number of prints.";
+        document.getElementById('currency-euro').innerHTML = "";
     } else {
         document.getElementById('displayPrice').innerHTML = priceForPrints;
         document.getElementById('currency-euro').innerHTML = "€";
