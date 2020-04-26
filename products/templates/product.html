@@ -22,7 +22,7 @@
 
         {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
         <form action="" class="select-size-menu">
-            <select class="form-control form-control-sm p-text">
+            <select id="sizeOptions" class="form-control form-control-sm p-text">
                 <option selected>Choose Print Size</option>
                 {% if product.print_1.stock > 0 %}
                     <option id="sizeOne" value="{{ product.print_1.price }}">{{ product.print_1.size }} | {{ product.print_1.price }} €</option>
@@ -35,12 +35,19 @@
                 {% endif %}
             </select>
         </form>
-        <div class="input-group">
+        <div class="input-group select-size-menu">
             <input id="quantity" type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
             <span class="input-group-btn">
-                <button class="btn btn-success" id="addPrints" type="submit">Add</button>
+                <button onclick="getPriceForPrints()" class="btn btn-success" id="addPrints" type="submit">Add</button>
             </span>
+            
         </div>
+        <p class="p-text">
+            <span class="font-weight-bold">Price for prints: </span>
+            <span id="displayPrice"></span>
+            <span id="currency-euro"></span>
+        </p>
+        
         
           
             <!-- 
@@ -76,5 +83,6 @@
         {% endif %}
     </div>
 </div>
+
 
 {% endblock %}

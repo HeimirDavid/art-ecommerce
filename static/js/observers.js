@@ -37,37 +37,18 @@ const mainNavObserver = new IntersectionObserver(function(
 mainNavObserver.observe(pageIntro)
 
 
-/*
-var button = document.getElementById("addPrints");
-var sizeOne = document.getElementById("sizeOne")
-var quantity = document.getElementById("quantity")
-var prices = sizeOne.value * quantity.value;
-$( document ).ready(function() {
-    console.log( "ready!" );
-
-
-
-    var sizeOne = $('#sizeOne')
-    console.log(sizeOne.value)
-});*/
-
-//var sizeOne = document.getElementById("sizeTwo").value;
-//console.log(sizeOne)
-
+//Get the price for the print and quantity of a specific print the user has picked
 
 function getPriceForPrints() {
-    var sizeOne = document.getElementById("sizeOne");
-    var sizeTwo = document.getElementById("sizeTwo");
-    var sizeThree = document.getElementById("sizeThree");
-    var sizes = [sizeOne, sizeTwo, sizeThree]
+    var selectOptions = document.getElementById("sizeOptions").value;
+    var quantity = document.getElementById("quantity").value;
+    var priceForPrints = parseFloat(selectOptions * quantity).toFixed(2);
+    
+    if(isNaN(priceForPrints) || priceForPrints == 0) {
+        document.getElementById('displayPrice').innerHTML = "You need to pick both a size and wished number of prints.";
+    } else {
+        document.getElementById('displayPrice').innerHTML = priceForPrints;
+        document.getElementById('currency-euro').innerHTML = "€";
+    };
+};
 
-    for(i=0; i < sizes.length; i++) {
-        if(sizes[i] === null) {
-            sizes.splice(i, 1);
-        }
-        console.log(sizes[i].value)
-    }
-
-}
-
-getPriceForPrints();
