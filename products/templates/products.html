@@ -27,9 +27,12 @@
                 <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
             </a>
         </div>
-        <div class="col-12 col-md-7 shadow-left"> <!-- Experiment start now -->
-            <h4 class="header-h4 product-h">{{ product.name }}</h4>
-            <p class="p-text">{{ product.description }}</p>
+
+        <div class="col-12 col-md-7 shadow-left">
+            <a href="{% url 'get_single_product' product.id %}">
+                <h4 class="header-h4 product-h">{{ product.name }}</h4>
+                <p class="p-text">{{ product.description }}</p>
+            </a>
             <div class="product-info">
                 {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
                     <span class="p-text font-italic">Availible as: </span>
@@ -61,8 +64,10 @@
             </a>
         </div>
         <div class="col-md-7 shadow-right">
-            <h4 class="header-h4 product-h">{{ product.name }}</h4>
-            <p class="p-text">{{ product.description }}</p>
+            <a href="{% url 'get_single_product' product.id %}">
+                <h4 class="header-h4 product-h">{{ product.name }}</h4>
+                <p class="p-text">{{ product.description }}</p>
+            </a>
             <div class="product-info">
                 {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
                     <span class="p-text font-italic">Availible as: </span>
@@ -81,8 +86,9 @@
         </div>
     </div>
     {% endif %}
-
-
 {% endfor %}
+
+<br>
+<br>
 {% endblock %}
 
