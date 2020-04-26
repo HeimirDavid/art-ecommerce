@@ -23,7 +23,9 @@
     
     <div class="row product-display-row">
         <div class="col-12 col-md-3 d-block d-md-none">
-            <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            <a data-fancybox="gallery" href="/media/{{ product.image }}">
+                <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            </a>
         </div>
         <div class="col-12 col-md-7 shadow-left"> <!-- Experiment start now -->
             <h4 class="header-h4 product-h">{{ product.name }}</h4>
@@ -45,14 +47,18 @@
             </div>
         </div>
         <div class="col-3 d-none d-md-block">
-            <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            <a data-fancybox="gallery" href="/media/{{ product.image }}">
+                <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            </a>
         </div>
     </div>
     {% else %}
 
     <div class="row product-display-row">
         <div class="col-12 col-md-3">
-            <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            <a data-fancybox="gallery" href="/media/{{ product.image }}">
+                <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            </a>
         </div>
         <div class="col-md-7 shadow-right">
             <h4 class="header-h4 product-h">{{ product.name }}</h4>

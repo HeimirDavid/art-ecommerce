@@ -4,7 +4,9 @@
 
 <div class="row product-row">
     <div class="col-12 col-md-7 text-center">
-        <img class="single-prod-img" src="/media/{{ product.image }}" alt="image">
+        <a data-fancybox="gallery" href="/media/{{ product.image }}">
+            <img class="single-prod-img" src="/media/{{ product.image }}" alt="image">
+        </a>
     </div>
     <div class="col-12 col-md-5 single-prod-info">
         <h3 class="header-h3 product-h">{{ product.name }}</h3>
@@ -46,30 +48,5 @@
         {% endif %}
     </div>
 </div>
-<!-- 
-<p>{{ product.name }}</p>
-        <img src="/media/{{ product.image }}" alt="image">
-        <p>{{ product.description }}</p>
-        
-        <p>{{ product.original_painting.size }}</p>
-        <p>{{ product.original_painting.price }}</p>
-        <p>{{ product.original_painting.stock }}</p>
 
-        <p>{{ product.print_1.size }}</p>
-        <p>{{ product.print_1.price }}</p>
-        <p>{{ product.print_1.stock }}</p>
-
-        <p>{{ product.print_2.size }}</p>
-        <p>{{ product.print_2.price }}</p>
-        <p>{{ product.print_2.stock }}</p>
-
-        <p>{{ product.print_3.size }}</p>
-        <p>{{ product.print_3.price }}</p>
-        <p>{{ product.print_3.stock }}</p>
-
-        <p>{{ product.collection.name }}</p>
-        <p>{{ product.collection.description }}</p>
-
-        <p>{{ product.upload_date }}</p>
-         -->
 {% endblock %}
