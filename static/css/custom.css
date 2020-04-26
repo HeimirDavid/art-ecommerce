@@ -301,6 +301,10 @@ a.nav-item.nav-link.main-nav-item {
     width: 100%;
 }
 
+.select-size-menu {
+    margin-bottom: 1em;
+}
+
 /******* Media Queries  *******/
 
 /*** Tablet/Desktop View ***/

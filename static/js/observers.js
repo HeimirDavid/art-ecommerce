@@ -35,3 +35,13 @@ const mainNavObserver = new IntersectionObserver(function(
     mainNavOptions);
 
 mainNavObserver.observe(pageIntro)
+
+
+
+var e = document.getElementById("sizeOne")
+
+console.log(e.value)
+
+
+
+console.log("Hello World")
