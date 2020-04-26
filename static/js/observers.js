@@ -37,11 +37,37 @@ const mainNavObserver = new IntersectionObserver(function(
 mainNavObserver.observe(pageIntro)
 
 
+/*
+var button = document.getElementById("addPrints");
+var sizeOne = document.getElementById("sizeOne")
+var quantity = document.getElementById("quantity")
+var prices = sizeOne.value * quantity.value;
+$( document ).ready(function() {
+    console.log( "ready!" );
 
-var e = document.getElementById("sizeOne")
-
-console.log(e.value)
 
 
+    var sizeOne = $('#sizeOne')
+    console.log(sizeOne.value)
+});*/
 
-console.log("Hello World")
+//var sizeOne = document.getElementById("sizeTwo").value;
+//console.log(sizeOne)
+
+
+function getPriceForPrints() {
+    var sizeOne = document.getElementById("sizeOne");
+    var sizeTwo = document.getElementById("sizeTwo");
+    var sizeThree = document.getElementById("sizeThree");
+    var sizes = [sizeOne, sizeTwo, sizeThree]
+
+    for(i=0; i < sizes.length; i++) {
+        if(sizes[i] === null) {
+            sizes.splice(i, 1);
+        }
+        console.log(sizes[i].value)
+    }
+
+}
+
+getPriceForPrints();
