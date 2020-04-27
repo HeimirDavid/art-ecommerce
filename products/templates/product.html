@@ -19,53 +19,48 @@
                 <span>{{ product.original_painting.price }} €</span>
             </p>
         {% endif %}
-
-        {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
-        <form action="" class="select-size-menu">
-            <select id="sizeOptions" class="form-control form-control-sm p-text">
-                <option selected>Choose Print Size</option>
-                {% if product.print_1.stock > 0 %}
-                    <option id="sizeOne" value="{{ product.print_1.price }}">{{ product.print_1.size }} | {{ product.print_1.price }} €</option>
-                {% endif %}
-                {% if product.print_2.stock > 0 %}
-                    <option id="sizeTwo" value="{{ product.print_2.price }}">{{ product.print_2.size }} | {{ product.print_2.price }} €</option>
-                {% endif %}
-                {% if product.print_3.stock > 0 %}
-                    <option id="sizeThree" value="{{ product.print_3.price }}">{{ product.print_3.size }} | {{ product.print_3.price }} €</option>
-                {% endif %}
+            <!-- .print is not going to work, need to import both product and prints here... -->
+        
+        <form class="select-size-menu" method="POST" action="{% url 'add_to_cart' 3 %}">
+            {% csrf_token %}
+            <select name="quantity" id="sizeOptions" class="form-control form-control-sm p-text"></select>
+            <option selected>Choose Print Size</option>
+            {% for print in prints %}
+            <option id="sizeOne" value="{{ product.print_1.id }}">{{ product.print_1.size }} | {{ product.print_1.price }} €</option>
+            {% endfor %}
             </select>
+        
+        <!-- <form class="select-size-menu" method="POST" action=""> -->        
+            <div class="input-group select-size-menu">
+                <input id="quantity" type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
+                <span class="input-group-btn">
+                    <button onclick="getPriceForPrints()" class="btn btn-info" id="addPrints" type="submit">Add To Cart</button>
+                </span>
         </form>
-        <div class="input-group select-size-menu">
-            <input id="quantity" type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
-            <span class="input-group-btn">
-                <button onclick="getPriceForPrints()" class="btn btn-info" id="addPrints" type="submit">Add</button>
-            </span>
-            
         </div>
         <p class="p-text">
             <span class="font-weight-bold">Price for prints: </span>
             <span id="displayPrice">Select a size and quantity</span>
             <span id="currency-euro"></span>
         </p>
-        {% else %}
+        
         <p class="p-text font-weight-bold">Prints are out of stock!</p>
-        {% endif %}
         
         <div class="p-text">
             {% if product.original_painting.stock == True %}
-                <a class="btn btn-success m-auto" href="#" role="button">Add Original To Cart!</a>
-            {% endif %}
-            {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
-                <a class="btn btn-success m-auto" href="#" role="button">Add Prints To Cart!</a>
+            <form method="POST" action="{% url 'add_to_cart' product.original_painting.id %}">
+                {% csrf_token %}
+                <input name="quantity" type="hidden" value="1">
+                <button class="btn btn-success" type="submit">Add Original To Cart!</button>
+            </form>
             {% endif %}
         </div>
-        
-          
-          
-       
     </div>
     
 </div>
-
+{% for print in prints %}
+    <p>{{ print.size }}</p>
+    <p>{{ print.stock }}</p>
+{% endfor %}
 
 {% endblock %}

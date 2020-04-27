@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Product #, PrintPainting, OriginalPainting, CollectionCategory
+from .models import Product, PrintPainting #, OriginalPainting, CollectionCategory
 
 
 # Create your views here.
@@ -19,5 +19,8 @@ def get_single_product(request, pk):
     Create a view that returns a single product basaed on it's pk
     and render it to product.html, or 404 if product is not found
     """
+    # prints = get_object_or_404(PrintPainting, )
+    prints = PrintPainting.objects.filter(productPrint=pk)
+
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'product.html', {'product': product})
+    return render(request, 'product.html', {'product': product, 'prints': prints})
