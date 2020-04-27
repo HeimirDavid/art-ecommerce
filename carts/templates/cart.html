@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="row">
     <div class="col-8 offset-2">
 
+    {% if empty %}
+        <h2 class="text-center">{{ empty_message }}</h2>
+
+    {% else %}
         <table class="table">
             <thead>
                 <th>Item</th>
@@ -32,10 +35,8 @@
             
             </table>
 
+        </div>
     </div>
-</div>
-
-
-
+    {% endif %}
 
 {% endblock %}
