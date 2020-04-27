@@ -57,7 +57,7 @@
         
         <div class="p-text">
             {% if product.original_painting.stock == True %}
-            <form method="POST" action="">
+            <form method="POST" action="{% url 'update_cart' product.id %}">
                 {% csrf_token %}
                 <input name="quantity" type="hidden" value="1">
                 <button class="btn btn-success" type="submit">Add Original To Cart!</button>
@@ -67,17 +67,5 @@
     </div>
     
 </div>
-
-
-
-
-{% if prints.stock > 0 %}
-{% for print in prints %}
-    <p>{{ print.size }}</p>
-    <p>{{ print.stock }}</p>
-{% endfor %}
-{% else %}
-<p>not good</p>
-{% endif %}
 
 {% endblock %}

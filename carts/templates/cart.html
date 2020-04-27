@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-8 offset-2">
+
+        <table class="table">
+            <thead>
+                <th>Item</th>
+                <th>Price</th>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>Total: {{ cart.total }}</td>
+                </tr>
+
+            </tfoot>
+
+            {% for item in cart.products.all %}
+
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.original_painting.price }}</td>
+                <td><a class="btn btn-danger" href="{{ item.id }}">Remove</a></td>
+            </tr>
+            
+            
+            {% endfor %}
+            
+            
+            </table>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
