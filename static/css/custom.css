@@ -88,7 +88,7 @@ a:hover {
     border-radius: 2em;
     font-weight: 400;
     position: absolute;
-    right: 6em;
+    right: 7em;
 }
 
 .login-btn:hover {
@@ -372,11 +372,11 @@ a.nav-item.nav-link.main-nav-item {
     }
 
     a.nav-item.nav-link.main-nav-item.shopping-cart {
-        font-size: 1.8em;
+        font-size: 1.7em;
         position: absolute;
         right: 0;
         top: 0;
-        margin-right: 1em;
+        margin-right: .3em;
     }
 
     /* news section */

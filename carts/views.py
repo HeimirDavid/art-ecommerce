@@ -49,6 +49,8 @@ def update_cart(request, pk):
     for item in cart.products.all():
         new_total += float(item.original_painting.price)
 
+    request.session['items_total'] = cart.products.count()
+
     cart.total = new_total
     cart.save()
 
