@@ -21,15 +21,24 @@
         {% endif %}
             <!-- .print is not going to work, need to import both product and prints here... -->
         
-        <form class="select-size-menu" method="POST" action="{% url 'add_to_cart' 3 %}">
-            {% csrf_token %}
-            <select name="quantity" id="sizeOptions" class="form-control form-control-sm p-text"></select>
-            <option selected>Choose Print Size</option>
-            {% for print in prints %}
-            <option id="sizeOne" value="{{ product.print_1.id }}">{{ product.print_1.size }} | {{ product.print_1.price }} €</option>
-            {% endfor %}
-            </select>
+
+
+
         
+        <form class="select-size-menu" method="POST" action="">
+            {% csrf_token %}
+            
+            <select id="sizeOptions" name="sizeOptions" class="custom-select p-text">
+                <option selected>Choose Print Size</option>
+                {% for print in prints %}
+                    {% if print.stock > 0 %}
+                        <option name="sizeOptions" id="sizeOne" value="{{ print.id }}">{{ print.size }} | {{ print.price }} €</option>
+                    {% else %}
+                        <option id="sizeOne" value="No">{{ print.size }} | Print is out of stock!</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <br>
         <!-- <form class="select-size-menu" method="POST" action=""> -->        
             <div class="input-group select-size-menu">
                 <input id="quantity" type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
@@ -48,7 +57,7 @@
         
         <div class="p-text">
             {% if product.original_painting.stock == True %}
-            <form method="POST" action="{% url 'add_to_cart' product.original_painting.id %}">
+            <form method="POST" action="">
                 {% csrf_token %}
                 <input name="quantity" type="hidden" value="1">
                 <button class="btn btn-success" type="submit">Add Original To Cart!</button>
@@ -58,9 +67,17 @@
     </div>
     
 </div>
+
+
+
+
+{% if prints.stock > 0 %}
 {% for print in prints %}
     <p>{{ print.size }}</p>
     <p>{{ print.stock }}</p>
 {% endfor %}
+{% else %}
+<p>not good</p>
+{% endif %}
 
 {% endblock %}
