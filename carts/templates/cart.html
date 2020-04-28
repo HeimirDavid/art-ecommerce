@@ -25,6 +25,7 @@
             </tfoot>
 
             {% for item in cart.cartitem_set.all %}
+            <p>{{ item.product.original_painting.price }}</p>
 
             <tr>
                 <td>{{ item.product.name }}</td>
@@ -33,7 +34,7 @@
                 <td>{{ print.price }}</td>
                 {% endfor %}
                 <td>{{ item.quantity }}</td>
-                <p>{{ item.id }}</p>
+                
                 <td><a class="btn btn-danger" href="{% url 'remove_from_cart' item.id %}">Remove</a></td>
             </tr>
             

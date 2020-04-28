@@ -60,7 +60,7 @@
             <form method="POST" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
                 <!-- <input name="quantity" type="hidden" value="1"> -->
-                <input type="hidden" name="qty" value="1">
+                <input type="hidden" value="1" name="original">
                 <button class="btn btn-success" type="submit">Add Original To Cart!</button>
             </form>
             {% endif %}
