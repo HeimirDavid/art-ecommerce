@@ -25,28 +25,28 @@
 
 
         
-        <form class="select-size-menu" method="POST" action="">
+        <form class="select-size-menu" method="POST" action="{% url 'add_to_cart' product.id %}">
             {% csrf_token %}
             
-            <select id="sizeOptions" name="sizeOptions" class="custom-select p-text">
+            <select name="size" class="custom-select p-text">
                 <option selected>Choose Print Size</option>
-                {% for print in prints %}
+                {% for print in product.printpainting_set.all %}
                     {% if print.stock > 0 %}
-                        <option name="sizeOptions" id="sizeOne" value="{{ print.id }}">{{ print.size }} | {{ print.price }} €</option>
+                        <option value="{{ print.id }}">{{ print.size }} | {{ print.price }} €</option>
                     {% else %}
-                        <option id="sizeOne" value="No">{{ print.size }} | Print is out of stock!</option>
+                        <option>{{ print.size }} | Print is out of stock!</option>
                     {% endif %}
                 {% endfor %}
             </select>
             <br>
-        <!-- <form class="select-size-menu" method="POST" action=""> -->        
             <div class="input-group select-size-menu">
-                <input id="quantity" type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
+                <input type="number" name="qty" min="1" max="999" class="form-control" placeholder="Quantity">
                 <span class="input-group-btn">
                     <button onclick="getPriceForPrints()" class="btn btn-info" id="addPrints" type="submit">Add To Cart</button>
                 </span>
+            </div>
         </form>
-        </div>
+        
         <p class="p-text">
             <span class="font-weight-bold">Price for prints: </span>
             <span id="displayPrice">Select a size and quantity</span>
@@ -57,9 +57,10 @@
         
         <div class="p-text">
             {% if product.original_painting.stock == True %}
-            <form method="POST" action="{% url 'update_cart' product.id 0 %}">
+            <form method="POST" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
-                <input name="quantity" type="hidden" value="1">
+                <!-- <input name="quantity" type="hidden" value="1"> -->
+                <input type="hidden" name="qty" value="1">
                 <button class="btn btn-success" type="submit">Add Original To Cart!</button>
             </form>
             {% endif %}

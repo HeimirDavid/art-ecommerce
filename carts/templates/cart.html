@@ -28,7 +28,7 @@
                 <td>{{ item.product.name }}</td>
                 <td>{{ item.product.original_painting.price }}</td>
                 <td>{{ item.quantity }}</td>
-                <td><a class="btn btn-danger" href="{% url 'update_cart' item.product.id 0 %}">Remove</a></td>
+                <td><a class="btn btn-danger" href="{% url 'add_to_cart' item.product.id %}?qty=0">Remove</a></td>
             </tr>
             
             

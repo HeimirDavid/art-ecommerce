@@ -23,7 +23,6 @@ class Product(models.Model):
     description = models.TextField()
     image = image = models.ImageField(upload_to="img", blank=False, null=False)
     original_painting = models.ForeignKey(OriginalPainting, on_delete=models.CASCADE, null=False)
-    
     collection = models.ForeignKey(CollectionCategory, on_delete=models.CASCADE)
     upload_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
 
@@ -33,9 +32,9 @@ class Product(models.Model):
 
 class PrintPainting(models.Model):
     size = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=100, decimal_places=2)
     stock = models.PositiveIntegerField(null=True, blank=True)
-    productPrint = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
 
     def __unicode__(self):
         return self.size

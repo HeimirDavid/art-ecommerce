@@ -1,5 +1,5 @@
 from django.db import models
-from products.models import Product
+from products.models import Product, PrintPainting
 
 
 #https://www.youtube.com/watch?v=20HCDEwEdeo&list=PLPp4GCMxKSjCM9AvhmF9OHyyaJsN8rsZK&index=22
@@ -19,6 +19,7 @@ class Cart(models.Model):
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, null=True, blank=True, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, null=True, blank=True, on_delete=models.CASCADE)
+    print_variations = models.ManyToManyField(PrintPainting, null=True, blank=True)
     quantity = models.IntegerField(default=1)
     line_total = models.DecimalField(default=0.00, max_digits=1000, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)

@@ -20,7 +20,7 @@ def get_single_product(request, pk):
     and render it to product.html, or 404 if product is not found
     """
     # prints = get_object_or_404(PrintPainting, )
-    prints = PrintPainting.objects.filter(productPrint=pk)
+    #prints = PrintPainting.objects.filter(productPrint=pk)
 
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'product.html', {'product': product, 'prints': prints})
+    return render(request, 'product.html', {'product': product})
