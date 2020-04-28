@@ -57,7 +57,7 @@
         
         <div class="p-text">
             {% if product.original_painting.stock == True %}
-            <form method="POST" action="{% url 'update_cart' product.id %}">
+            <form method="POST" action="{% url 'update_cart' product.id 0 %}">
                 {% csrf_token %}
                 <input name="quantity" type="hidden" value="1">
                 <button class="btn btn-success" type="submit">Add Original To Cart!</button>

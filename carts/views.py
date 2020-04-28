@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from .models import Cart
+from .models import Cart, CartItem
 from products.models import PrintPainting, Product
 
 
@@ -21,7 +21,8 @@ def view_cart(request):
     return render(request, template, context)
 
 
-def update_cart(request, pk):
+
+def update_cart(request, pk, qty):
     request.session.set_expiry(300000)
     try:
         cart_session_id = request.session['cart_id']
@@ -39,17 +40,31 @@ def update_cart(request, pk):
         pass
     except:
         pass
-    if not product in cart.products.all(): 
-        cart.products.add(product)
+
+
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if created:
+        print("Yeah")
+    if qty == 0:
+        cart_item.delete()
     else:
-        cart.products.remove(product)
+        cart_item.quantity = qty
+        cart_item.save()
+
+
+    
+    """ if not cart_item in cart.items.all(): 
+        cart.items.add(cart_item)
+    else:
+        cart.items.remove(cart_item) """
 
     new_total = 0.00
 
-    for item in cart.products.all():
-        new_total += float(item.original_painting.price)
+    for item in cart.cartitem_set.all():
+        line_total_for_product = float(item.product.original_painting.price) * item.quantity
+        new_total += line_total_for_product
 
-    request.session['items_total'] = cart.products.count()
+    request.session['items_total'] = cart.cartitem_set.count()
 
     cart.total = new_total
     cart.save()

@@ -1,10 +1,12 @@
 from django.db import models
 from products.models import Product
 
-# Create your models here.
+
 #https://www.youtube.com/watch?v=20HCDEwEdeo&list=PLPp4GCMxKSjCM9AvhmF9OHyyaJsN8rsZK&index=22
+
+
 class Cart(models.Model):
-    products = models.ManyToManyField(Product, null=True, blank=True)
+    #items = models.ManyToManyField(CartItem, null=True, blank=True)
     total = models.DecimalField(max_digits=100, decimal_places=2, default=0.00)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -12,3 +14,16 @@ class Cart(models.Model):
 
     def __unicode__(self):
         return "Cart id: %s"(self.id)
+
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, null=True, blank=True, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, null=True, blank=True, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    line_total = models.DecimalField(default=0.00, max_digits=1000, decimal_places=2)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return str(self.cart.id)
+    
