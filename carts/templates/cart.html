@@ -11,8 +11,10 @@
         <table class="table">
             <thead>
                 <th>Item</th>
+                <th>Size</th>
                 <th>Price</th>
                 <th>Quantity</th>
+
             </thead>
             <tfoot>
                 <tr>
@@ -26,9 +28,13 @@
 
             <tr>
                 <td>{{ item.product.name }}</td>
-                <td>{{ item.product.original_painting.price }}</td>
+                {% for print in item.print_variations.all %}
+                <td>{{ print.size }}</td>
+                <td>{{ print.price }}</td>
+                {% endfor %}
                 <td>{{ item.quantity }}</td>
-                <td><a class="btn btn-danger" href="{% url 'add_to_cart' item.product.id %}?qty=0">Remove</a></td>
+                <p>{{ item.id }}</p>
+                <td><a class="btn btn-danger" href="{% url 'remove_from_cart' item.id %}">Remove</a></td>
             </tr>
             
             

@@ -14,7 +14,7 @@ def view_cart(request):
         cart = Cart.objects.get(id=cart_session_id)
         new_total = 0.00
         for item in cart.cartitem_set.all():
-            line_total_for_product = float(item.product.original_painting.price) * item.quantity
+            line_total_for_product = float(item.product.original_painting.price) * item.quantity          
             new_total += line_total_for_product
         request.session['items_total'] = cart.cartitem_set.count()
         cart.total = new_total
@@ -25,7 +25,22 @@ def view_cart(request):
         context = {"empty": True, 'empty_message': empty_message}
 
     template = "cart.html"
+    
     return render(request, template, context)
+
+
+def remove_from_cart(request, pk):
+    try:
+        cart_session_id = request.session['cart_id']
+        cart = Cart.objects.get(id=cart_session_id)
+    except:
+        return redirect(reverse('view_cart'))
+    cartitem = CartItem.objects.get(pk=pk)
+    print(cartitem)
+    cartitem.cart = None
+    cartitem.save()
+    # Send message that it's deleted
+    return redirect(reverse('view_cart'))
 
 
 
@@ -46,49 +61,40 @@ def add_to_cart(request, pk):
     # get the product
     try: 
         product = Product.objects.get(pk=pk)
+        product_prints = PrintPainting.objects.get(pk=pk)
+        print(product_prints)
     except Product.DoesNotExist:
         pass
     except:
         pass
+
+
     
-        # Get the items and their quantity from the form from the user
+    # Get the items and their quantity from the form from the user
     product_var = []
     if request.method == "POST":
         qty = request.POST['qty']
+
         for item in request.POST:
-            key = item
-            val = request.POST[key]
-            print(key,val)
-            try:
-                printSize = PrintPainting.objects.get(id=val)
-                print(printSize.size)
-                product_var.append(printSize)
-                
-            except:
-                pass
+            if item == "size":
+                print(item)
+                key = item
+                val = request.POST[key]
+                print(item)
+                try:
+                    printSize = PrintPainting.objects.get(product=product, id=val)
+                    product_var.append(printSize)
+                except:
+                    pass
 
         cart_item = CartItem.objects.create(cart=cart, product=product)
-
-        if int(qty) <= 0:
-            cart_item.delete()
-        else:
-            if len(product_var) > 0:
-                cart_item.print_variations.clear()
-                for item in product_var:
-                    cart_item.print_variations.add(item)
-                cart_item.quantity = qty
-                cart_item.save()
-
-        new_total = 0.00
-        for item in cart.cartitem_set.all():
-            line_total_for_product = float(item.product.original_painting.price) * item.quantity
-            new_total += line_total_for_product
-        request.session['items_total'] = cart.cartitem_set.count()
-        cart.total = new_total
-        cart.save()
         
+        if len(product_var) > 0:
+            cart_item.print_variations.add(*product_var)
+        cart_item.quantity = qty
+        cart_item.save()
+        # Success message
         return redirect(reverse('view_cart'))
-
-    else: 
-        return redirect(reverse('view_cart'))
+    # Error message
+    return redirect(reverse('view_cart'))
     
