@@ -34,16 +34,10 @@
         <div class="col-10 offset-1">
             <h3 class="header-h3 uppercase index-news-h">News</h3>
             <p class="p-text">Read the latest new about upcoming exhibitions, recent paintings, or general thoughts of mine!
-                (I know, im so interesting!)
             </p>
         </div>
     </div>
-
-
-
-
     {% for post in posts|slice:":3" %}
-
     <div class="row">
         <div class="col-10 offset-1 col-md-8 offset-md-2 newspost-container">
             <h4 class="article-h">{{ post.title }}</h4>
@@ -56,8 +50,90 @@
             </span>
         </div>
     </div>
-
-
+    <br>
     {% endfor %}
+</section>
+
+<section class="paintings-section">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <h3 class="header-h3 uppercase index-news-h">Paintings</h3>
+            <p class="p-text">View some of my paintings!
+                (I know, im so interesting!)
+            </p>
+        </div>
+    </div>
+    {% for product in products %}
+    {% if forloop.counter|divisibleby:2 %}
+    
+    <div class="row product-display-row">
+        <div class="col-12 col-md-3 d-block d-md-none">
+            <a data-fancybox="gallery" href="/media/{{ product.image }}">
+                <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            </a>
+        </div>
+
+        <div class="col-12 col-md-7 shadow-left">
+            <a href="{% url 'get_single_product' product.id %}">
+                <h4 class="header-h4 product-h">{{ product.name }}</h4>
+                <p class="p-text">{{ product.description }}</p>
+            </a>
+            <div class="product-info">
+                {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+                    <span class="p-text font-italic">Availible as: </span>
+                    <span class="p-text font-weight-bold">Print</span>
+                {% else %}
+                <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
+                {% endif %}
+                {% if product.original_painting.stock == True %}
+                    <p class="p-text font-weight-bold">Original painting still availible!</p>
+                {% else %}
+                <p class="p-text font-weight-bold">Original painting has been sold!</p>
+                {% endif %}
+                <!-- <p>Price varies between print sizes and original painting</p> -->
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+            </div>
+        </div>
+        <div class="col-3 d-none d-md-block">
+            <a data-fancybox="gallery" href="/media/{{ product.image }}">
+                <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            </a>
+        </div>
+    </div>
+    {% else %}
+
+    <div class="row product-display-row">
+        <div class="col-12 col-md-3">
+            <a data-fancybox="gallery" href="/media/{{ product.image }}">
+                <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
+            </a>
+        </div>
+        <div class="col-md-7 shadow-right">
+            <a href="{% url 'get_single_product' product.id %}">
+                <h4 class="header-h4 product-h">{{ product.name }}</h4>
+                <p class="p-text">{{ product.description }}</p>
+            </a>
+            <div class="product-info">
+                {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+                    <span class="p-text font-italic">Availible as: </span>
+                    <span class="p-text font-weight-bold">Print</span>
+                {% else %}
+                <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
+                {% endif %}
+                {% if product.original_painting.stock == True %}
+                    <p class="p-text font-weight-bold">Original paingting still availible!</p>
+                {% else %}
+                <p class="p-text font-weight-bold">Original painting has been sold!</p>
+                {% endif %}
+                <!-- <p>Price varies between print sizes and original painting</p> -->
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
+
+<br>
+<br>
 </section>
 {% endblock %}

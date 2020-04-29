@@ -194,6 +194,10 @@ a.nav-item.nav-link.main-nav-item {
 
 /******* News Section  *******/
 
+.news-section {
+    margin-bottom: 3em;
+}
+
 .index-news-h {
     margin: 1em;
 }
@@ -252,6 +256,13 @@ a.nav-item.nav-link.main-nav-item {
 .article-info {
     margin: 1em 0 2em 0;
 }
+
+/******* Sub-Product section in index.html ********/
+
+.paintings-section {
+    background-color: #f1f1f1;
+}
+
 
 /******* Products Section  *******/
 
