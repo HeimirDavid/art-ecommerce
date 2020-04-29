@@ -22,13 +22,13 @@
     {% if forloop.counter|divisibleby:2 %}
     
     <div class="row product-display-row">
-        <div class="col-12 col-md-3 d-block d-md-none">
+        <div class="col-12 col-md-3 d-block d-md-none from-left slide-in">
             <a data-fancybox="gallery" href="/media/{{ product.image }}">
                 <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
             </a>
         </div>
 
-        <div class="col-12 col-md-7 shadow-left">
+        <div class="col-12 col-md-7 shadow-left from-left slide-in">
             <a href="{% url 'get_single_product' product.id %}">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
                 <p class="p-text">{{ product.description }}</p>
@@ -49,7 +49,7 @@
                 <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
             </div>
         </div>
-        <div class="col-3 d-none d-md-block">
+        <div class="col-3 d-none d-md-block from-right slide-in">
             <a data-fancybox="gallery" href="/media/{{ product.image }}">
                 <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
             </a>
@@ -58,12 +58,12 @@
     {% else %}
 
     <div class="row product-display-row">
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3 from-left slide-in">
             <a data-fancybox="gallery" href="/media/{{ product.image }}">
                 <img class="product-img img-shadow" src="/media/{{ product.image }}" alt="image">
             </a>
         </div>
-        <div class="col-md-7 shadow-right">
+        <div class="col-md-7 shadow-right from-right slide-in">
             <a href="{% url 'get_single_product' product.id %}">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
                 <p class="p-text">{{ product.description }}</p>

@@ -33,6 +33,37 @@ a:hover {
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
 }
 
+.fade-in {
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+}
+
+.from-left {
+    transform: translateX(-50%);
+}
+
+.from-right {
+    transform: translateX(50%);
+}
+
+.from-left,
+.from-right {
+    transition: opacity .3s ease-in-out, transform 400ms ease-in-out;
+    opacity: 0;
+}
+
+.from-left.appear,
+.from-right.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+
 
 /******* Main Navbar  *******/
 
