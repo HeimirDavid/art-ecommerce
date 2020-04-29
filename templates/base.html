@@ -33,7 +33,11 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="mainNav-burger"><i class="fas fa-bars"></i></span>
             </button>
-            <a class="btn uppercase login-btn" href="#" role="button">Login/Register</a>
+            {% if user.is_authenticated %}
+                <a class="btn uppercase login-btn" href="{% url 'logout' %}" role="button">Logout</a>
+            {% else %}
+                <a class="btn uppercase login-btn" href="{% url 'login' %}" role="button">Login/Register</a>
+            {% endif %}
             <div class="collapse navbar-collapse burgerMenu-bg-clr" id="navbarNavAltMarkup">
               <div class="navbar-nav m-auto">
                 <a class="nav-item nav-link main-nav-item" href="{% url 'index' %}">Home</a>
@@ -55,6 +59,11 @@
         <section class="page-main-intro">
             <div class="row">
                 <div class="col-md-6 col-sm-10 offset-1">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <h4>{{ message }}</h4>
+                        {% endfor %}
+                    {% endif %}
                     <h1 class="main-header">Sandra Löwgren</h1>
                     <h2 class="header-h2">Artwork</h2>
                 </div>
