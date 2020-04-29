@@ -68,16 +68,15 @@ def add_to_cart(request, pk):
         cart_session_id = new_cart.id
     cart = Cart.objects.get(id=cart_session_id)
     
-
     # get the product
     try:
         product = Product.objects.get(pk=pk)
-        #print(product_prints)
     except Product.DoesNotExist:
         pass
 
-    
     # Get the items and their quantity from the form from the user
+    # If the value is qty there is a print of a painting that is processed
+    # and handled differently from the original painting
     product_var = []
     if request.method == "POST":
         try:
@@ -93,11 +92,9 @@ def add_to_cart(request, pk):
             pass
 
         cart_item = CartItem.objects.create(cart=cart, product=product)
+        #first if block handles the original painting, second the prints
         for item in request.POST:
             if item == "original":
-                #print("jibbicola")
-                #print(qty)
-                #print(pk)
                 cart_item.product = product
                 cart_item.quantity = qty
                 cart_item.line_total = product.original_painting.price
