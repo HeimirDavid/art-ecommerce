@@ -10,7 +10,7 @@ User = get_user_model()
 
 
 class UserAddress(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=200)
     address1 = models.CharField(max_length=120)
     address2 = models.CharField(max_length=120, null=True, blank=True)
