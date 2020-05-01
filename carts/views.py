@@ -46,9 +46,10 @@ def remove_from_cart(request, pk):
     except:
         return redirect(reverse('view_cart'))
     cartitem = CartItem.objects.get(pk=pk)
-    #print(cartitem)
-    cartitem.cart = None
-    cartitem.save()
+    #print(cartitem) # should be delete, not remove
+    #cartitem.cart = None
+    #cartitem.save()
+    cartitem.delete()
     # Send message that it's deleted
     return redirect(reverse('view_cart'))
 
