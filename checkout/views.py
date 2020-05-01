@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from carts.models import Cart
 from .models import Order
 from .forms import AddressOrderForm
+from .utils import id_generator
 
 """
 # Create your views here.
@@ -47,15 +48,22 @@ def checkout(request):
         return redirect(reverse('get_products')) 
     print(cart)
 
-    new_order, created = Order.objects.get_or_create(cart=cart)
-    if created:
-        #assign a user to the order
-        #assign address
-        new_order.order_id = str(time.time())
+
+    try:
+        new_order = Order.objects.get(cart=cart)
+    except Order.DoesNotExist:
+        new_order = Order()
+        new_order.cart = cart
+        new_order.user = request.user
+        new_order.order_id = id_generator()
         new_order.save()
+    except:
+        messages.error(request, "We were unable to create an order at this moment")
+        return redirect(reverse('view_cart')) 
+
 
     if new_order.status == "Finished":
-        cart.delete()
+        #cart.delete()
         del request.session['cart_id']
         del request.session['items_total']
 
