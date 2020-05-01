@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Checkout</h1>
+{{ all_addresses }}
+
+<div class="row">
+    <div class="col-6">
+        <form action="">
+            {% if all_shipping_addresses %}
+                <select name="addresses">
+                    <option selected>Choose Previously Used Address</option>
+                    {% for address in all_shipping_addresses %}
+                    <option value="address.id">
+                        {{ address.address1 }},
+                        {{ address.city }},
+                        {{ address.country }}
+                    </option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form action="">
+            {% if all_billing_addresses %}
+                <select name="addresses">
+                    <option selected>Choose Previously Used Address</option>
+                    {% for address in all_billing_addresses %}
+                    <option value="address.id">
+                        {{ address.address1 }},
+                        {{ address.city }},
+                        {{ address.country }}
+                    </option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>New Shipping Address</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ new_order_address.as_p }}
+        
+            <div class="form-group col-md-12">
+                <input name="Shipping" type="hidden" value="Shipping">
+                <button class="btn btn-primary" type="Submit">Add New Address</button>
+            </div>
+        
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h3>New Billing Address</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ new_order_address.as_p }}
+        
+            <div class="form-group col-md-12">
+                <input name="Billing" type="hidden" value="Billing">
+                <button class="btn btn-primary" type="Submit">Add New Address</button>
+            </div>
+        
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
