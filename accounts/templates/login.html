@@ -1,21 +1,32 @@
 {% extends 'base.html' %}
+{% load bootstrap_tags %}
 
 {% block content %}
 <h1>Login</h1>
 {% if user.is_authenticated %}
     <h3>You are already logged in!</h3>
 {% else %}
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{ login_form }}
-        <button type="submit">Login</button>
-    </form>
+
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="row accounts-card login-card img-shadow">
+            <div class="col-md-4 d-none d-md-block side-img">
+                <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/93974821_535084420485168_1568740975277244416_n.jpg?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=IyCNcF99ucMAX8fh7KF&_nc_ht=scontent-arn2-1.xx&oh=575c595f04bcdabcc09353d78ad32af5&oe=5EC60273" class="display-painting accounts-img" alt="image">
+            </div>
+        
+            <div class="col-10 offset-1 col-md-8 offset-md-0 accounts-form">
+                <h3 class="accounts-header">Login</h3>
+                <span class="p-text">Don't have an account? <a class="login-link" href="{% url 'register' %}" role="button">Register Here!</a></span>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ login_form | as_bootstrap }}
+                    <button class="btn btn-outline-success btn-lg" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endif %}
 
-<h3>Don't have an account?</h3>
-<a class="btn btn-success" href="{% url 'register' %}" role="button">Register Here!</a>
-
-
-
-
 {% endblock %}
+

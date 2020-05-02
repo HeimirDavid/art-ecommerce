@@ -34,16 +34,17 @@
                 <p class="p-text">{{ product.description }}</p>
             </a>
             <div class="product-info">
-                {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+                {% if product.printpainting_set.all %}
                     <span class="p-text font-italic">Availible as: </span>
                     <span class="p-text font-weight-bold">Print</span>
                 {% else %}
-                <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
+                    <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
                 {% endif %}
+
                 {% if product.original_painting.stock == True %}
                     <p class="p-text font-weight-bold">Original painting still availible!</p>
                 {% else %}
-                <p class="p-text font-weight-bold">Original painting has been sold!</p>
+                    <p class="p-text font-weight-bold">Original painting has been sold!</p>
                 {% endif %}
                 <!-- <p>Price varies between print sizes and original painting</p> -->
                 <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
@@ -69,12 +70,13 @@
                 <p class="p-text">{{ product.description }}</p>
             </a>
             <div class="product-info">
-                {% if product.print_1.stock > 0 or product.print_2.stock > 0 or product.print_3.stock > 0 %}
+                {% if product.printpainting_set.all %}
                     <span class="p-text font-italic">Availible as: </span>
                     <span class="p-text font-weight-bold">Print</span>
                 {% else %}
-                <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
+                    <p class="p-text font-weight-bold font-italic">Prints are out of stock!</p>
                 {% endif %}
+                
                 {% if product.original_painting.stock == True %}
                     <p class="p-text font-weight-bold">Original paingting still availible!</p>
                 {% else %}

@@ -347,6 +347,59 @@ a.nav-item.nav-link.main-nav-item {
     margin-bottom: 1em;
 }
 
+/******* Cart Section  *******/
+
+.table-container {
+    padding: 1em 2em;
+    border-left: 1px solid rgba(46, 49, 49, .6);
+    border-right: 1px solid rgba(46, 49, 49, .6);
+    margin-bottom: 5em;
+}
+
+
+.accounts-card {
+    margin: 4em 0;
+    background-color:#152331;
+    color: #efefef;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.accounts-card.login-card {
+    height: 28em;
+}
+
+.display-painting.accounts-img {
+    margin-top: 4em;
+    margin-left: 2em;
+    width:70%;
+}
+
+.side-img {
+    background: rgba(14, 29, 45, .9) url(//unsplash.it/900);
+    background-size: cover;
+    background-blend-mode: multiply;
+    border-radius: 5px 0 0 5px;
+}
+
+.accounts-header {
+    margin: 1em 0em;
+    font-size: 2.5em;
+    text-align: center;
+    color: rgba(255, 255, 208, 1);
+}
+
+.accounts-form {
+    padding: 0 6%;
+    padding-bottom: 2em;
+}
+
+.login-link {
+    color: #f6ff68;
+}
+
+
+
+
 /******* Media Queries  *******/
 
 /*** Tablet/Desktop View ***/
@@ -488,6 +541,11 @@ a.nav-item.nav-link.main-nav-item {
 @media (min-width: 1440px) {
     .page-main-intro {
         padding: 30vh 0;
+    }
+
+    .display-painting,
+    .display-painting.accounts-img {
+        width: 40%;
     }
 }
 

@@ -11,6 +11,7 @@ def get_products(request):
     """
     products = Product.objects.filter(upload_date__lte=timezone.now
         ()).order_by('-upload_date')
+
     return render(request, 'products.html', {'products': products})
 
 
