@@ -117,6 +117,9 @@ def checkout(request):
             
             if customer.paid:
                 messages.success(request, "You have successfully paid")
+                #remove cart id
+                del request.session['cart_id']
+                del request.session['items_total']
                 return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to take payment")

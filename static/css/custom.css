@@ -327,7 +327,7 @@ a.nav-item.nav-link.main-nav-item {
 
 .single-prod-img {
     max-width: 100%;
-    padding: 1em;
+    /*padding: 1em;*/
     margin-top: 4em;
 }
 
@@ -390,8 +390,9 @@ a.nav-item.nav-link.main-nav-item {
 
     /* For single products section */
     .single-prod-img {
-        max-width: 90%;
-        padding: 2em;
+        max-width: 80%;
+        margin: 4em 4em 1em 1em;
+        /*padding: 2em;*/
     }
 
     .single-prod-info {
