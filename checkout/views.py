@@ -5,9 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from carts.models import Cart
 from .models import Order, UserAddress
-from .forms import AddressOrderForm
+from .forms import ShippingAddressForm, BillingAddressForm
 from .utils import id_generator
-
 
 
 def orders(request):
@@ -79,16 +78,53 @@ def checkout(request):
             return redirect(reverse('view_cart')) 
 
 
+        #is_shipping = request.POST.get('Billing', False)
+        shipping_address_form = ShippingAddressForm(request.POST)
+        billing_address_form = BillingAddressForm(request.POST)
+        print(shipping_address_form, billing_address_form)
+        if shipping_address_form.is_valid() and billing_address_form.is_valid():
+            new_shipping_address = shipping_address_form.save(commit=False)
+            new_shipping_address.user = request.user
+            new_shipping_address.address_type = "Shipping"
+            new_shipping_address.save()
 
+            new_billing_address = billing_address_form.save(commit=False)
+            new_billing_address.user = request.user
+            new_billing_address.address_type = "Billing"
+            new_billing_address.save()
+
+        #new_shipping_address = ShippingAddressForm(initial={'address_type': 'Shipping'})
+        #new_billing_address = BillingAddressForm(initial={'address_type': 'Billing'})
         """
-        address_form = AddressOrderForm(request.POST)
-        print(address_form)
-        if address_form.is_valid():
-            new_order_address = address_form.save(commit=False)
-            new_order_address.user = request.user
-            new_order_address.save()"""
+        #is_shipping = request.POST.get('Shipping', False)
+        shipping_address_form = AddressOrderForm(request.POST)
+        billing_address_form = AddressOrderForm(request.POST)
+        print(shipping_address_form, billing_address_form)
+        if shipping_address_form.is_valid() and billing_address_form.is_valid:
+            new_shipping_address = shipping_address_form(commit=False).save()
+            new_billing_address = billing_address_form(commit=False).save()
+            print(shipping_address_form, billing_address_form)
         
+        print(address_form)
+        if shipping_address_form.is_valid() and billing_address_form.is_valid:
 
+            new_shipping_address = address_form.save(commit=False)
+            new_order_address.user = request.user
+            is_shipping = request.POST.get('Shipping', False)
+            if is_shipping:
+                new_order_address.address_type = "Shipping"
+                new_order_address.save()
+                new_order.shipping_address = new_order_address
+                new_order.save()
+            elif not is_shipping:
+                print("BILLINNNNGGG")
+                new_order_address.address_type = "Billing"
+                new_order_address.save()
+                new_order.billing_address = new_order_address
+                new_order.save()
+            else:
+                print("Dafuq")"""
+            
         
 
 
@@ -99,7 +135,11 @@ def checkout(request):
 
     #run credit card
     else:
-        new_order_address = AddressOrderForm()
+        new_shipping_address = ShippingAddressForm(initial={'address_type': 'Shipping'})
+        new_billing_address = BillingAddressForm(initial={'address_type': 'Billing'})
+        print(new_billing_address,new_shipping_address)
 
-    context = {'new_order_address': new_order_address}
+        
+
+    context = {'new_shipping_address': new_shipping_address, 'new_billing_address': new_billing_address}
     return render(request, 'checkout.html', context)

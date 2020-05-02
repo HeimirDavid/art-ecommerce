@@ -11,7 +11,8 @@
                 <select name="addresses">
                     <option selected>Choose Previously Used Address</option>
                     {% for address in all_shipping_addresses %}
-                    <option value="address.id">
+                    
+                    <option value="{{address.id}}">
                         {{ address.address1 }},
                         {{ address.city }},
                         {{ address.country }}

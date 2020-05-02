@@ -15,11 +15,19 @@ class MakePaymentForm(forms.Form):
 
 
 
-class AddressOrderForm(forms.ModelForm):
+class ShippingAddressForm(forms.ModelForm):
     class Meta:
         model = UserAddress
-        fields = ['full_name', 'address1', 'address2', 'city', 'country', 'postal_code', 'phone_number']
+        widgets = {'address_type': forms.HiddenInput()}
+        fields = ['full_name', 'address1', 'address2', 'city', 'country', 'postal_code', 'phone_number', 'address_type']
 
+
+class BillingAddressForm(forms.ModelForm):
+    class Meta:
+        model = UserAddress
+        widgets = {'address_type': forms.HiddenInput()}
+        fields = ['full_name', 'address1', 'address2', 'city', 'country', 'postal_code', 'phone_number', 'address_type']
+        
 
 
 

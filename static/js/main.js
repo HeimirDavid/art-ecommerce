@@ -17,3 +17,22 @@ function getPriceForPrints() {
         document.getElementById('currency-euro').innerHTML = "€";
     };
 };
+
+
+// Get the selected address
+let shipping_selection = document.querySelector('#shipping_addresses')
+var address = "{{ all_shipping_addresses }}"
+console.log(address)
+
+shipping_selection.addEventListener('change', () => {
+    let result = shipping_selection.options[shipping_selection.selectedIndex].value;
+    console.log(result) 
+})
+
+
+
+//Submit Shipping and billing forms with one button
+submitShippingBilling = function(){
+    document.forms["shipping_form"].submit();
+    document.forms["billing_form"].submit();
+}

@@ -21,7 +21,7 @@ class UserAddress(models.Model):
     country = models.CharField(max_length=120)
     postal_code = models.CharField(max_length=25)
     phone_number = models.CharField(max_length=100)
-    address_type = models.CharField(max_length=100, choices=ADDRESS_TYPE, default="Billing")
+    address_type = models.CharField(max_length=100, choices=ADDRESS_TYPE)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
     def __unicode__(self):
