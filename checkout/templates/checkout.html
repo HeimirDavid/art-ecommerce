@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block head_js %}
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+    //<![CDATA[
+        Stripe.publishableKey = '{{ publishable }}';
+    //]]>
+</script>
+<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}
 {% block content %}
 <h1>Checkout</h1>
 
@@ -8,20 +18,29 @@
 
 
 
-    <form action="{% url 'checkout' %}" method="POST">
+    <form role="form" id="payment-form" action="{% url 'checkout' %}" method="POST">
         <div class="row">
+            <div id="creddit-card-errors" style="display:none">
+                <div class="alert-message block-message error" id="stripe-error-message"></div>
+            </div>
             {% csrf_token %}
             <div class="col-6">
-                <h3>New Billing Address</h3>
+                <legend>New Billing Address</legend>
                 {{ new_billing_address.as_p }}
             </div>
             <div class="col-6">
-                <h3>New Shipping Address</h3>
+                <legend>New Shipping Address</legend>
                 {{ new_shipping_address.as_p }}
+            </div>
+            <div class="col-6">
+                <legend>Payment Form</legend>
+                {{ payment_form.as_p }}
             </div>
         </div>
             
-        <button class="btn btn-primary" type="Submit">Add New Address</button>
+        <div class="form-group col-md-12">
+            <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+        </div>
         
     </form>
 
