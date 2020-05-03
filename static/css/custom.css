@@ -357,6 +357,8 @@ a.nav-item.nav-link.main-nav-item {
 }
 
 
+/******* Accounts Section, Login and Register Forms  *******/
+
 .accounts-card {
     margin: 4em 0;
     background-color:#152331;
@@ -395,6 +397,43 @@ a.nav-item.nav-link.main-nav-item {
 
 .login-link {
     color: #f6ff68;
+    transition: .2s ease-in-out;
+}
+
+/******* Checkout Forms, Checkout Section  *******/
+
+.checkout-form {
+    padding: 0 2.5em;
+    border-left: 1px solid rgba(46, 49, 49, .6);
+    border-right: 1px solid rgba(46, 49, 49, .6);
+    margin: 2em 0;
+}
+
+
+.checkout-h {
+    background-color: #ececec;
+    padding: 1em;
+}
+
+.checkout-nr {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #f4a006;
+}
+
+.order-review {
+    padding: 0;
+}
+
+.checkout-product-review {
+    margin-top: 1em;
+}
+
+
+
+.submit-payment-btn {
+    margin: 3em;
+    text-align: center;
 }
 
 

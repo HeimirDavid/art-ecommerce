@@ -57,16 +57,15 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required
 def checkout(request):
+    # Get the cart object that mathes with the current users session id
+    try:
+        cart_session_id = request.session['cart_id']
+        cart = Cart.objects.get(id=cart_session_id)
+    except:
+        messages.error(request, "Your cart is empty, please keep shopping")
+        return redirect(reverse('get_products')) 
+        
     if request.method=="POST":
-        # Get the cart object that mathes with the current users session id
-        try:
-            cart_session_id = request.session['cart_id']
-            cart = Cart.objects.get(id=cart_session_id)
-        except:
-            messages.error(request, "Your cart is empty, please keep shopping")
-            return redirect(reverse('get_products')) 
-        print(cart)
-
         #create an instance of an order and fill it's fields
         try:
             new_order = Order.objects.get(cart=cart)
@@ -105,6 +104,7 @@ def checkout(request):
             new_order.billing_address = new_billing_address
             new_order.save()
             
+            #run credit card
             try:
                 customer = stripe.Charge.create(
                     amount = int(new_order.final_total * 100),
@@ -137,17 +137,17 @@ def checkout(request):
             del request.session['cart_id']
             del request.session['items_total']
 
-    #run credit card
-    #
     else:
         new_shipping_address = ShippingAddressForm(initial={'address_type': 'Shipping'})
         new_billing_address = BillingAddressForm(initial={'address_type': 'Billing'})
         payment_form = MakePaymentForm()
+        
 
     context = {
         'new_shipping_address': new_shipping_address,
         'new_billing_address': new_billing_address,
         'payment_form': payment_form,
         'publishable': settings.STRIPE_PUBLISHABLE,
+        'cart': cart,
         }
     return render(request, 'checkout.html', context)
