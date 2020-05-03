@@ -6,7 +6,6 @@ from products.models import Product, PrintPainting
 
 
 class Cart(models.Model):
-    #items = models.ManyToManyField(CartItem, null=True, blank=True)
     total = models.DecimalField(max_digits=100, decimal_places=2, default=0.00)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)

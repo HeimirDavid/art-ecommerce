@@ -6,8 +6,6 @@ from carts.models import Cart
 
 User = get_user_model()
 
-# Create your models here.
-
 ADDRESS_TYPE = (
     ("Shipping", "Shipping"),
     ("Billing", "Billing")
@@ -30,6 +28,7 @@ class UserAddress(models.Model):
 
 STATUS_CHOICES = (
     ("Started", "Started"),
+    ("Shipped", "Shipped"),
     ("Finished", "Finished")
 )
 

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="header-h3 checkout-h text-center">Single Order!</h1>
+
+
+<div class="row p-text">
+    <div class="col-10 offset-1">
+        <div class="row">
+            <div class="col-12 col-md-6 checkout-form">
+                <h4 class="header-h4 text-center">Order Info</h4>
+                <p>Reference Number: {{ order.order_id }}</p>
+                <p>Order Time: {{ shipping_address.timestamp }}</p>
+                <p>Ordered By: {{ order.user }}</p>
+                <p>Email: {{ order.user.email }}</p>
+            </div>
+            <div class="col-12 col-md-6 checkout-form">
+                <h4 class="header-h4 text-center">Shipping Address</h4>
+                <p>{{ shipping_address.full_name }}</p>
+                <p>{{ shipping_address.address1 }}</p>
+                <p>{{ shipping_address.city }}</p>
+                <p>{{ shipping_address.country }}</p>
+                <p>{{ shipping_address.postal_code }}</p>
+                <p>{{ shipping_address.phone_number }}</p>
+            </div>
+            <div class="col-12 col-md-6 checkout-form">
+                <h4 class="header-h4 text-center">Products</h4>
+                {% for item in items %}
+                    <div class="item-list-order">
+                        <h5 class="font-weight-bold text-center">Painting: {{ item.product.name }}</h5>
+                        <!-- Check for variations, if they exist the product is a print
+                        and therefor the details of quantity and size is needed -->
+                        {% if item.print_variations.all|length == 1 %}
+                            {% for print in item.print_variations.all %}
+                            <ul>
+                                <li><p>Print Size: {{ print.size }}</p></li>
+                                <li><p>Quantity: {{ item.quantity }}</p></li>
+                            </ul>
+                            {% endfor %}
+                        {% else %}
+                            <ul><li><p>Type: Original Painting</p></li></ul>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

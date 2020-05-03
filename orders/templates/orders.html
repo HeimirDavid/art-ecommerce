@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+
+    <div class="row">
+        <div class="col-12">
+            <h3 class="header-h3 checkout-h text-center">Orders</h3>
+        </div>
+        <div class="col-8 offset-2">
+            <br>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Order Reference</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                      <th scope="row">{{ order.id }}</th>
+                      <td>{{ order.order_id }}</td>
+                      <td>{{ order.user }}</td>
+                      <td>{{ order.status }}</td>
+                      <td><a class="btn btn-outline-primary" href="{% url 'order' order.id %}">Open</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+{% endblock %}
+
+
+
