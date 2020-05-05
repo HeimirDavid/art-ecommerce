@@ -17,16 +17,20 @@ def get_products(request):
             collection = CollectionCategory.objects.get(pk=(request.GET['coll_id']))
             print(collection)
             products = collection.product_set.all()
-            print("pop")
+            coll_description = True
         except:
             products = Product.objects.filter(upload_date__lte=timezone.now
                 ()).order_by('-upload_date')
+            coll_description = False
     collections = CollectionCategory.objects.all()
     print(collections)
     context = {
         'products': products,
-        'collections': collections
+        'collections': collections,
+        'coll_description': coll_description,
     }
+
+    print(coll_description)
 
     return render(request, 'products.html', context)
 

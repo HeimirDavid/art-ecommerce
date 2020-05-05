@@ -13,14 +13,25 @@
                     <label class="form-check-label" for="{{ collection.id }}">{{ collection.name }}</label>
                 </div>
             {% endfor %}
-            <div class="row justify-content-center">
+            <div class="col text-center">
                 <button type="submit" class="btn btn-outline-info btn-lg m-auto">Apply Filter</button>
+                <a href="{% url 'get_products' %}" class="btn btn-outline-warning btn-lg m-auto">Remove Filter</a>
             </div>
             <br>
         </form>
+        
         </div>
     </div>
 </div>
+
+{% if coll_description == True %}
+{% for product in products %}
+<p>{{ product.collection.name }}</p>
+<p>{{ product.collection.description }}</p>
+{% endfor %}
+{% elif coll_description == False %}
+<p>Here is nothing</p>
+{% endif %}
 
 {% for product in products %}
     {% if forloop.counter|divisibleby:2 %}
