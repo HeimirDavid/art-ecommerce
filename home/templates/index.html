@@ -4,7 +4,7 @@
 <section id="about_section" class="about-section">
     <div class="row">
         <div class="col-sm-10 offset-1">
-            <h3 class="header-h3 uppercase about-h">About</h3>
+            <h3 class="header-h3 uppercase text-center about-h">About</h3>
             <div class="row">
                 <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
                     <h4 class="header-h4">Artwork</h4>
@@ -31,7 +31,7 @@
 
 <section class="news-section">
     <div class="row">
-        <div class="col-10 offset-1">
+        <div class="col-10 offset-1 text-center">
             <a href="{% url 'get_newsposts' %}"><h3 class="header-h3 uppercase index-news-h">News</h3></a>
             <p class="p-text">Read the latest new about upcoming exhibitions, recent paintings, or general thoughts of mine!
             </p>
@@ -40,12 +40,12 @@
     {% for post in posts|slice:":3" %}
     <div class="row">
         <div class="col-10 offset-1 col-md-8 offset-md-2 newspost-container">
-            <h4 class="article-h">{{ post.title }}</h4>
+            <a href="{% url 'news_detail' post.id %}"><h4 class="article-h">{{ post.title }}</h4></a>
             {% if post.image %}
                 <img class="newspost-image" src="/media/{{ post.image }}" alt="image">
             {% endif %}
             <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
-            <span class="btn btn-primary openpost-btn">
+            <span class="btn btn-success openpost-btn">
                 <a href="{% url 'news_detail' post.id %}">Open Article</a>
             </span>
         </div>
@@ -53,13 +53,13 @@
     <br>
     {% endfor %}
     <div class="row justify-content-center">
-        <a class="btn btn-info m-auto" href="{% url 'get_newsposts' %}">See all the news!</a>
+        <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_newsposts' %}">See all the news!</a>
     </div>
 </section>
 
 <section class="paintings-section">
     <div class="row">
-        <div class="col-10 offset-1">
+        <div class="col-10 offset-1 text-center">
             <h3 class="header-h3 uppercase index-news-h">Paintings</h3>
             <p class="p-text">View some of my paintings!
                 (I know, im so interesting!)
@@ -137,8 +137,12 @@
     </div>
     {% endif %}
 {% endfor %}
-
 <br>
+    <div class="row justify-content-center">
+        <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_products' %}">View all paintings!</a>
+    </div>
+
+
 <br>
 </section>
 {% endblock %}
