@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block head_js %}
     <script type="text/javascript"
@@ -7,7 +8,6 @@
     <script type="text/javascript">
     (function(){
         emailjs.init("user_tfpdYeydHiVr8F7Ep3cg4");
-        emailjs.send('gmail', 'art_store', {name: 'Heimir', notes: "The osdfosdjif"});
     })();
     </script>
 {% endblock %}
@@ -16,11 +16,11 @@
 <div class="row p-text">
     <div class="col-10 offset-1 col-md-8 offset-md-2">
         <form onsubmit="return sendMail(this);">
-            <input type="text" name="name" id="fullname" class="form-control" placeholder="Name" required />
+            <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Name" required />
             <br/>
-            <input type="email" name="email" id="emailaddress" class="form-control" placeholder="Email" required />
+            <input type="email" name="email_address" id="email_address" class="form-control" placeholder="Email" required />
             <br/>
-            <textarea rows="7" name="eventsummary" id="eventsummary" class="form-control" placeholder="Event Description" required></textarea>
+            <textarea rows="7" name="message" id="message" class="form-control" placeholder="Event Description" required></textarea>
             <br>
             
                 <div class="col text-center">
@@ -30,5 +30,8 @@
         </form>
     </div>
 </div>
+
+
+<script type="text/Javascript" src="{% static 'js/sendEmailJS.js' %}"></script>
 
 {% endblock %}
