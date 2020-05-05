@@ -1,16 +1,6 @@
-/*
-var templateParams = {
-    "from_name": contactForm.full_name.value,
-    "from_email": contactForm.email_address.value,
-    "text_field": contactForm.message.value
-}*/
 
 var successAlert = document.getElementById("success_alert");
-
 var failedAlert = document.getElementById("failed_alert");
-
-console.log(successAlert, failedAlert)
-
 
 
 function sendMail(contactForm) {

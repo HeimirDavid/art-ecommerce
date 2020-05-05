@@ -49,7 +49,7 @@
                 <a class="nav-item nav-link main-nav-item" href="{% url 'index' %}#about_section">About</a>
                 <a class="nav-item nav-link main-nav-item" href="{% url 'get_products' %}">Paintings</a>
                 <a class="nav-item nav-link main-nav-item" href="{% url 'get_newsposts' %}">News</a>
-                <a class="nav-item nav-link main-nav-item" href="#">Contact</a>
+                <a class="nav-item nav-link main-nav-item" href="{% url 'contact' %}">Contact</a>
                 <a class="nav-item nav-link main-nav-item shopping-cart" href="{% url 'view_cart' %}">
                     <span class="badge badge-secondary">{{ request.session.items_total }}</span>
                     <i class="fas fa-shopping-cart"></i>
