@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Product, PrintPainting #, OriginalPainting, CollectionCategory
+from .models import Product, PrintPainting, CollectionCategory
 
 
 # Create your views here.
@@ -9,10 +9,26 @@ def get_products(request):
     Create a view that will return a list of Products
     and render them to the products.html template
     """
-    products = Product.objects.filter(upload_date__lte=timezone.now
-        ()).order_by('-upload_date')
+    if request.method=="GET":
+        try:
+            #products = []
+            #for filter in request.GET['coll_id']:
+                #print(filter)
+            collection = CollectionCategory.objects.get(pk=(request.GET['coll_id']))
+            print(collection)
+            products = collection.product_set.all()
+            print("pop")
+        except:
+            products = Product.objects.filter(upload_date__lte=timezone.now
+                ()).order_by('-upload_date')
+    collections = CollectionCategory.objects.all()
+    print(collections)
+    context = {
+        'products': products,
+        'collections': collections
+    }
 
-    return render(request, 'products.html', {'products': products})
+    return render(request, 'products.html', context)
 
 
 def get_single_product(request, pk):
