@@ -72,9 +72,9 @@
                     <h1 class="main-header">Sandra Löwgren</h1>
                     <h2 class="header-h2">Artwork</h2>
                 </div>
-                <div class="col-md-4  d-none d-md-block">
+                <div class="col-md-4 d-none d-md-block">
                     
-                    <img class="display-painting" src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/93974821_535084420485168_1568740975277244416_n.jpg?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=IyCNcF99ucMAX8fh7KF&_nc_ht=scontent-arn2-1.xx&oh=575c595f04bcdabcc09353d78ad32af5&oe=5EC60273" alt="image">
+                    <img class="display-painting" src="/media/img/pink-smoke.jpg" alt="image">
                     <!-- <div class="image-shadow d-none d-lg-block"></div> -->
                 </div>
             </div>
@@ -84,6 +84,28 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <footer>
+        <div class="row p-text">
+            <div class="col-10 offset-1">
+                <div class="row">
+                    <div class="col-4">
+
+                    </div>
+                    <div class="col-4">
+                        
+                    </div>
+                    <div class="col-4">
+                        <h3 class="header-h3">Social</h3>
+                        <p>You can reach me and stay updated on my social media, or contact me <a class="login-link" href="{% url 'contact' %}">here!</a></p>
+                        <a class="social-links" href="#"><i class="fab fa-facebook"></i></a>
+                        <a class="social-links" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
 
     <script type="text/Javascript" src="{% static 'js/observers.js' %}"></script>
     <script type="text/Javascript" src="{% static 'js/main.js' %}"></script>

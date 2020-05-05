@@ -438,6 +438,39 @@ a.nav-item.nav-link.main-nav-item {
 
 
 
+/******* Footer Section  *******/
+
+footer {
+    -webkit-box-shadow: 0px -4px 10px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -4px 10px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px -4px 10px -4px rgba(0,0,0,0.75);
+    color: #ececec;
+    background-color: #123;
+}
+
+footer .col-4 {
+    padding: 2em 1em;
+}
+
+footer .header-h3 {
+    color: rgba(255, 255, 208, 1);
+}
+
+.social-links {
+    font-size: 2em;
+    padding-right: .5em;
+    color: #e6f3e9;
+    transition: .2s ease-in-out;
+}
+
+.social-links:hover {
+    color: #b6e6c1
+}
+
+
+
+
+
 
 /******* Media Queries  *******/
 
