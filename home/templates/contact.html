@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head_js %}
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("user_tfpdYeydHiVr8F7Ep3cg4");
+        emailjs.send('gmail', 'art_store', {name: 'Heimir', notes: "The osdfosdjif"});
+    })();
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class="row p-text">
+    <div class="col-10 offset-1 col-md-8 offset-md-2">
+        <form onsubmit="return sendMail(this);">
+            <input type="text" name="name" id="fullname" class="form-control" placeholder="Name" required />
+            <br/>
+            <input type="email" name="email" id="emailaddress" class="form-control" placeholder="Email" required />
+            <br/>
+            <textarea rows="7" name="eventsummary" id="eventsummary" class="form-control" placeholder="Event Description" required></textarea>
+            <br>
+            
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-outline-primary">Send Event Request</button>
+                </div>
+            <br>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

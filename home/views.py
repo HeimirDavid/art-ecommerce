@@ -13,3 +13,7 @@ def index(request):
     products = Product.objects.all()
     context = {'posts': posts, 'products': products}
     return render(request, 'index.html', context)
+
+
+def contact_view(request):
+    return render(request, 'contact.html')
