@@ -38,11 +38,10 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="mainNav-burger"><i class="fas fa-bars"></i></span>
             </button>
-            {% if user.is_authenticated %}
-                <a class="btn uppercase login-btn" href="{% url 'logout' %}" role="button">Logout</a>
-            {% else %}
-                <a class="btn uppercase login-btn" href="{% url 'register' %}" role="button">Login/Register</a>
-            {% endif %}
+            <a class="nav-item nav-link main-nav-item shopping-cart" href="{% url 'view_cart' %}">
+                <span class="badge badge-secondary">{{ request.session.items_total }}</span>
+                <i class="fas fa-shopping-cart"></i>
+            </a>
             <div class="collapse navbar-collapse burgerMenu-bg-clr" id="navbarNavAltMarkup">
               <div class="navbar-nav m-auto">
                 <a class="nav-item nav-link main-nav-item" href="{% url 'index' %}">Home</a>
@@ -50,13 +49,15 @@
                 <a class="nav-item nav-link main-nav-item" href="{% url 'get_products' %}#painting-sect">Paintings</a>
                 <a class="nav-item nav-link main-nav-item" href="{% url 'get_newsposts' %}#news-sect">News</a>
                 <a class="nav-item nav-link main-nav-item" href="{% url 'contact' %}#contact-sect">Contact</a>
-                <a class="nav-item nav-link main-nav-item shopping-cart" href="{% url 'view_cart' %}">
-                    <span class="badge badge-secondary">{{ request.session.items_total }}</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
+                
+                {% if user.is_authenticated %}
+                <a class="btn uppercase login-btn" href="{% url 'logout' %}" role="button">Logout</a>
+                {% else %}
+                    <a class="btn uppercase login-btn" href="{% url 'register' %}" role="button">Login/Register</a>
+                {% endif %}
               </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
     <main>

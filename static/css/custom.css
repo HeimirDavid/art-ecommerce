@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
 
 
 /******* General Styles, fonts, etc.  *******/
@@ -122,8 +123,8 @@ a:hover {
     padding:15px 15px;
     border-radius: 2em;
     font-weight: 400;
-    position: absolute;
-    right: 7em;
+    position: relative;
+    left: 10em;
 }
 
 .login-btn:hover {
@@ -136,6 +137,8 @@ a:hover {
     font-size: 1.8em;
     color: currentColor;
     transition: .2s ease-in-out;
+    position: absolute;
+    right: 2em;
 }
 
 a.nav-item.nav-link.main-nav-item {
@@ -184,13 +187,21 @@ a.nav-item.nav-link.main-nav-item {
 
 /******* Headers styles  *******/
 
+.navbar-brand {
+    font-family: 'Tangerine', cursive;
+    font-size: 2em;
+}
+
 .main-header {
-    font-size: 4.4em;
+    font-family: 'Tangerine', cursive;
+    font-size: 6em;
+    font-weight: 700;
     margin-bottom: 1em;
 }
 
 .header-h2 {
-    font-size: 3.5em;
+    font-family: 'Tangerine', cursive;
+    font-size: 4.5em;
 }
 
 .header-h3 {
@@ -563,6 +574,7 @@ footer .header-h3 {
         margin-right: .3em;
     }
 
+
     /* news section */
     
     .newspost-container {
@@ -654,4 +666,12 @@ footer .header-h3 {
     .openpost-btn {
         margin: .5em;
     }
+
+    .login-btn {
+        left:0;
+        margin: auto;
+        margin-bottom: 1em;
+    }
+
+    
 }
