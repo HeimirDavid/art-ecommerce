@@ -346,6 +346,14 @@ a.nav-item.nav-link.main-nav-item {
     letter-spacing: 1.2px;
 }
 
+.gradient-grey {
+    background: rgb(236,236,236);
+    background: -moz-linear-gradient(90deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(90deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ececec",endColorstr="#ffffff",GradientType=1);
+}
+
 /******* Single Product Section  *******/
 
 .product-row {
