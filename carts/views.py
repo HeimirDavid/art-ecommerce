@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
+from django.contrib import messages
 from .models import Cart, CartItem
 from products.models import PrintPainting, Product
 
@@ -17,11 +17,17 @@ def view_cart(request):
 
 
         items = cart.cartitem_set.all()
-        print(items)
+        
+        if not items:
+            try:
+                del request.session['items_total']
+            except:
+                pass
+            messages.error(request, "Your cart is empty, please keep shopping")
+            return redirect(reverse('get_products'))
 
 
         for item in cart.cartitem_set.all():
-            print(item.product.id)
             line_total_for_product = float(item.line_total) * item.quantity          
             new_total += line_total_for_product
         request.session['items_total'] = cart.cartitem_set.count()
@@ -88,7 +94,6 @@ def add_to_cart(request, pk):
         try:
             original = request.POST['original']
             qty = int(1)
-            #print(original)
         except:
             pass
 
@@ -101,8 +106,15 @@ def add_to_cart(request, pk):
                 cart_item.line_total = product.original_painting.price
                 cart_item.save()
                 return redirect(reverse('view_cart'))
-    
+
             if item == "size":
+                print(item)
+                if qty == "":
+                    print(qty)
+                    messages.error(request, "Missing quantity for your item.")
+                    return render(request, "product.html", {'product': product})
+                    
+                
                 key = item
                 val = request.POST[key]
                 try:
@@ -110,7 +122,8 @@ def add_to_cart(request, pk):
                     price = single_product.price
                     product_var.append(single_product)
                 except:
-                    pass
+                    messages.error(request, "Missing size for your print.")
+                    return render(request, "product.html", {'product': product})
 
         #cart_item = CartItem.objects.create(cart=cart, product=product)
         

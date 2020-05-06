@@ -65,7 +65,7 @@
                 <div class="col-md-6 col-sm-10 offset-1">
                     {% if messages %}
                         {% for message in messages %}
-                            <h4>{{ message }}</h4>
+                            <h4 class="clr-yellow">{{ message }}</h4>
                         {% endfor %}
                     {% endif %}
                     <h1 class="main-header">Sandra Löwgren</h1>
@@ -97,8 +97,8 @@
                     <div class="col-4">
                         <h3 class="header-h3">Social</h3>
                         <p>You can reach me and stay updated on my social media, or contact me <a class="login-link" href="{% url 'contact' %}">here!</a></p>
-                        <a class="social-links" href="#"><i class="fab fa-facebook"></i></a>
-                        <a class="social-links" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="social-links" target="_blank" href="https://www.facebook.com/sandra.lofgren.773"><i class="fab fa-facebook"></i></a>
+                        <a class="social-links" target="_blank" href="https://www.instagram.com/sandralowgrenartwork/"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
