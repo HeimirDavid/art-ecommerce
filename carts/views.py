@@ -36,11 +36,12 @@ def view_cart(request):
 
 
         context = {"cart": cart}
+        template = "cart.html"
     else:
-        empty_message = "Your cart is empty, please keep shopping."
-        context = {"empty": True, 'empty_message': empty_message}
+        messages.error(request, "Your cart is empty, please keep shopping")
+        return redirect(reverse('get_products'))
 
-    template = "cart.html"
+    
     
     return render(request, template, context)
 
