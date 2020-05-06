@@ -13,6 +13,10 @@ body {
     overflow-x: hidden;
 }
 
+.font-tangerine {
+    font-family: 'Tangerine', cursive;
+}
+
 a,
 a:hover {
     color: currentColor;
@@ -80,6 +84,7 @@ a:hover {
 }
 
 .navbar-brand {
+    font-size: 2em;
     color: currentColor!important;
 }
 
@@ -175,32 +180,16 @@ a.nav-item.nav-link.main-nav-item {
     -moz-box-shadow: 25px 25px 0px 0px rgba(0,0,0,1);
     box-shadow: 25px 25px 0px 0px rgba(0,0,0,1);
 }
-/*
-.image-shadow {
-    height: 25em;
-    width: 80%;
-    background-color: black;
-    z-index: -5;
-    margin-left: 1em;
-    margin-top: -2em;
-}*/
 
 /******* Headers styles  *******/
 
-.navbar-brand {
-    font-family: 'Tangerine', cursive;
-    font-size: 2em;
-}
-
 .main-header {
-    font-family: 'Tangerine', cursive;
     font-size: 6em;
     font-weight: 700;
     margin-bottom: 1em;
 }
 
 .header-h2 {
-    font-family: 'Tangerine', cursive;
     font-size: 4.5em;
 }
 
