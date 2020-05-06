@@ -14,43 +14,46 @@
 
 {% block content %}
 
-<div id="success_alert" class="alert alert-success alert-dismissible fade" role="alert">
-    <strong>Holy guacamole! </strong>Your email has been sent!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div id="failed_alert" class="alert alert-warning alert-dismissible fade" role="alert">
-    <strong>Holy guacamole! </strong>We were unable to send an email at this time.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-<div class="row p-text">
-    <div class="col-10 offset-1">
-        <div class="row accounts-card img-shadow">
-            <div class="col-md-4 d-none d-md-block side-img">
-                <img src="/media/img/hanging-dude.png" class="display-painting accounts-img" alt="image">
-            </div>
-            <div class="col-10 offset-1 col-md-8 offset-md-0 accounts-form">
-                <h3 class="accounts-header">Want to get in touch?</h3>
-                <p class="text-center">Send me an email here!</p>
-                <form onsubmit="return sendMail(this);">
-                    <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Name" required />
-                    <br/>
-                    <input type="email" name="email_address" id="email_address" class="form-control" placeholder="Email" required />
-                    <br/>
-                    <textarea rows="7" name="message" id="message" class="form-control" placeholder="Event Description" required></textarea>
-                    <br/>
-                    <div class="col text-center">
-                        <button type="submit" class="btn btn-outline-success">Send Message!</button>
-                    </div>
-                </form>
+<section id="contact-sect">
+
+    <div id="success_alert" class="alert alert-success alert-dismissible fade" role="alert">
+        <strong>Holy guacamole! </strong>Your email has been sent!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div id="failed_alert" class="alert alert-warning alert-dismissible fade" role="alert">
+        <strong>Holy guacamole! </strong>We were unable to send an email at this time.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="row p-text">
+        <div class="col-10 offset-1">
+            <div class="row accounts-card img-shadow">
+                <div class="col-md-4 d-none d-md-block side-img">
+                    <img src="/media/img/hanging-dude.png" class="display-painting accounts-img" alt="image">
+                </div>
+                <div class="col-10 offset-1 col-md-8 offset-md-0 accounts-form">
+                    <h3 class="accounts-header">Want to get in touch?</h3>
+                    <p class="text-center">Send me an email here!</p>
+                    <form onsubmit="return sendMail(this);">
+                        <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Name" required />
+                        <br/>
+                        <input type="email" name="email_address" id="email_address" class="form-control" placeholder="Email" required />
+                        <br/>
+                        <textarea rows="7" name="message" id="message" class="form-control" placeholder="Event Description" required></textarea>
+                        <br/>
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-outline-success">Send Message!</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+</section>
 
 <script type="text/Javascript" src="{% static 'js/sendEmailJS.js' %}"></script>
 

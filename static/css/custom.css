@@ -297,6 +297,18 @@ a.nav-item.nav-link.main-nav-item {
 
 /******* Products Section  *******/
 
+.paintings-h {
+    margin: .5em;
+}
+
+.coll-filter {
+    padding: 1em;
+}
+
+.collection-h {
+    margin-top: 1em;
+}
+
 .product-display-row {
     margin-top: 4em;
     margin-left: 12%;
