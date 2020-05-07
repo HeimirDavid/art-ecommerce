@@ -16,9 +16,9 @@ def view_cart(request):
         new_total = 0.00
 
 
-        items = cart.cartitem_set.all()
+        cart_items = cart.cartitem_set.all()
         
-        if not items:
+        if not cart_items:
             try:
                 del request.session['items_total']
             except:
@@ -26,22 +26,18 @@ def view_cart(request):
             messages.error(request, "Your cart is empty, please keep shopping")
             return redirect(reverse('get_products'))
 
-
-        for item in cart.cartitem_set.all():
+        for item in cart_items:
             line_total_for_product = float(item.line_total) * item.quantity          
             new_total += line_total_for_product
         request.session['items_total'] = cart.cartitem_set.count()
         cart.total = new_total
         cart.save()
 
-
         context = {"cart": cart}
         template = "cart.html"
     else:
         messages.error(request, "Your cart is empty, please keep shopping")
         return redirect(reverse('get_products'))
-
-    
     
     return render(request, template, context)
 
@@ -53,9 +49,6 @@ def remove_from_cart(request, pk):
     except:
         return redirect(reverse('view_cart'))
     cartitem = CartItem.objects.get(pk=pk)
-    #print(cartitem) # should be delete, not remove
-    #cartitem.cart = None
-    #cartitem.save()
     cartitem.delete()
     # Send message that it's deleted
     return redirect(reverse('view_cart'))
@@ -112,29 +105,50 @@ def add_to_cart(request, pk):
                 return redirect(reverse('view_cart'))
 
             if item == "size":
+                # error handling if the form returned from the user is missing quantity
                 if qty == "":
                     cart_item.delete()
                     messages.error(request, "Missing quantity for your item.")
                     return render(request, "product.html", {'product': product})
                 
-                
                 key = item
                 val = request.POST[key]
-                
                 try:
                     single_product = PrintPainting.objects.get(product=product, id=val)
-                    #if qty > single_product.stock:
-                       # messages.error(request, "Unfortunately we don't have enough prints in stock")
-                        #return render(request, "product.html", {'product': product})
-                   # else:
                     price = single_product.price
                     product_var.append(single_product)
                 except:
+                    # error handling if the form returned from the user is missing size
                     cart_item.delete()
                     messages.error(request, "Missing size for your print.")
-                    return redirect(reverse('index'))
-                    #return render(request, "product.html", {'product': product})
+                    return render(request, "product.html", {'product': product})
+                # error handling if the quantity is greater than the current stock of an item
+                if int(qty) > single_product.stock:
+                        cart_item.delete()
+                        messages.error(request, "We unfortunately don't have enough stock for your requested item.")
+                        return render(request, "product.html", {'product': product})
 
+                # try sub function to check if item is already in cart
+                #print(cart_item.objects.filter(product))
+                print(single_product.id)
+                cart_items = cart.cartitem_set.all()
+                #print(cart_items)
+                
+                #print_already_in_cart = False
+                for item in cart_items:
+                   #print(item.print_variations.all())
+                    list_of_prints_in_cart = list(item.print_variations.values('id'))
+                    #print(single_product)
+                    
+                    for print_id in list_of_prints_in_cart:
+                        the_print = print_id.get('id')
+                        if the_print == single_product.id:
+                            print("Jippi!")
+                            cart_item.delete()
+                            messages.error(request, "You already have this item in your cart.")
+                            return render(request, "product.html", {'product': product})
+                    
+                        
         #cart_item = CartItem.objects.create(cart=cart, product=product)
         
         if len(product_var) > 0:
