@@ -51,6 +51,7 @@
                 <a class="nav-item nav-link main-nav-item" href="{% url 'contact' %}#contact-sect">Contact</a>
                 
                 {% if user.is_authenticated %}
+                <a class="nav-item nav-link main-nav-item" href="{% url 'user_orders' %}#order">My Orders</a>
                 <a class="btn uppercase login-btn" href="{% url 'logout' %}" role="button">Logout</a>
                 {% else %}
                     <a class="btn uppercase login-btn" href="{% url 'register' %}" role="button">Login/Register</a>

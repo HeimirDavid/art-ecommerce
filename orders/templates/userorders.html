@@ -3,19 +3,40 @@
 
 {% block content %}
 
-<h1>User orders</h1>
+<h3 id="order" class="header-h3 checkout-h text-center">Your Orders</h3>
 <div class="row">
-    <div class="col-10 offset-1">
     {% for order in user_orders %}
-        {{ order.order_id }}
-        {{ order.cart.cart_items }}
+    <div class="col-10 offset-1 col-md-8 offset-md-2 p-text shadow-left order-container">
+        <div class="row">
+            <div class="col-12 col-md-7 text-center text-md-left user-order-card">
+                <div class="user-order-info">
+                    <h4 class="header-h4">Order Info</h4>
+                    <p>Reference Number: {{ order.order_id }}</p>
+                    <p>Order Time: {{ order.timestamp }}</p>
+                    <p>Order Status: {{ order.status }}</p>
+                    <p>Order Total: {{ order.cart.total }} €</p>
+                </div>
+                <div class="user-order-info">
+                <h4 class="header-h4">Product info:</h4>
+                    {% for item in order.cart.cartitem_set.all %}
+                        <p>Name: {{ item.product.name }}</p>
+                        <p>Quantity: {{ item.quantity }}</p>
+                        {% for print in item.print_variations.all %}
+                            <p>Size: {{ print.size }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-12 col-md-5 text-center text-md-right">
             {% for item in order.cart.cartitem_set.all %}
-                <img style="max-height: 10em;" src="/media/{{ item.product.image }}" alt="order image">
-                {% for print in item.print_variations.all %}
-                    {{ print }}
-                {% endfor %}
+            <a data-fancybox="gallery" href="/media/{{ item.product.image }}" alt="product image">
+                <img class="order-img img-shadow" style="max-height: 15em;" src="/media/{{ item.product.image }}" alt="order image">
+            </a>
             {% endfor %}
-    {% endfor %}
+            </div>
+        </div>
     </div>
+    {% endfor %}
 </div>
+
 {% endblock %}

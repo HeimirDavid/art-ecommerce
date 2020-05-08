@@ -460,6 +460,27 @@ a.nav-item.nav-link.main-nav-item {
     text-align: center;
 }
 
+/******* User Orders Section  *******/
+
+.order-container {
+    margin-top: 4em;
+}
+
+.user-order-card {
+    padding: 1em;
+}
+
+.user-order-info {
+    margin: 1em;
+}
+
+.order-img {
+    max-height: 15em;
+    max-width: 10em;
+    margin-bottom: 1em;
+}
+
+
 
 
 /******* Footer Section  *******/
@@ -647,7 +668,7 @@ footer .header-h3 {
 }
 
 /*** Mobile/Tablet View ***/
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
     .burgerMenu-bg-clr {
         background-color: rgba(0, 0, 0, 0.8);
     }
