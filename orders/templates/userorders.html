@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>User orders</h1>
+<div class="row">
+    <div class="col-10 offset-1">
+    {% for order in user_orders %}
+        {{ order.order_id }}
+        {{ order.cart.cart_items }}
+            {% for item in order.cart.cartitem_set.all %}
+                <img style="max-height: 10em;" src="/media/{{ item.product.image }}" alt="order image">
+                {% for print in item.print_variations.all %}
+                    {{ print }}
+                {% endfor %}
+            {% endfor %}
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -19,9 +19,6 @@
         </div>
         <div class="col-10 offset-1 p-text">
             <form role="form" id="payment-form" action="{% url 'checkout' %}" method="POST">
-                <div id="creddit-card-errors" style="display:none">
-                    <div class="alert-message block-message error" id="stripe-error-message"></div>
-                </div>
                 <div class="row">
                     {% csrf_token %}
                     <div class="col-12 col-md-6 checkout-form">
@@ -38,6 +35,9 @@
                     </div>
                     <div class="col-12 col-md-6 checkout-form">
                         <legend><span class="checkout-nr font-italic">3. </span>Payment Form</legend>
+                        <div id="creddit-card-errors">
+                            <div class="text-centeralert alert-danger" role="alert" id="stripe-error-message"></div>
+                        </div>
                         <div class="font-weight-bold font-italic">
                             {{ payment_form | as_bootstrap }}
                         </div>
@@ -97,6 +97,9 @@
                                     </div>
                                 {% endif %}
                             {% endfor %}
+                            <div class="col text-center">
+                                <p>Total: {{ cart.total }} €</p>
+                            </div>
                             <div class="submit-payment-btn">
                                 <input class="btn btn-success btn-lg" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
                             </div>

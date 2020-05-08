@@ -36,3 +36,15 @@ def view_single_order(request, pk):
         'shipping_address': shipping_address
         }
     return render(request, 'singleorder.html', context)
+
+
+def user_orders(request):
+    current_user = request.user
+    user_orders = Order.objects.filter(user=current_user)
+
+    print(user_orders)
+    context = {
+        'user_orders': user_orders,
+
+    }
+    return render(request, "userorders.html", context)

@@ -17,42 +17,6 @@ def orders(request):
 
 
 
-@login_required
-def get_shipping_and_billing(request):
-    if request.method=="POST":
-        address_form = AddressOrderForm(request.POST)
-        all_shipping_addresses = UserAddress.objects.filter(user=request.user, address_type="Shipping")
-        all_billing_addresses = UserAddress.objects.filter(user=request.user, address_type="Billing")
-        if address_form.is_valid():
-            new_order_address = address_form.save(commit=False)
-            new_order_address.user = request.user
-            new_order_address.save()
-            
-
-            is_shipping = request.POST.get('Shipping', False)
-            if is_shipping:
-                new_order_address.address_type = "Shipping"
-                new_order_address.save()
-            elif not is_shipping:
-                print("BILLINNNNGGG")
-                new_order_address.address_type = "Billing"
-                new_order_address.save()
-            else:
-                print("Dafuq")
-
-    else:
-        new_order_address = AddressOrderForm()
-        all_shipping_addresses = UserAddress.objects.filter(user=request.user, address_type="Shipping")
-        all_billing_addresses = UserAddress.objects.filter(user=request.user, address_type="Billing")
-
-
-    context = {
-        'new_order_address': new_order_address,
-        'all_shipping_addresses': all_shipping_addresses,
-        'all_billing_addresses': all_billing_addresses
-    }
-    return render(request, 'addresses.html', context)
-
 stripe.api_key = settings.STRIPE_SECRET
 
 @login_required
@@ -113,10 +77,10 @@ def checkout(request):
                     card = payment_form.cleaned_data['stripe_id'],
                 )
             except stripe.error.CardError:
-                messages.error(request, "Your card was declined")
+                messages.error(request, "Your card was declined!")
             
             if customer.paid:
-                messages.success(request, "You have successfully paid")
+                messages.success(request, "Your purchase was successful!")
                 #remove cart id
                 del request.session['cart_id']
                 del request.session['items_total']
