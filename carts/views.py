@@ -5,8 +5,8 @@ from .models import Cart, CartItem
 from products.models import PrintPainting, Product
 
 
-
 def view_cart(request):
+    # Get the cart by matching the cart session with the cart object 
     try:
         cart_session_id = request.session['cart_id']
     except:
@@ -15,9 +15,10 @@ def view_cart(request):
         cart = Cart.objects.get(id=cart_session_id)
         new_total = 0.00
 
-
         cart_items = cart.cartitem_set.all()
-        
+
+        # Check if cart is empty. if so, try to delete the items_total
+        # which is the badge displaying the number of items in the cart
         if not cart_items:
             try:
                 del request.session['items_total']
@@ -26,6 +27,8 @@ def view_cart(request):
             messages.error(request, "Your cart is empty, please keep shopping")
             return redirect(reverse('get_products'))
 
+        #loop through the items in the cart, get their pricce nad quantity 
+        # to calculate the total of the cart.
         for item in cart_items:
             line_total_for_product = float(item.line_total) * item.quantity          
             new_total += line_total_for_product
@@ -34,27 +37,23 @@ def view_cart(request):
         cart.save()
 
         context = {"cart": cart}
-        template = "cart.html"
+    #if the cart_session is None, it's empty. Redirect with message
     else:
         messages.error(request, "Your cart is empty, please keep shopping")
         return redirect(reverse('get_products'))
     
-    return render(request, template, context)
+    return render(request, "cart.html", context)
 
 
 def remove_from_cart(request, pk):
-    try:
-        cart_session_id = request.session['cart_id']
-        cart = Cart.objects.get(id=cart_session_id)
-    except:
-        return redirect(reverse('view_cart'))
+    # Delete the cart_item
     cartitem = CartItem.objects.get(pk=pk)
     cartitem.delete()
-    # Send message that it's deleted
     return redirect(reverse('view_cart'))
 
 
 def clear_cart(request):
+    # Clear the whole cart and the and remove the items total
     try:
         del request.session['cart_id']
         del request.session['items_total']
