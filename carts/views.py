@@ -91,12 +91,21 @@ def add_to_cart(request, pk):
         except:
             pass"""
 
-        cart_item = CartItem.objects.create(cart=cart, product=product)
+        
         #first if block handles the original painting, second the prints
         for item in request.POST:
-            print(item)
             if item == "original":
-                print("i got here")
+
+                cart_items = cart.cartitem_set.all()
+                for item in cart_items:
+                    all_paintings_in_cart_id = item.product.original_painting.id
+                    print(all_paintings_in_cart_id)
+                    print(product.original_painting.id)
+                    if all_paintings_in_cart_id==product.original_painting.id:
+                        messages.error(request, "This painting is already in your cart.")
+                        return redirect(reverse('view_cart'))
+
+                cart_item = CartItem.objects.create(cart=cart, product=product)
                 qty = int(1)
                 cart_item.product = product
                 cart_item.quantity = qty
@@ -107,7 +116,7 @@ def add_to_cart(request, pk):
             if item == "size":
                 # error handling if the form returned from the user is missing quantity
                 if qty == "":
-                    cart_item.delete()
+                    #cart_item.delete()
                     messages.error(request, "Missing quantity for your item.")
                     return render(request, "product.html", {'product': product})
                 
@@ -119,38 +128,34 @@ def add_to_cart(request, pk):
                     product_var.append(single_product)
                 except:
                     # error handling if the form returned from the user is missing size
-                    cart_item.delete()
+                    #cart_item.delete()
                     messages.error(request, "Missing size for your print.")
                     return render(request, "product.html", {'product': product})
                 # error handling if the quantity is greater than the current stock of an item
                 if int(qty) > single_product.stock:
-                        cart_item.delete()
+                        #cart_item.delete()
                         messages.error(request, "We unfortunately don't have enough stock for your requested item.")
                         return render(request, "product.html", {'product': product})
 
-                # try sub function to check if item is already in cart
-                #print(cart_item.objects.filter(product))
-                print(single_product.id)
+                # Error handling to check if the customers print is already in the cart.
+                # if so prevent the user from putting it in the cart. This is to prevent
+                # the customer from putting more items in a cart than the current stock allows
                 cart_items = cart.cartitem_set.all()
-                #print(cart_items)
-                
-                #print_already_in_cart = False
                 for item in cart_items:
-                   #print(item.print_variations.all())
                     list_of_prints_in_cart = list(item.print_variations.values('id'))
-                    #print(single_product)
                     
                     for print_id in list_of_prints_in_cart:
                         the_print = print_id.get('id')
+
                         if the_print == single_product.id:
-                            print("Jippi!")
-                            cart_item.delete()
+                            #cart_item.delete()
                             messages.error(request, "You already have this item in your cart.")
                             return render(request, "product.html", {'product': product})
                     
                         
-        #cart_item = CartItem.objects.create(cart=cart, product=product)
-        
+
+        cart_item = CartItem.objects.create(cart=cart, product=product)
+
         if len(product_var) > 0:
             cart_item.print_variations.add(*product_var)
         cart_item.line_total = price
