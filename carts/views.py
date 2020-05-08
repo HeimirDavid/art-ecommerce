@@ -54,6 +54,18 @@ def remove_from_cart(request, pk):
     return redirect(reverse('view_cart'))
 
 
+def clear_cart(request):
+    try:
+        del request.session['cart_id']
+        del request.session['items_total']
+        messages.success(request, 'Removed cart')
+        return redirect(reverse('index'))
+    except:
+        messages.error(request, "Unable to remove clear cart.")
+        return redirect(reverse('view_cart'))
+    
+
+
 
 def add_to_cart(request, pk):
     request.session.set_expiry(300000)
@@ -80,43 +92,45 @@ def add_to_cart(request, pk):
     # and handled differently from the original painting
     product_var = []
     if request.method == "POST":
+        #get the wished quantity from the customer of a print
         try:
             qty = request.POST['qty']
         except:
             pass
-            """
-        try:
-            original = request.POST['original']
-            
-        except:
-            pass"""
-
         
         #first if block handles the original painting, second the prints
         for item in request.POST:
+            cart_items = cart.cartitem_set.all()
+    
             if item == "original":
-
-                cart_items = cart.cartitem_set.all()
+                #Error handling to prevent the user from adding an original painting more than once in their cart
+                #first, check if the item in the cart is a print. if the list is empty,
+                #the item is an original painting and this original painting in the cart
+                #should not match with the current painting the user is trying to add.
+                # if it matches, return with an error message to the customer.
                 for item in cart_items:
-                    all_paintings_in_cart_id = item.product.original_painting.id
-                    print(all_paintings_in_cart_id)
-                    print(product.original_painting.id)
-                    if all_paintings_in_cart_id==product.original_painting.id:
-                        messages.error(request, "This painting is already in your cart.")
-                        return redirect(reverse('view_cart'))
+                    list_of_prints_in_cart = list(item.print_variations.values('id'))
+                    if not list_of_prints_in_cart:
+                        painting_id = item.product.original_painting.id
 
+                        if painting_id==product.original_painting.id:
+                            messages.error(request, "This painting is already in your cart.")
+                            return redirect(reverse('view_cart'))
+
+                # if the item passes the test, a new CartItem is created and the
+                # original painting is added to the cart
                 cart_item = CartItem.objects.create(cart=cart, product=product)
                 qty = int(1)
                 cart_item.product = product
                 cart_item.quantity = qty
                 cart_item.line_total = product.original_painting.price
                 cart_item.save()
+                messages.success(request, "Painting added to your cart!")
                 return redirect(reverse('view_cart'))
 
             if item == "size":
                 # error handling if the form returned from the user is missing quantity
                 if qty == "":
-                    #cart_item.delete()
                     messages.error(request, "Missing quantity for your item.")
                     return render(request, "product.html", {'product': product})
                 
@@ -128,12 +142,11 @@ def add_to_cart(request, pk):
                     product_var.append(single_product)
                 except:
                     # error handling if the form returned from the user is missing size
-                    #cart_item.delete()
                     messages.error(request, "Missing size for your print.")
                     return render(request, "product.html", {'product': product})
+    
                 # error handling if the quantity is greater than the current stock of an item
                 if int(qty) > single_product.stock:
-                        #cart_item.delete()
                         messages.error(request, "We unfortunately don't have enough stock for your requested item.")
                         return render(request, "product.html", {'product': product})
 
@@ -148,21 +161,20 @@ def add_to_cart(request, pk):
                         the_print = print_id.get('id')
 
                         if the_print == single_product.id:
-                            #cart_item.delete()
-                            messages.error(request, "You already have this item in your cart.")
+                            messages.error(request, "You already have this print in your cart.")
                             return render(request, "product.html", {'product': product})
                     
                         
-
+        # if the print passes all the tests, add the print_variations to the cart_item,
+        #give it a price, quantity and save. Redirect to the cart with success message to the user. 
         cart_item = CartItem.objects.create(cart=cart, product=product)
-
         if len(product_var) > 0:
             cart_item.print_variations.add(*product_var)
         cart_item.line_total = price
         cart_item.quantity = qty
         cart_item.save()
-        # Success message
+        messages.success(request, "Item added to your cart!")
         return redirect(reverse('view_cart'))
-    # Error message
+    messages.error(request, "Unable to add item to your cart..")
     return redirect(reverse('view_cart'))
     
