@@ -22,8 +22,8 @@ class UserAddress(models.Model):
     address_type = models.CharField(max_length=100, choices=ADDRESS_TYPE)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
-    def __unicode__(self):
-        return str(self.user.username)
+    def __str__(self):
+        return self.full_name
 
 
 STATUS_CHOICES = (
@@ -42,5 +42,5 @@ class Order(models.Model):
     final_total = models.DecimalField(default=0.00, max_digits=1000, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
-    def __unicode__(self):
-        return self.order_id
+    def __str__(self):
+        return str(self.order_id)

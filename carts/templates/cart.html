@@ -18,7 +18,7 @@
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Total: {{ cart.total }}</td>
+                        <td>Total: {{ cart.total }} €</td>
                         <td></td>
                         <td><a class="btn btn-danger" href="{% url 'clear_cart' %}">Clear Cart</a></td>
                         
@@ -33,13 +33,13 @@
                             {% for print in item.print_variations.all %}
                                 <td>{{ item.product.name }}</td>
                                 <td>{{ print.size }}</td>
-                                <td>{{ print.price }}</td>
+                                <td>{{ print.price }} €</td>
                                 <td>{{ item.quantity }}</td>
                             {% endfor %}
                         {% else %}
                             <td>{{ item.product.name }}</td>
                             <td>{{ item.product.original_painting.size }}</td>
-                            <td>{{ item.product.original_painting.price }}</td>
+                            <td>{{ item.product.original_painting.price }} €</td>
                             <td>{{ item.quantity }}</td>
                         {% endif %}
                         

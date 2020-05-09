@@ -21,17 +21,19 @@ def news_detail(request, pk):
     and render it to the 'articepost.html' template.
     or return a 404 error if the post is not found
     """
+    print(pk)
     post = get_object_or_404(NewsPost, pk=pk)
     post.views += 1
     post.save()
     return render(request, 'articlepost.html', {'post': post})
 
 
+"""
 def create_or_edit_newspost(request, pk=None):
-    """
+    
     A View that allows us to create or edit a post,
     varying if the NewPost ID is null or not
-    """
+    
     post = get_object_or_404(NewsPost, pk=pk) if pk else None
     if request.method == "POST":
         form = NewsPostForm(request.POST, request.FILES, instance=post)
@@ -40,4 +42,4 @@ def create_or_edit_newspost(request, pk=None):
             return redirect(news_detail, post.pk)
     else:
         form = NewsPostForm(instance=post)
-    return render(request, 'postform.html', {'form': form})
+    return render(request, 'postform.html', {'form': form})"""

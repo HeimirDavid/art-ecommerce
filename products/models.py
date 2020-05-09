@@ -6,15 +6,15 @@ class OriginalPainting(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     size = models.CharField(max_length=100)
 
-    def __unicode__(self):
-        return self.stock
+    def __str__(self):
+        return str(self.stock)
 
 
 class CollectionCategory(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -26,7 +26,7 @@ class Product(models.Model):
     collection = models.ForeignKey(CollectionCategory, on_delete=models.CASCADE)
     upload_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -36,7 +36,7 @@ class PrintPainting(models.Model):
     stock = models.PositiveIntegerField(null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.size
 
 

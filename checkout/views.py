@@ -92,21 +92,11 @@ def checkout(request):
             print(payment_form.errors)
             messages.error(request, "We were unable to take payment with that card!")
 
-            
-
-
-
-        if new_order.status == "Finished":
-            #cart.delete()
-            del request.session['cart_id']
-            del request.session['items_total']
-
     else:
         new_shipping_address = ShippingAddressForm(initial={'address_type': 'Shipping'})
         new_billing_address = BillingAddressForm(initial={'address_type': 'Billing'})
         payment_form = MakePaymentForm()
         
-
     context = {
         'new_shipping_address': new_shipping_address,
         'new_billing_address': new_billing_address,

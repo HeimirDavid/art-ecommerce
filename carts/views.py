@@ -53,7 +53,7 @@ def remove_from_cart(request, pk):
 
 
 def clear_cart(request):
-    # Clear the whole cart and the and remove the items total
+    # Clear the whole cart and remove the items total
     try:
         del request.session['cart_id']
         del request.session['items_total']
