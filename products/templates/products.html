@@ -7,12 +7,14 @@
         <h3 class="header-h3 text-center paintings-h">View Paintings By Collection</h3>
         
         <form method="GET" action="{% url 'get_products' %}">
-            {% for collection in collections %}
-                <div class="col-12 col-md-4 custom-control custom-radio custom-control-inline coll-filter">
-                    <input class="custom-control-input" type="radio" id="{{ collection.id }}" name="coll_id" value="{{ collection.id }}">
-                    <label class="custom-control-label font-weight-bold" for="{{ collection.id }}">{{ collection.name }}</label>
-                </div>
-            {% endfor %}
+            <div class="row">
+                {% for collection in collections %}
+                    <div class="col-12 col-md-4 custom-control custom-radio custom-control-inline coll-filter">
+                        <input class="custom-control-input" type="radio" id="{{ collection.id }}" name="coll_id" value="{{ collection.id }}">
+                        <label class="custom-control-label font-weight-bold" for="{{ collection.id }}">{{ collection.name }}</label>
+                    </div>
+                {% endfor %}
+            </div>
             <div class="col text-center">
                 <button type="submit" class="btn btn-outline-success">Apply Filter</button>
                 <a href="{% url 'get_products' %}" class="btn btn-outline-danger">Remove Filter</a>
@@ -26,10 +28,8 @@
 {% if coll_description == True %}
 <div class="row gradient-grey">
     <div class="col-10 offset-1">
-        {% for product in products %}
-            <h4 class="header-h4 collection-h">{{ product.collection.name }}</h4>
-            <p class="p-text">{{ product.collection.description }}</p>
-        {% endfor %}
+        <h4 class="header-h4 collection-h">{{ collection.name }}</h4>
+        <p class="p-text">{{ collection.description }}</p>
     </div>
 </div>
 {% endif %}
@@ -47,7 +47,7 @@
         <div class="col-12 col-md-7 shadow-left from-left slide-in">
             <a href="{% url 'get_single_product' product.id %}">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
-                <p class="p-text">{{ product.description }}</p>
+                <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
             <div class="product-info">
                 {% if product.printpainting_set.all %}
@@ -83,7 +83,7 @@
         <div class="col-md-7 shadow-right from-right slide-in">
             <a href="{% url 'get_single_product' product.id %}">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
-                <p class="p-text">{{ product.description }}</p>
+                <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
             <div class="product-info">
                 {% if product.printpainting_set.all %}

@@ -79,7 +79,7 @@
         <div class="col-12 col-md-7 shadow-left from-left slide-in">
             <a href="{% url 'get_single_product' product.id %}">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
-                <p class="p-text">{{ product.description }}</p>
+                <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
             <div class="product-info">
                 {% if product.printpainting_set.all %}
@@ -115,7 +115,7 @@
         <div class="col-md-7 shadow-right from-right slide-in">
             <a href="{% url 'get_single_product' product.id %}">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
-                <p class="p-text">{{ product.description }}</p>
+                <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
             <div class="product-info">
                 {% if product.printpainting_set.all %}

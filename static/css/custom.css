@@ -72,8 +72,6 @@ a:hover {
 }
 
 
-
-
 /******* Main Navbar  *******/
 
 .main-navbar {
@@ -341,6 +339,11 @@ a.nav-item.nav-link.main-nav-item {
     background: -webkit-linear-gradient(90deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 100%);
     background: linear-gradient(90deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ececec",endColorstr="#ffffff",GradientType=1);
+}
+
+/* Overwrite bootstrap */
+.custom-control-inline {
+    margin-right: 0;
 }
 
 /******* Single Product Section  *******/

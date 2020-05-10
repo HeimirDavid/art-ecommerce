@@ -22,11 +22,13 @@ def get_products(request):
             products = Product.objects.filter(upload_date__lte=timezone.now
                 ()).order_by('-upload_date')
             coll_description = False
-    collections = CollectionCategory.objects.all()
-    print(collections)
+            collection = ''
+    collections = CollectionCategory.objects.all().order_by('name')
+
     context = {
         'products': products,
         'collections': collections,
+        'collection': collection,
         'coll_description': coll_description,
     }
 
