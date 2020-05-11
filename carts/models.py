@@ -18,7 +18,7 @@ class Cart(models.Model):
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, null=True, blank=True, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, null=True, blank=True, on_delete=models.CASCADE)
-    print_variations = models.ManyToManyField(PrintPainting, null=True, blank=True) 
+    print_variations = models.ManyToManyField(PrintPainting, blank=True) 
     quantity = models.IntegerField(default=1)
     line_total = models.DecimalField(default=0.00, max_digits=1000, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
