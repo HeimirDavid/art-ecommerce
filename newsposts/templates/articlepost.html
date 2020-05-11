@@ -7,8 +7,8 @@
         <p clasx="p-text">{{ post.content }}</p>
     </div>
     {% if post.image %}
-    <div class="col-10 offset-1 offset-md-0 col-md-4  article-img">
-        <img src="/media/{{ post.image }}" alt="image">
+    <div class="col-10 offset-1 offset-md-0 col-md-4">
+        <img class="article-img" src="/media/{{ post.image }}" alt="image">
     </div>
     {% endif %}
 </div>
