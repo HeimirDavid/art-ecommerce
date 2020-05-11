@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3 class="header-h3 checkout-h text-center">Frequently Asked Questions</h3>
+<div class="row">
+    <div class="col-10 offset-1 p-text">
+        <div class="row">
+            <div class="col-md-4 d-none d-md-block">
+                <img class="display-painting faq-img" src="/media/img/pink-smoke.jpg" alt="image">
+            </div>
+            <div class="col col-md-7">
+                <div class="user-order-info">
+                    <h4 class="header-h4">How much does the shipping cost?</h4>
+                    <p><span class="font-weight-bold">Within Sweden</span> it cost around 8 Euros, or 81 sek.</p>
+                    <p><span class="font-weight-bold">Within EU</span> there is a flat rate of 15 Euros.</p>
+                    <p><span class="font-weight-bold">Outside of EU</span> there is a flat rate of 25 Euros.</p>
+                </div>
+                <br>
+                <div class="user-order-info">
+                    <h4 class="header-h4">How long does the sipping take?</h4>
+                    <p><span class="font-weight-bold">Shipping in Sweden</span> takes 2-4 buissness days. 
+                        <span class="font-weight-bold">Sending within EU</span> takes between 2-7 buissness days and 
+                        <span class="font-weight-bold">Outside of EU</span> takes up to 30 buissness days.
+                    </p>
+                </div>
+                <br>
+                <div class="user-order-info">
+                    <h4 class="header-h4">Are the payments secure? Who handles them?</h4>
+                    <p>All payments are handled by <u><a href="https://stripe.com/">Stripe </a></u>
+                    which online services guarantees secure and safe payments with your credit card. We store no 
+                    credit card data of any kind in our database.</p>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

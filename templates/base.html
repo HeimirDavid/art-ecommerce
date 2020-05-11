@@ -86,19 +86,23 @@
 
     <footer>
         <div class="row p-text">
-            <div class="col-10 offset-1">
+            <div class="col-10 offset-1 text-center footer-container">
                 <div class="row">
-                    <div class="col-4">
-
+                    <div class="col">
+                        <h3 class="header-h3"><a class="font-tangerine" href="{% url 'index' %}">SL Gallery</a></h3>
                     </div>
-                    <div class="col-4">
+                    <div class="row">
+                        <div class="col-5">
+                            <a href="{% url 'faq' %}"><h3 class="header-h3">FAQ</h3></a>
+                            <p>Looking for more info? Look at some of our most frequently asked questions <a class="login-link" href="{% url 'faq' %}">here!</a></p>
+                        </div>
                         
-                    </div>
-                    <div class="col-4">
-                        <h3 class="header-h3">Social</h3>
-                        <p>You can reach me and stay updated on my social media, or contact me <a class="login-link" href="{% url 'contact' %}">here!</a></p>
-                        <a class="social-links" target="_blank" href="https://www.facebook.com/sandra.lofgren.773"><i class="fab fa-facebook"></i></a>
-                        <a class="social-links" target="_blank" href="https://www.instagram.com/sandralowgrenartwork/"><i class="fab fa-instagram"></i></a>
+                        <div class="col-5 offset-2">
+                            <h3 class="header-h3">Social</h3>
+                            <p>You can reach me and stay updated on my social media, or contact me <a class="login-link" href="{% url 'contact' %}">here!</a></p>
+                            <a class="social-links" target="_blank" href="https://www.facebook.com/sandra.lofgren.773"><i class="fab fa-facebook"></i></a>
+                            <a class="social-links" target="_blank" href="https://www.instagram.com/sandralowgrenartwork/"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -19,12 +19,13 @@ from django.conf.urls import url, include
 #from django.views.generic import RedirectView
 from django.views.static import serve
 from .settings import MEDIA_ROOT
-from home.views import index, contact_view
+from home.views import index, contact_view, faq
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', index, name='index'),
     url(r'^contact/', contact_view, name="contact"),
+    url(r'^faq/', faq, name="faq"),
     url(r'news/', include('newsposts.urls')),
     url(r'paintings/', include('products.urls')),
     url(r'cart/', include('carts.urls')),
