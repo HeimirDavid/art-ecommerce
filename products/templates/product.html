@@ -4,8 +4,8 @@
 
 <div class="row product-row">
     <div class="col-12 col-md-7 text-center">
-        <a data-fancybox="gallery" href="/media/{{ product.image }}">
-            <img class="single-prod-img img-shadow" src="/media/{{ product.image }}" alt="image">
+        <a data-fancybox="gallery" href="{{ MEDIA_URL }}{{ product.image }}">
+            <img class="single-prod-img img-shadow" src="{{ MEDIA_URL }}{{ product.image }}" alt="image">
         </a>
     </div>
     <div class="col-12 col-md-5 single-prod-info">

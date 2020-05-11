@@ -15,7 +15,7 @@
         <div class="col-10 offset-1 col-md-8 offset-md-2 newspost-container">
             <h4 class="article-h">{{ post.title }}</h4>
             {% if post.image %}
-                <img class="newspost-image" src="/media/{{ post.image }}" alt="image">
+                <img class="newspost-image" src="{{ MEDIA_URL }}{{ post.image }}" alt="image">
             {% endif %}
             <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
             <span class="btn btn-primary openpost-btn">
