@@ -603,7 +603,7 @@ footer .header-h3 {
     /* news section */
     
     .newspost-container {
-        text-align: ;
+        padding-right: 0;
         height: 22em;
         margin-top: 5em;
         -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
