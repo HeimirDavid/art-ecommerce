@@ -2,38 +2,42 @@
 
 {% block content %}
 
-<div id="painting-sect" class="row news-header-row">
-    <div class="col-8 offset-2 p-text">
-        <h3 class="header-h3 text-center paintings-h">View Paintings By Collection</h3>
-        
-        <form method="GET" action="{% url 'get_products' %}">
-            <div class="row">
-                {% for collection in collections %}
-                    <div class="col-12 col-md-4 custom-control custom-radio custom-control-inline coll-filter">
-                        <input class="custom-control-input" type="radio" id="{{ collection.id }}" name="coll_id" value="{{ collection.id }}">
-                        <label class="custom-control-label font-weight-bold" for="{{ collection.id }}">{{ collection.name }}</label>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="col text-center">
-                <button type="submit" class="btn btn-outline-success">Apply Filter</button>
-                <a href="{% url 'get_products' %}" class="btn btn-outline-danger">Remove Filter</a>
-            </div>
-            <br>
-        </form>
-        
+<div id="painting-sect" class="container-fluid">
+    <div class="row news-header-row">
+        <div class="col-8 offset-2 p-text">
+            <h3 class="header-h3 text-center paintings-h">View Paintings By Collection</h3>
+            
+            <form method="GET" action="{% url 'get_products' %}">
+                <div class="row">
+                    {% for collection in collections %}
+                        <div class="col-12 col-md-4 custom-control custom-radio custom-control-inline coll-filter">
+                            <input class="custom-control-input" type="radio" id="{{ collection.id }}" name="coll_id" value="{{ collection.id }}">
+                            <label class="custom-control-label font-weight-bold" for="{{ collection.id }}">{{ collection.name }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col text-center">
+                    <button type="submit" class="collection-btn btn btn-outline-success">Apply Filter</button>
+                    <a href="{% url 'get_products' %}" class="collection-btn btn btn-outline-danger">Remove Filter</a>
+                </div>
+                <br>
+            </form>
+            
+        </div>
     </div>
 </div>
-
 {% if coll_description == True %}
+<div class="container-fluid">
 <div class="row gradient-grey">
     <div class="col-10 offset-1">
         <h4 class="header-h4 collection-h">{{ collection.name }}</h4>
         <p class="p-text">{{ collection.description }}</p>
     </div>
 </div>
+</div>
 {% endif %}
 
+<div class="overflow-hidden">
 {% for product in products %}
     {% if forloop.counter|divisibleby:2 %}
     
@@ -105,7 +109,7 @@
     </div>
     {% endif %}
 {% endfor %}
-
+</div>
 <br>
 <br>
 {% endblock %}

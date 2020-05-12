@@ -313,9 +313,13 @@ a.nav-item.nav-link.main-nav-item {
     margin-top: 1em;
 }
 
+.collection-btn {
+    margin: .5em;
+}
+
 .product-display-row {
     margin-top: 4em;
-    margin-left: 0%;
+    margin-left: 12%;
 }
 
 .product-img {
@@ -639,7 +643,7 @@ footer .header-h3 {
     .product-display-row {
         height: 20em;
         margin-top: 4em;
-        margin-left: 0%;
+        margin-left: 12%;
     }
     
     .product-img {

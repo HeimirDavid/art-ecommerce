@@ -2,71 +2,71 @@
 
 {% block content %}
 
-<div class="row product-row">
-    <div class="col-12 col-md-7 text-center">
-        <a data-fancybox="gallery" href="{{ MEDIA_URL }}{{ product.image }}">
-            <img class="single-prod-img img-shadow" src="{{ MEDIA_URL }}{{ product.image }}" alt="image">
-        </a>
-    </div>
-    <div class="col-12 col-md-5 single-prod-info">
-        <h3 class="header-h3 product-h">{{ product.name }}</h3>
-        <p class="p-text">{{ product.description }}</p>
-        <span class="p-text font-weight-bold">Original Size: </span><p class="p-text">{{ product.original_painting.size }}</p>
-        {% if product.original_painting.stock == True %}
-            <p class="p-text font-italic">Original painting still availible!</p>
-            <p class="p-text">
-                <span class="font-weight-bold">Price for original: </span>
-                <span>{{ product.original_painting.price }} €</span>
-            </p>
-        {% endif %}
-            <!-- .print is not going to work, need to import both product and prints here... -->
-        
-
-
-
-        
-        <form class="select-size-menu" method="POST" action="{% url 'add_to_cart' product.id %}">
-            {% csrf_token %}
-            
-            <select name="size" class="custom-select p-text">
-                <option selected>Choose Print Size</option>
-                {% for print in product.printpainting_set.all %}
-                    {% if print.stock > 0 %}
-                        <option value="{{ print.id }}">{{ print.size }} | {{ print.price }} €</option>
-                    {% else %}
-                        <option>{{ print.size }} | Print is out of stock!</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-            <br>
-            <div class="input-group select-size-menu">
-                <input type="number" name="qty" min="1" max="100" class="form-control" placeholder="Quantity" value="qty">
-                <span class="input-group-btn">
-                    <button onclick="getPriceForPrints()" class="btn btn-info" type="submit">Add To Cart</button>
-                </span>
-            </div>
-        </form>
-        
-        <p class="p-text">
-            <span class="font-weight-bold">Price for prints: </span>
-            <span id="displayPrice">Select a size and quantity</span>
-            <span id="currency-euro"></span>
-        </p>
-        
-        <p class="p-text font-weight-bold">Prints are out of stock!</p>
-        
-        <div class="p-text">
+<div class="overflow-hidden">
+    <div class="row product-row">
+        <div class="col-12 col-md-7 text-center">
+            <a data-fancybox="gallery" href="{{ MEDIA_URL }}{{ product.image }}">
+                <img class="single-prod-img img-shadow" src="{{ MEDIA_URL }}{{ product.image }}" alt="image">
+            </a>
+        </div>
+        <div class="col-12 col-md-5 single-prod-info">
+            <h3 class="header-h3 product-h">{{ product.name }}</h3>
+            <p class="p-text">{{ product.description }}</p>
+            <span class="p-text font-weight-bold">Original Size: </span><p class="p-text">{{ product.original_painting.size }}</p>
             {% if product.original_painting.stock == True %}
-            <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                {% csrf_token %}
-                <!-- <input name="quantity" type="hidden" value="1"> -->
-                <input type="hidden" value="1" name="original">
-                <button class="btn btn-success" type="submit">Add Original To Cart!</button>
-            </form>
+                <p class="p-text font-italic">Original painting still availible!</p>
+                <p class="p-text">
+                    <span class="font-weight-bold">Price for original: </span>
+                    <span>{{ product.original_painting.price }} €</span>
+                </p>
             {% endif %}
+                <!-- .print is not going to work, need to import both product and prints here... -->
+            
+
+
+
+            
+            <form class="select-size-menu" method="POST" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                
+                <select name="size" class="custom-select p-text">
+                    <option selected>Choose Print Size</option>
+                    {% for print in product.printpainting_set.all %}
+                        {% if print.stock > 0 %}
+                            <option value="{{ print.id }}">{{ print.size }} | {{ print.price }} €</option>
+                        {% else %}
+                            <option>{{ print.size }} | Print is out of stock!</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <br>
+                <div class="input-group select-size-menu">
+                    <input type="number" name="qty" min="1" max="100" class="form-control" placeholder="Quantity" value="qty">
+                    <span class="input-group-btn">
+                        <button onclick="getPriceForPrints()" class="btn btn-info" type="submit">Add To Cart</button>
+                    </span>
+                </div>
+            </form>
+            
+            <p class="p-text">
+                <span class="font-weight-bold">Price for prints: </span>
+                <span id="displayPrice">Select a size and quantity</span>
+                <span id="currency-euro"></span>
+            </p>
+            
+            <p class="p-text font-weight-bold">Prints are out of stock!</p>
+            
+            <div class="p-text">
+                {% if product.original_painting.stock == True %}
+                <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <!-- <input name="quantity" type="hidden" value="1"> -->
+                    <input type="hidden" value="1" name="original">
+                    <button class="btn btn-success" type="submit">Add Original To Cart!</button>
+                </form>
+                {% endif %}
+            </div>
         </div>
     </div>
-    
 </div>
-
 {% endblock %}
