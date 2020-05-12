@@ -163,7 +163,7 @@ a.nav-item.nav-link.main-nav-item {
 /******* Big picture and heading on the front page  *******/
 
 .page-main-intro {
-    padding: 34vh 0; /* 29vh 0 10vh 0 with image shadow */
+    padding: 32vh 0; /* 29vh 0 10vh 0 with image shadow */
     background: #0e1d2d url(//unsplash.it/900);
     background-size: cover;
     background-blend-mode: multiply;
@@ -399,6 +399,10 @@ a.nav-item.nav-link.main-nav-item {
     border-radius: 5px 5px 5px 5px;
 }
 
+.contact-card {
+    margin: 0 0 4em 0;
+}
+
 .accounts-card.login-card {
     height: 28em;
 }
@@ -552,6 +556,10 @@ footer .header-h3 {
     .single-prod-info .product-h {
         text-align: center;
     }
+
+    .page-main-intro {
+        padding: 25vh 0; /* 29vh 0 10vh 0 with image shadow */
+    }
 }
 
 @media (min-width: 768px) {
@@ -582,7 +590,7 @@ footer .header-h3 {
 
 @media (min-width: 992px) {
     .display-painting {
-        margin-top: -4em;
+        margin-top: -2em;
     }
 
     .display-painting.faq-img {
