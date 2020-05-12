@@ -1,74 +1,82 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section id="about_section" class="about-section">
-    <div class="row">
-        <div class="col-sm-10 offset-1">
-            <h3 class="header-h3 uppercase text-center about-h">About</h3>
-            <div class="row">
-                <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
-                    <h4 class="header-h4">Artwork</h4>
-                    <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur recusandae illo dolore pariatur, vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
-                    Tempora asperiores molestias ratione cumque illo, eligendi harum facere. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
-                    Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae.</p>
-                </div>
-                <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
-                    <h4 class="header-h4">Sandras Cool Story</h4>
-                    <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
-                        Tempora asperiores molestias ratione cumque illo. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
-                        Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae, nulla recusandae totam autem excepturi delectus at cupiditate, distinctio veritatis.</p>
-                </div>
-                <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
-                    <h4 class="header-h4">Site Info</h4>
-                    <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur recusandae illo dolore pariatur, vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
+<section id="about_section" class="about-section overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="header-h3 uppercase text-center about-h">About</h3>
+                <div class="row">
+                    <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
+                        <h4 class="header-h4">Artwork</h4>
+                        <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur recusandae illo dolore pariatur, vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
                         Tempora asperiores molestias ratione cumque illo, eligendi harum facere. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
-                        Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae, nulla recusandae totam autem excepturi delectus at cupiditate, distinctio veritatis.</p>
+                        Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae.</p>
+                    </div>
+                    <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
+                        <h4 class="header-h4">Sandras Cool Story</h4>
+                        <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
+                            Tempora asperiores molestias ratione cumque illo. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
+                            Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae, nulla recusandae totam autem excepturi delectus at cupiditate, distinctio veritatis.</p>
+                    </div>
+                    <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
+                        <h4 class="header-h4">Site Info</h4>
+                        <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur recusandae illo dolore pariatur, vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
+                            Tempora asperiores molestias ratione cumque illo, eligendi harum facere. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
+                            Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae, nulla recusandae totam autem excepturi delectus at cupiditate, distinctio veritatis.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="news-section">
-    <div class="row">
-        <div class="col-10 offset-1 text-center">
-            <a href="{% url 'get_newsposts' %}"><h3 class="header-h3 uppercase index-news-h">News</h3></a>
-            <p class="p-text">Read the latest new about upcoming exhibitions, recent paintings, or general thoughts of mine!
-            </p>
+<section class="news-section overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a href="{% url 'get_newsposts' %}"><h3 class="header-h3 uppercase index-news-h">News</h3></a>
+                <p class="p-text">Read the latest new about upcoming exhibitions, recent paintings, or general thoughts of mine!
+                </p>
+            </div>
         </div>
-    </div>
-    {% for post in posts|slice:":3" %}
-    <div class="row">
-        <div class="col-10 offset-1 col-md-8 offset-md-2 newspost-container">
-            <a href="{% url 'news_detail' post.id %}"><h4 class="article-h">{{ post.title }}</h4></a>
-            {% if post.image %}
-                <img class="newspost-image" src="{{ MEDIA_URL }}{{ post.image }}" alt="image">
-            {% endif %}
-            <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
-            <span class="btn btn-success openpost-btn">
-                <a href="{% url 'news_detail' post.id %}">Open Article</a>
-            </span>
+        {% for post in posts|slice:":3" %}
+        <div class="row">
+            <div class="col-10 offset-1 newspost-container">
+                <a href="{% url 'news_detail' post.id %}"><h4 class="article-h">{{ post.title }}</h4></a>
+                {% if post.image %}
+                    <img class="newspost-image" src="{{ MEDIA_URL }}{{ post.image }}" alt="image">
+                {% endif %}
+                <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
+                <span class="btn btn-success openpost-btn">
+                    <a href="{% url 'news_detail' post.id %}">Open Article</a>
+                </span>
+            </div>
         </div>
-    </div>
-    <br>
-    {% endfor %}
-    <div class="row justify-content-center">
-        <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_newsposts' %}">See all the news!</a>
+    
+        <br>
+        {% endfor %}
+        <div class="row justify-content-center">
+            <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_newsposts' %}">See all the news!</a>
+        </div>
     </div>
 </section>
 
-<section class="paintings-section">
-    <div class="row">
-        <div class="col-10 offset-1 text-center">
-            <h3 class="header-h3 uppercase index-news-h">Paintings</h3>
-            <p class="p-text">View some of my paintings!
-                (I know, im so interesting!)
-            </p>
+<section class="paintings-section overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h3 class="header-h3 uppercase index-news-h">Paintings</h3>
+                <p class="p-text">View some of my paintings!
+                    (I know, im so interesting!)
+                </p>
+            </div>
         </div>
     </div>
+
     {% for product in products|slice:":5" %}
     {% if forloop.counter|divisibleby:2 %}
-    
+
     <div class="row product-display-row">
         <div class="col-12 col-md-3 d-block d-md-none from-left slide-in">
             <a data-fancybox="gallery" href="{{ MEDIA_URL }}{{ product.image }}">
@@ -138,11 +146,10 @@
     {% endif %}
 {% endfor %}
 <br>
-    <div class="row justify-content-center">
+    <div class="text-center">
         <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_products' %}">View all paintings!</a>
     </div>
-
-
 <br>
 </section>
+
 {% endblock %}
