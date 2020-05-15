@@ -17,7 +17,7 @@ Essentially, this part is your sales pitch.
 
 * As an artist, I want a good looking website where I can display my paintings efficiently, so I can grow
 my buissness and sell both original work and prints of my paintings.
-* As an artist, I want a place to display news about upcomming exhibitions, or new art that im working on.
+* As an artist, I want a place to display news about upcoming exhibitions, or new art that im working on.
 * As an artist, I wish to be able to sell prints if the original painting is already sold.
 * As a fan, I want to find paintings from the artist and browse through the gallery.
 * As a customer, I wish to be able to buy art from the artist.
@@ -32,7 +32,7 @@ to raise her brand and provide value by selling both original paintings and prin
 ### Scope
 
 For users who are looking to get to know both the artist and her art better they can do that by reading about the 
-paintings, the different collections they belong to, and different upcomming events and news from the artist. This 
+paintings, the different collections they belong to, and different upcoming events and news from the artist. This 
 provides value for both the fans of the artist and users who are new to the artist. If a user see some painting they like, it should be easy to order it straight away.
 
 ### Structure
@@ -106,15 +106,27 @@ In addition, you may also use this section to discuss plans for additional featu
 Features Left to Implement
 Another feature idea
 ## Technologies Used
+* HTML, CSS, JS, Python where the core languages used to create this website.
 * [Django 3.0.5](https://www.djangoproject.com/) - web framework.
 * [Stripe](https://stripe.com/) - online payments platform. Their API used to validate and handle secure payments with credit card.
 * [EmailJS](https://www.emailjs.com/) - Their JavaScript API used to send emails to the artist through the contact form.
-* []
+* [Amazon Web Services](https://aws.amazon.com/) - AWS S3 Bucket for storing the media and static files.
+* [Heroku](https://www.heroku.com/) - Hosting the live project
+* [Pillow](https://pillow.readthedocs.io/en/stable/) - Image library to handle the media upload.
+* [Django forms bootstrap](https://pypi.org/project/django-forms-bootstrap/) - To format the django forms as bootstrap.
+* [Fancybox](http://fancyapps.com/fancybox/3/) - Used to display the images as full view.
+* [Bootstrap 4](https://getbootstrap.com/) - Used for their responsive css grid and basic styling for forms, buttons and tables.
+*  [jQuery](https://jquery.com/) - For simplifying DOM manipulation
+* [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) - template language for Python
+* [Lucidchart](https://www.lucidchart.com/) - To draw the Entity Relationship Diagram
+
+
+### Databases
+SQLite was used during development as it is Django's default database. PostgreSQL used for the deployed version and installed as an add-on in the Heroku dashboard for the application.
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
-JQuery
-The project uses JQuery to simplify DOM manipulation.
-Testing
+
+## Testing
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
 Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
@@ -132,7 +144,41 @@ You should also mention in this section any interesting bugs or problems you dis
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
-Deployment
+## Deployment
+
+#### The steps I took to deploy this project where:
+* Pushing the code from my terminal window to Github.
+* Created a new S3 Bucket on AWS web services to host the static and media files.
+* Creating a new app on the Heroku platform and deploying it from the github repository.
+* Set the secret environment variables to the Config Vars in the settings page of the heroku app for live deployment. The same ones that are in the env.py file.
+* In the 'Deploy' tab in the dashboard, deploy from the master branch.
+
+#### Run the project locally
+
+You must have the following installed to run this locally:
+* Latest version of Python
+* Git
+* Working IDE, I used Visual Studio Code for there steps.
+* Visual studio extension for python. Named Python From Microsoft.
+
+#### Clone the repository
+
+1. Go to https://github.com/HeimirDavid/art-ecommerce
+2. Press the button "Clone or Download" to the right.
+3. Press "Use HTTPS" and copy the URL from the text field.
+4. Create a folder for your workspace in Visual Studio Code.
+5. Open a terminal window and navigate to the directory you wish to put this project.
+6. type git clone followed by the copied URL.
+
+#### Set up the workspace
+1. Open a terminal window from your computer.
+2. Locate the workspace directory.
+3. Create a viritual environment by typing ```py -m venv env``` into the command prompt. Folder "env" should now be installed in the workspace.
+4. Activate the environment by typing env\Scripts\activate.
+5. Install the required packages from requirements.txt by typing ```pip install -r requirements.txt```.
+6. Make sure to set up the environment variables in an env.py file and add it to .gitignore.
+7. Type ```python manage.py runserver``` to run your local server and go to the URL provided in your terminal window.
+
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
 
 In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
@@ -142,10 +188,22 @@ Different configuration files?
 Separate git branch?
 In addition, if it is not obvious, you should also describe how to run your code locally.
 
-Credits
-Content
+
+## Credits
+* [Django Ecommerce Web application](https://www.youtube.com/watch?v=fhATkPoU22k&list=PLPp4GCMxKSjCM9AvhmF9OHyyaJsN8rsZK) - I found this tutorial playlist on youtube from the channel Coding Point. I used it to get inspiration and find soloutions for some of my problems with the cart, product variations and checkout. I built the base functionality for the carts app and part of the checkout app based on this series. Especially the views.py file in the carts app. Since it's over 80 clips I haven't looked through them all, just the ones that were a part about the cart and checkout. Episodes 22-33, 35-38 and 69-72.
+* [Intersection Observers](https://www.youtube.com/watch?v=T8EYosX4NOo&t=291s) - After looking around for different simple soloutions to create some animations without using event listeners I found this tutorial on intersection observers. Part one of a three series tutorial.
+* [Intersection Observers - Navbar](https://www.youtube.com/watch?v=RxnV9Xcw914&t=24s) - This was used for creating the change of the colour of the navbar using intersection observers. Part two of three.
+* [Intersection Observers - Fade into view](https://www.youtube.com/watch?v=huVJW23JHKQ) - This tutrial used for fading the about section into view and the products to slide in from left or right. Part three of three on intersection observers.
+* Code Institute mini projects from the last module Full Stack Frameworks With Django helped me alot with this project. Both the blog project and the e-commerce.
+### Content
 The text for section Y was copied from the Wikipedia article Z
-Media
+### Media
+* All the images of paintings are from the artist herseslf, Sandra Löwgren.
+* The photos of the paintings were taken by Palli Kristmundsson.
+* The background pictures from the page-intro are from unsplash and loads a randow pitcure on every refresh of the page The idea for using a background picture like this also came from the tutorial listed above, "Intersection Observers - Navbar". Source: unsplash.it/900.
 The photos used in this site were obtained from ...
-Acknowledgements
+
+### Acknowledgements
+* I want to thank my sister, Sandra Löwgren who has allowed me to create this project based on her paintings and helped me with her input on what would be relevant to display, what features that she prioritised based on her art. It's been great to create a project with a real purpose and get to create a website based on her needs.
+* I want to thank my mentor greatly, Moosa Hassan for his help during this project and the last three that I made with the course from Code Institute. It was great support and feedback from him. In a project like this, when it's always possible to scale and build more funtionality, he helped me prioritize what to focus on which was exactly what I needed.
 I received inspiration for this project from X

@@ -10,6 +10,7 @@ ADDRESS_TYPE = (
     ("Shipping", "Shipping"),
     ("Billing", "Billing")
 )
+
 class UserAddress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=200)

@@ -27,7 +27,7 @@ def view_cart(request):
             messages.error(request, "Your cart is empty, please keep shopping")
             return redirect(reverse('get_products'))
 
-        #loop through the items in the cart, get their pricce nad quantity 
+        #loop through the items in the cart, get their price nad quantity 
         # to calculate the total of the cart.
         for item in cart_items:
             line_total_for_product = float(item.line_total) * item.quantity          
