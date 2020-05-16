@@ -58,19 +58,22 @@ provides value for both the fans of the artist and users who are new to the arti
 ***FAQ section*** contains some general info a user might ask themself. At the moment it contains shipping and payment info, along with a link to the contact page if a user has a more specific question. **Note** that this at the moment is purely made up with the shipping costs and shipping time.
 
 ### Skeleton
+These wireframes were from my first sketch of the website and are not completely as the site turned out. But I tried to stay as close to them as possible and there are just some minor differences. Especially the single product page got some resturcture when it was built.
 
-***link to the different images of wireframes and erd's***
+#### Wireframes
+* [base.html](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/base.html.png) - The Header, navigation and footer for all the pages.
+* [index page](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/index.png) - The landing page of the website.
+* [Paintings](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/Store.png) - All the paintings for sale.
+* [Paintings with Collection](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/Store%20-%20collection.png) - All the paintings that belong to a certain collection when that is filtered.
+* [One single product](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/Product.png)
+* [Contact Page](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/Contact.png)
+* [Cart page](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/Cart.png)
+* [Checkout Page](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/Checkout.png)
+* [Single Article/Blog Post](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/wireframes/Blog%20Post.png)
 
 ### Surface
 
 Since this is a foremost a website displaying images of paintings, I choose a quite neutral colour palette with different shades of grey-scale colours, along with some dark blue for the top and the footer. This to not distract the user from the images of the paintings and to keep a clean look of the site.
-
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-
-As a user type, I want to perform an action, so that I can achieve a goal.
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
 ## Features
 
@@ -94,15 +97,6 @@ This section is also where you would share links to any wireframes, mockups, dia
  * **Registered User Functionality** - allow a user to log in via their email and change their password.
  * **Address** - Since both the billing and shipping address is stored it would be great for an existing customer to be able to choose their previously used address from a dropdown when they go to the checkout.
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
-
-Existing Features
-Feature 1 - allows users X to achieve Y, by having them fill out Z
-...
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
 Features Left to Implement
 Another feature idea
 ## Technologies Used
@@ -124,6 +118,7 @@ Another feature idea
 ### Databases
 SQLite was used during development as it is Django's default database. PostgreSQL used for the deployed version and installed as an add-on in the Heroku dashboard for the application.
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+* [Entity-relationship diagram](https://github.com/HeimirDavid/art-ecommerce/blob/master/assets/erd/art-store-erd.png) - Here is the diagram over my database design. The cart and cart-item tables came a bit later as I had to go back to the drawing board when I switched to saving it in the database instead of using sessions. This was mainly due to the layout of the products and their variations. Every product has an original painting, but the prints and the original does not have the same prices. So every time a user adds a product to the cart, the product needs to be checked if it is a print or original and get the foreign key for it. Due to the fact that I had more experience with working with models in django I decided to design it this way instead of saving it all in sessions.
 
 
 ## Testing
