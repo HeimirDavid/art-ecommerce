@@ -3,7 +3,6 @@ from django.urls import reverse, resolve
 from carts.views import view_cart, add_to_cart, remove_from_cart, clear_cart
 
 
-
 class TestUrls(TestCase):
     """
     Simple test to see if the ulrs resolves,
