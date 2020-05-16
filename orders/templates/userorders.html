@@ -29,8 +29,8 @@
             </div>
             <div class="col-12 col-md-5 text-center text-md-right">
             {% for item in order.cart.cartitem_set.all %}
-            <a data-fancybox="gallery" href="/media/{{ item.product.image }}" alt="product image">
-                <img class="order-img img-shadow" style="max-height: 15em;" src="/media/{{ item.product.image }}" alt="order image">
+            <a data-fancybox="gallery" href="{{ MEDIA_URL }}{{ item.product.image }}" alt="product image">
+                <img class="order-img img-shadow" style="max-height: 15em;" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="order image">
             </a>
             {% endfor %}
             </div>

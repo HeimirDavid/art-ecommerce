@@ -10,12 +10,6 @@ from .utils import id_generator
 import stripe
 
 
-def orders(request):
-
-    context = {}
-    return render(request, "userorder.html", context)
-
-
 
 stripe.api_key = settings.STRIPE_SECRET
 

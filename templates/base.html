@@ -38,7 +38,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="mainNav-burger"><i class="fas fa-bars"></i></span>
             </button>
-            <a class="nav-item nav-link main-nav-item shopping-cart" href="{% url 'view_cart' %}#content">
+            <a class="nav-item nav-link main-nav-item shopping-cart" href="{% url 'view_cart' %}">
                 <span class="badge badge-secondary">{{ request.session.items_total }}</span>
                 <i class="fas fa-shopping-cart"></i>
             </a>
