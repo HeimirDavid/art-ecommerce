@@ -1,13 +1,17 @@
-// tutorial used for intersection observers https://www.youtube.com/watch?v=RxnV9Xcw914
 
+
+/* Code in this file comes from these tutorials for intersection observers
+1. https://www.youtube.com/watch?v=T8EYosX4NOo&t=291s
+2. https://www.youtube.com/watch?v=RxnV9Xcw914&t=24s
+3. https://www.youtube.com/watch?v=huVJW23JHKQ
+ It has been slightly modified for my needs to fit my elements that im using it on. 
+ But the bulk of the code is from these sources */
 
 const mainNav = document.querySelector(".main-navbar");
-
 const mainNavBurger = document.querySelector(".mainNav-burger")
 const smallBurgerMenu = document.querySelector(".burgerMenu-bg-clr")
 
 const pageIntro = document.querySelector(".page-main-intro");
-
 
 const faders = document.querySelectorAll('.fade-in');
 const sliders = document.querySelectorAll('.slide-in');
@@ -45,7 +49,7 @@ const appearOptions = {
     rootMargin: "0px 0px -100px 0px"
 };
 
-
+// Create new intersection observer for the products
 const appearOnScroll = new IntersectionObserver
 (function(
         entries, 
@@ -53,10 +57,8 @@ const appearOnScroll = new IntersectionObserver
     ) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
-                console.log("damn")
                 return;
             } else {
-                console.log("jibbicola")
                 entry.target.classList.add('appear');
                 appearOnScroll.unobserve(entry.target);
             }

@@ -38,6 +38,8 @@ a:hover {
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
 }
 
+/* Start of styles that gets added using intersection observers */
+
 .fade-in {
     opacity: 0;
     transition: opacity .25s ease-in-out;
@@ -66,6 +68,8 @@ a:hover {
     transform: translateX(0);
     opacity: 1;
 }
+
+/* end of intersection observer styles */
 
 .clr-yellow {
     color: #ffff79;

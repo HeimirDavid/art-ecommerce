@@ -13,8 +13,6 @@ function sendMail(contactForm) {
         function(response) {
             console.log("SUCCESS", response);
             contactForm.reset()
-            //alert("Your email has been sent!")
-            //console.log(successAlert)
             successAlert.classList.add("show")
         },
         function(error) {
