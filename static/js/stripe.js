@@ -1,3 +1,8 @@
+
+// Stripe Integration made by following along with Code Institute's code-along, mini project 
+// for the e-commerce
+
+
 $(function() {
     $("#payment-form").submit(function() {
         var form = this;

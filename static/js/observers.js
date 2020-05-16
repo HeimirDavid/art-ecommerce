@@ -8,8 +8,8 @@
  But the bulk of the code is from these sources */
 
 const mainNav = document.querySelector(".main-navbar");
-const mainNavBurger = document.querySelector(".mainNav-burger")
-const smallBurgerMenu = document.querySelector(".burgerMenu-bg-clr")
+const mainNavBurger = document.querySelector(".mainNav-burger");
+const smallBurgerMenu = document.querySelector(".burgerMenu-bg-clr");
 
 const pageIntro = document.querySelector(".page-main-intro");
 
@@ -18,7 +18,7 @@ const sliders = document.querySelectorAll('.slide-in');
 
 // negative rootmargin to make sure the observer adds/removes a class to the main nav 100px
 // before it's fully in the viewport
-mainNavOptions = {
+const mainNavOptions = {
     rootMargin: "-100px 0px 0px 0px"
 };
 
@@ -34,11 +34,11 @@ const mainNavObserver = new IntersectionObserver(function(
                 mainNavBurger.classList.add('burgerScrolled');
                 smallBurgerMenu.classList.add('burgerMenu-bg-clr-on-scroll');
             } else {
-                mainNav.classList.remove("main-nav-scrolled")
+                mainNav.classList.remove("main-nav-scrolled");
                 mainNavBurger.classList.remove('burgerScrolled');
                 smallBurgerMenu.classList.remove('burgerMenu-bg-clr-on-scroll');
             }
-        })
+        });
     },
     mainNavOptions);
 
@@ -61,7 +61,7 @@ const appearOnScroll = new IntersectionObserver
             } else {
                 entry.target.classList.add('appear');
                 appearOnScroll.unobserve(entry.target);
-            }
+            };
 
         });
     }, 
@@ -73,6 +73,6 @@ faders.forEach(fader => {
 });
 
 sliders.forEach(slider => {
-    appearOnScroll.observe(slider)
+    appearOnScroll.observe(slider);
 });
 

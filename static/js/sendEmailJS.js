@@ -12,13 +12,13 @@ function sendMail(contactForm) {
     .then(
         function(response) {
             console.log("SUCCESS", response);
-            contactForm.reset()
-            successAlert.classList.add("show")
+            contactForm.reset();
+            successAlert.classList.add("show");
         },
         function(error) {
-            console.log("FAILED", error)
-            failedAlert.classList.add("show")
+            console.log("FAILED", error);
+            failedAlert.classList.add("show");
         }
-    )
+    );
     return false;
 }
