@@ -67,14 +67,12 @@
         <div class="row">
             <div class="col text-center">
                 <h3 class="header-h3 uppercase index-news-h">Paintings</h3>
-                <p class="p-text">View some of my paintings!
-                    (I know, im so interesting!)
-                </p>
+                <p class="p-text">View some of my most recent paintings!</p>
             </div>
         </div>
     </div>
 
-    {% for product in products|slice:":5" %}
+    {% for product in products|slice:":3" %}
     {% if forloop.counter|divisibleby:2 %}
 
     <div class="row product-display-row">

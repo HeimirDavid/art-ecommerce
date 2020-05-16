@@ -10,7 +10,8 @@ def index(request):
     posts = NewsPost.objects.filter(published_date__lte=timezone.now
         ()).order_by('-published_date')
 
-    products = Product.objects.all()
+    products = Product.objects.filter(upload_date__lte=timezone.now
+                ()).order_by('-upload_date')
     context = {'posts': posts, 'products': products}
     return render(request, 'index.html', context)
 
