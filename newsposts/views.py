@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import NewsPost
-
+# The code comes from a part of the Code institutes code along,
+# The blog project, has been slightly modified for my needs
 
 def get_newsposts(request):
     """
-    Create a view that will return a list of Posts that were publisehd prior to 'now'
+    return a list of Posts, sort them by date with the most recent being first,
     and render them to the newsposts.html template
     """
 
@@ -16,7 +17,7 @@ def get_newsposts(request):
 
 def news_detail(request, pk):
     """
-    Create a view that return a single Post based in the post ID
+    return a single Post based in the post ID
     and render it to the 'articepost.html' template.
     or return a 404 error if the post is not found
     """

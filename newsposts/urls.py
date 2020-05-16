@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import get_newsposts, news_detail #, create_or_edit_newspost
+from .views import get_newsposts, news_detail
 
 urlpatterns = [
     url(r'^$', get_newsposts, name='get_newsposts'),
