@@ -16,7 +16,7 @@
             <div class="col-12 col-md-8 offset-md-0 accounts-form">
                 <h3 class="accounts-header">Login</h3>
                 <span class="p-text">Don't have an account? <a class="login-link" href="{% url 'register' %}" role="button">Register Here!</a></span>
-                <form method="POST" action="">
+                <form method="POST">
                     {% csrf_token %}
                     {{ login_form | as_bootstrap }}
                     <button class="btn btn-outline-success btn-lg" type="submit">Login</button>

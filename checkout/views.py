@@ -74,7 +74,7 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
             
             if customer.paid:
-                messages.success(request, "Your purchase was successful!")
+                messages.success(request, "Your purchase was successful! You can view your order over at my orders!")
                 #remove cart id
                 del request.session['cart_id']
                 del request.session['items_total']
