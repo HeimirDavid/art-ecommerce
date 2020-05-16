@@ -35,7 +35,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <a href="{% url 'get_newsposts' %}"><h3 class="header-h3 uppercase index-news-h">News</h3></a>
+                <a href="{% url 'get_newsposts' %}#news-sect"><h3 class="header-h3 uppercase index-news-h">News</h3></a>
                 <p class="p-text">Read the latest new about upcoming exhibitions, recent paintings, or general thoughts of mine!
                 </p>
             </div>
@@ -43,13 +43,13 @@
         {% for post in posts|slice:":3" %}
         <div class="row">
             <div class="col-10 offset-1 newspost-container">
-                <a href="{% url 'news_detail' post.id %}"><h4 class="article-h">{{ post.title }}</h4></a>
+                <a href="{% url 'news_detail' post.id %}#content"><h4 class="article-h">{{ post.title }}</h4></a>
                 {% if post.image %}
                     <img class="newspost-image" src="{{ MEDIA_URL }}{{ post.image }}" alt="image">
                 {% endif %}
                 <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
                 <span class="btn btn-success openpost-btn">
-                    <a href="{% url 'news_detail' post.id %}">Open Article</a>
+                    <a href="{% url 'news_detail' post.id %}#content">Open Article</a>
                 </span>
             </div>
         </div>
@@ -57,7 +57,7 @@
         <br>
         {% endfor %}
         <div class="row justify-content-center">
-            <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_newsposts' %}">See all the news!</a>
+            <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_newsposts' %}#news-sect">See all the news!</a>
         </div>
     </div>
 </section>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="col-12 col-md-7 shadow-left from-left slide-in">
-            <a href="{% url 'get_single_product' product.id %}">
+            <a href="{% url 'get_single_product' product.id %}#content">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
                 <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
@@ -103,7 +103,7 @@
                 <p class="p-text font-weight-bold">Original painting has been sold!</p>
                 {% endif %}
                 <!-- <p>Price varies between print sizes and original painting</p> -->
-                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">Open</a></span>
             </div>
         </div>
         <div class="col-3 d-none d-md-block from-right slide-in">
@@ -121,7 +121,7 @@
             </a>
         </div>
         <div class="col-md-7 shadow-right from-right slide-in">
-            <a href="{% url 'get_single_product' product.id %}">
+            <a href="{% url 'get_single_product' product.id %}#content">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
                 <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
@@ -139,7 +139,7 @@
                     <p class="p-text font-weight-bold">Original painting has been sold!</p>
                 {% endif %}
                 <!-- <p>Price varies between print sizes and original painting</p> -->
-                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">Open</a></span>
             </div>
         </div>
     </div>
@@ -147,7 +147,7 @@
 {% endfor %}
 <br>
     <div class="text-center">
-        <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_products' %}">View all paintings!</a>
+        <a class="btn btn-outline-info btn-lg m-auto" href="{% url 'get_products' %}#painting-sect">View all paintings!</a>
     </div>
 <br>
 </section>

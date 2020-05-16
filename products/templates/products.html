@@ -7,7 +7,7 @@
         <div class="col-8 offset-2 p-text">
             <h3 class="header-h3 text-center paintings-h">View Paintings By Collection</h3>
             
-            <form method="GET" action="{% url 'get_products' %}">
+            <form method="GET" action="{% url 'get_products' %}#painting-sect">
                 <div class="row">
                     {% for collection in collections %}
                         <div class="col-12 col-md-4 custom-control custom-radio custom-control-inline coll-filter">
@@ -49,7 +49,7 @@
         </div>
 
         <div class="col-12 col-md-7 shadow-left from-left slide-in">
-            <a href="{% url 'get_single_product' product.id %}">
+            <a href="{% url 'get_single_product' product.id %}#content">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
                 <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
@@ -67,7 +67,7 @@
                     <p class="p-text font-weight-bold">Original painting has been sold!</p>
                 {% endif %}
                 <!-- <p>Price varies between print sizes and original painting</p> -->
-                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">Open</a></span>
             </div>
         </div>
         <div class="col-3 d-none d-md-block from-right slide-in">
@@ -85,7 +85,7 @@
             </a>
         </div>
         <div class="col-md-7 shadow-right from-right slide-in">
-            <a href="{% url 'get_single_product' product.id %}">
+            <a href="{% url 'get_single_product' product.id %}#content">
                 <h4 class="header-h4 product-h">{{ product.name }}</h4>
                 <p class="p-text">{{ product.description|truncatewords:50 }}</p>
             </a>
@@ -103,7 +103,7 @@
                 <p class="p-text font-weight-bold">Original painting has been sold!</p>
                 {% endif %}
                 <!-- <p>Price varies between print sizes and original painting</p> -->
-                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}">Open</a></span>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">Open</a></span>
             </div>
         </div>
     </div>

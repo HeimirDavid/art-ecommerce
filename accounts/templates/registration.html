@@ -2,16 +2,16 @@
 {% load bootstrap_tags %}
 
 {% block content %}
-<div class="row">
+<div id="register" class="row">
     <div class="col-12 col-md-10 offset-md-1">
         <div class="row accounts-card img-shadow">
             <div class="col-md-4 d-none d-md-block side-img">
-                <img src="/static/img/svart-vit-kvinna.jpg" class="display-painting accounts-img" alt="image">
+                <img src="/media/img/crying-star.jpg" class="display-painting accounts-img" alt="image">
             </div>
         
             <div class="col-12 col-md-8 offset-md-0 accounts-form">
                 <h3 class="accounts-header">Register</h3>
-                <span class="p-text">Already have an account? <a class="login-link" href="{% url 'login' %}" role="button">Login Here!</a></span>
+                <span class="p-text">Already have an account? <a class="login-link" href="{% url 'login' %}#login" role="button">Login Here!</a></span>
                 <form method="POST" action="">
                     {% csrf_token %}
                     {{ registration_form | as_bootstrap }}
