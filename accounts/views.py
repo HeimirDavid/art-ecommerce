@@ -6,7 +6,6 @@ from django.contrib import messages
 from .forms import UserLoginForm, UserRegistrationForm
 
 
-
 @login_required
 def logout_view(request):
     """ Log the user out """
@@ -20,7 +19,7 @@ def login_view(request):
         messages.success(request, "You are already logged in")
         return redirect(reverse('index'))
     if request.method == "POST":
-        login_form  = UserLoginForm(request.POST)
+        login_form = UserLoginForm(request.POST)
         if login_form.is_valid():
             user = authenticate(username=request.POST['username'],
                                 password=request.POST['password'])
@@ -28,14 +27,14 @@ def login_view(request):
                 login(request, user)
                 messages.success(request, "You have successfully logged in")
                 return redirect(reverse('index'))
-            else: 
-                login_form.add_error(None, "Your username or password is incorrect")
+            else:
+                login_form.add_error(
+                    None, "Your username or password is incorrect")
     else:
         login_form = UserLoginForm()
 
-    context = {'login_form':login_form}
+    context = {'login_form': login_form}
     return render(request, 'login.html', context)
-
 
 
 def register_user(request):
@@ -52,7 +51,9 @@ def register_user(request):
                                 password=request.POST['password1'])
             if user is not None:
                 login(request, user)
-                messages.success(request, "You have succesfully registered and are now logged in")
+                messages.success(
+                    request,
+                    "You have succesfully registered and are now logged in")
                 return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to register your account")
