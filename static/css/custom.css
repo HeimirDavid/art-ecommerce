@@ -265,16 +265,11 @@ a.nav-item.nav-link.main-nav-item {
     max-height: 10em;
     max-width: 100%;
 }
-/*
-.prev-blog-text {
-    padding: 1em;
-}
-*/
 
 /******* News Post Article  *******/
 
 
-.article-row { /* probably unneccessary*/
+.article-row {
     margin-top: 4em;
 }
 
@@ -498,8 +493,6 @@ a.nav-item.nav-link.main-nav-item {
 }
 
 
-
-
 /******* Footer Section  *******/
 
 footer {
@@ -528,9 +521,6 @@ footer .header-h3 {
 .social-links:hover {
     color: #b6e6c1
 }
-
-
-
 
 
 
@@ -583,7 +573,6 @@ footer .header-h3 {
     .single-prod-img {
         max-width: 80%;
         margin: 4em 4em 1em 1em;
-        /*padding: 2em;*/
     }
 
     .single-prod-info {
@@ -715,6 +704,4 @@ footer .header-h3 {
         margin: auto;
         margin-bottom: 1em;
     }
-
-    
 }
