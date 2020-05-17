@@ -145,32 +145,39 @@ Testing the cart and making sure that the correct item that the user wishes to a
 * if a user has a print with the size medium, can it still add all other variations of the item to the cart?
 
 **Cart - Stock**
-All prints and original paintings have a stock row in their tables. If a user adds 50 prints of a painting to the cart, and the stock is 60 there is no problem. But if a user adds the same print twice, maybe by an accident and this time 20, the total in the cart would exceed the stock. To deal with this issue I added a functionality to the add_to_cart function in the views.py file to check if the item that is being added aleady exist in the cart and redirect the user back to the product with a message to notifify the user that the item is already in their cart. In the future it might be more elegant to allow the user to simply adjust the quantity of the item instead of blocking it completely.
+  
+All prints and original paintings have a stock row in their tables. If a user adds 50 prints of a painting to the cart, and the stock is 60 there is no problem. But if a user adds the same print twice, maybe by an accident and this time 20, the total in the cart would exceed the stock. To deal with this issue I added a functionality to the add_to_cart function in the views.py file to check if the item that is being added aleady exist in the cart and redirect the user back to the product with a message to notifify the user that the item is already in their cart. In the future it might be more elegant to allow the user to simply adjust the quantity of the item instead of blocking it completely.   
+
 **Cart bugs** - Two main bugs came up when I modified the existing function to work with this stock integration and control that every print has a quantity and size. 
 * First was that everytime a user got redirected with an error message, the requested item did not add to the cart (which is correct), but an original painting did add to the cart without adding to the total of the cart. After lots of testing I discovered that this was due to the fact that the cart was created at the top of the function so every time a test failed later on, it was already created with an assosiated product. ```cart_item = CartItem.objects.create(cart=cart, product=product)``` This code was then moved down to the end when all the controls had already been made.
 * Second was that if an original painting was added to the cart, no print of the same painting could be added. This I realised was because when I checked if the item was already in the cart, I was comparing the id of the requested items' print_id with the current products in the cart. This did not work since all prints are associated with a product, and each product has an original painting. So I needed to loop through the items in the cart, see if they have a print_variation, if not the product is an original painting and does can not match with the print. If it has a print_variation id, check that id with the current item and it's print_id and if it matches the items are the same.  
-**Bugs - sidenote**
-This above is a good example of alot of issues I encoutered when handling the products. Since the product is not the most relevant, but the original painting/prints were and they both have different relationship with the products table (one-to-many or one-to-one). So everytime a product is handled in the cart, checkout, orders or simply in the html, there is always controls to check if the product is a print or original. Now, with a bit more experience, this could maybe have been estimated as an issue early on and perhaps the database design could have looked a bit differently. But as for now it all works fine, and I learned alot about querying from different tables with different relationships using django.
 
-**Stock - sidenote**
+**Bugs - sidenote**   
+This above is a good example of alot of issues I encoutered when handling the products. Since the product is not the most relevant, but the original painting/prints were and they both have different relationship with the products table (one-to-many or one-to-one). So everytime a product is handled in the cart, checkout, orders or simply in the html, there is always controls to check if the product is a print or original. Now, with a bit more experience, this could maybe have been estimated as an issue early on and perhaps the database design could have looked a bit differently. But as for now it all works fine, and I learned alot about querying from different tables with different relationships using django.
+   
+**Stock - sidenote**  
+
 Since this is still just for educational purpose and will not (yet) be used as a real ecommerce, the stock integration stop at the cart. Meaning buying a product does not reduce the stock right now.
 
 #### Forms
-All forms have been tested at the checkout, login and register. A required field cannot be left out, error message appears when a field is missing for an address as an example. The correct data from the user is saved to the database, address and it's type (shipping or billing), or registered user.
-**Register/login** 
+All forms have been tested at the checkout, login and register. A required field cannot be left out, error message appears when a field is missing for an address as an example. The correct data from the user is saved to the database, address and it's type (shipping or billing), or registered user.  
+
+**Register/login**   
 * Two users can not have the same username.
 * Two users can not have the same email address.
 * When a user creates an account, the passwords must match.
 * All django password error handling gets displayed, their requirements for a password. For example if a password is too common, to long/short.  
-**Stripe - checkout**
+**Stripe - checkout**  
+  
 Stripe error messages displays when an error with the payment occurs. Examples are: could not find payment information, invalid card number, expired date etc. This gets displayed using a bootstrap alert style in the payment form.
-If a payment goes through, the user gets redirected to the home page with a success message, and their order is vissible to them in the 'my orders' section in the main navigation. The order is saved and the payment is vissible in the stripe dashboard.
+If a payment goes through, the user gets redirected to the home page with a success message, and their order is vissible to them in the 'my orders' section in the main navigation. The order is saved and the payment is vissible in the stripe dashboard.  
+  
 **Note:** This website is for educational purpose and to test the payments in this application, use the Stripe test card numbers [here](https://stripe.com/docs/testing#cards).
 As I tested this myself the test card that has been used was:  
 * card number: 4242424242424242
 * CVV: Any 3 digits
 * Exipry Dates: Any future date availible
-
+  
 #### Contact
 The contact form uses emailJS to send an email. If any required field is left out, it does not submit. If the email address is not valid, it does not submit. If for some reason the email does not send through, this is displayed with an alert to the user. If the email does send, the user gets an bootstrap alert informing the user that the message is sent.
 
