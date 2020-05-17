@@ -21,7 +21,6 @@ def news_detail(request, pk):
     and render it to the 'articepost.html' template.
     or return a 404 error if the post is not found
     """
-    print(pk)
     post = get_object_or_404(NewsPost, pk=pk)
     post.views += 1
     post.save()

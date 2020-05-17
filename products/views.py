@@ -14,7 +14,6 @@ def get_products(request):
     if request.method=="GET":
         try:
             collection = CollectionCategory.objects.get(pk=(request.GET['coll_id']))
-            print(collection)
             products = collection.product_set.all()
             coll_description = True
         except:
@@ -30,8 +29,6 @@ def get_products(request):
         'collection': collection,
         'coll_description': coll_description,
     }
-
-    print(coll_description)
 
     return render(request, 'products.html', context)
 
