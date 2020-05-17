@@ -156,7 +156,6 @@ All prints and original paintings have a stock row in their tables. If a user ad
 This above is a good example of alot of issues I encoutered when handling the products. Since the product is not the most relevant, but the original painting/prints were and they both have different relationship with the products table (one-to-many or one-to-one). So everytime a product is handled in the cart, checkout, orders or simply in the html, there is always controls to check if the product is a print or original. Now, with a bit more experience, this could maybe have been estimated as an issue early on and perhaps the database design could have looked a bit differently. But as for now it all works fine, and I learned alot about querying from different tables with different relationships using django.
    
 **Stock - sidenote**  
-
 Since this is still just for educational purpose and will not (yet) be used as a real ecommerce, the stock integration stop at the cart. Meaning buying a product does not reduce the stock right now.
 
 #### Forms
@@ -166,9 +165,9 @@ All forms have been tested at the checkout, login and register. A required field
 * Two users can not have the same username.
 * Two users can not have the same email address.
 * When a user creates an account, the passwords must match.
-* All django password error handling gets displayed, their requirements for a password. For example if a password is too common, to long/short.  
-**Stripe - checkout**  
-  
+* All django password error handling gets displayed, their requirements for a password. For example if a password is too common, to long/short.
+
+#### Stripe - checkout
 Stripe error messages displays when an error with the payment occurs. Examples are: could not find payment information, invalid card number, expired date etc. This gets displayed using a bootstrap alert style in the payment form.
 If a payment goes through, the user gets redirected to the home page with a success message, and their order is vissible to them in the 'my orders' section in the main navigation. The order is saved and the payment is vissible in the stripe dashboard.  
   

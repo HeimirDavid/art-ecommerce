@@ -3,7 +3,7 @@
 {% block content %}
 <div id="news-sect" class="row news-header-row">
     <div class="col-10 offset-1 text-center">
-        <h2 class="header-h3 uppercase news-h">news/blog</h2>
+        <h2 class="header-h3 uppercase news-h">news</h2>
         <h3 class="sub-header">Read the latest news here!</h3>
     </div>
 </div>
@@ -17,7 +17,7 @@
             {% endif %}
             <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
             <span class="btn btn-primary openpost-btn">
-                <a href="{% url 'news_detail' post.id %}">Open Article</a>
+                <a href="{% url 'news_detail' post.id %}">Read Article</a>
             </span>
         </div>
     </div>

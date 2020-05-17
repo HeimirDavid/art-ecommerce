@@ -9,21 +9,31 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
                         <h4 class="header-h4">Artwork</h4>
-                        <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur recusandae illo dolore pariatur, vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
-                        Tempora asperiores molestias ratione cumque illo, eligendi harum facere. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
-                        Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae.</p>
+                        <p class="p-text">All paintings are painted with acrylic colours. The paintings are categorized in collections.
+                            Each collection has one point of focus which the paintings try to embody. We have for example the cosmic collection
+                            where the paintings have colours usually assosiated with the cosmos, such as blue, pink and purple or are assosiated
+                            with some cosmic attribute such as the sodiac. The collections in general focus on the nordic heritage of the artist,
+                            fairytales, human emotions, and supernatural elements of the world. All paintings are influenced by expressionism
+                            or serrialism. The aim of these paintings is not to show the world as it is but to make the observer get 
+                            in touch with something within himself.
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
-                        <h4 class="header-h4">Sandras Cool Story</h4>
-                        <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
-                            Tempora asperiores molestias ratione cumque illo. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
-                            Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae, nulla recusandae totam autem excepturi delectus at cupiditate, distinctio veritatis.</p>
+                        <h4 class="header-h4">About The Artist</h4>
+                        <p class="p-text">I grew up in Uppsala, Sweden. My interest in painting started at a young age. I sold my first painting
+                            when I was seven. It was a painting of the human soul. From that moment on, I knew I was going to be a painter. 
+                            Later in life I studied art at the Academy of Arts and Crafts in Stockholm. I got my first job as an assisting
+                            creative director in the Stockholm Gallery for modern art where I stayed until I was able to open my own art gallery
+                            in 2014. Today my art gallery is located in the center of Uppsala, Sweden. The gallery is open every day from 12-18 o'clock,
+                            the address is Uppsalagatan, 123.
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-10 col-lg-4 offset-xs-1 offset-md-0 about-col fade-in">
                         <h4 class="header-h4">Site Info</h4>
-                        <p class="p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur recusandae illo dolore pariatur, vel neque magnam quidem doloremque? Iure in minima excepturi magni neque ratione quis fuga cum non repellat.
-                            Tempora asperiores molestias ratione cumque illo, eligendi harum facere. Voluptatum rerum aperiam, modi cumque ad quae, nemo veritatis provident libero quod consectetur officiis magnam officia pariatur harum recusandae tenetur facere!
-                            Omnis neque explicabo aliquam, minima exercitationem facilis molestias, harum deleniti quidem numquam quibusdam? Deserunt ex corporis dolorum cumque non quae, nulla recusandae totam autem excepturi delectus at cupiditate, distinctio veritatis.</p>
+                        <p class="p-text">This site is an art gallery and webshop. Here you can buy a few originals and prints of all of my paintings.
+                            You can also stay up to date with some of my projects, current art exhibitions, and what's going on in the gallery.
+                        </p>
+                        <p class="p-text"><span class="font-weight-bold">Note:</span> This site is for educational purposes, and the e-commerce part is not in use.</p>
                     </div>
                 </div>
             </div>
@@ -49,7 +59,7 @@
                 {% endif %}
                 <p class="p-text prev-blog-text">{{ post.content|truncatewords:50 }}</p>
                 <span class="btn btn-success openpost-btn">
-                    <a href="{% url 'news_detail' post.id %}#content">Open Article</a>
+                    <a href="{% url 'news_detail' post.id %}#content">Read Article</a>
                 </span>
             </div>
         </div>
@@ -101,7 +111,7 @@
                 <p class="p-text font-weight-bold">Original painting has been sold!</p>
                 {% endif %}
                 <!-- <p>Price varies between print sizes and original painting</p> -->
-                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">Open</a></span>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">View Product</a></span>
             </div>
         </div>
         <div class="col-3 d-none d-md-block from-right slide-in">
@@ -137,7 +147,7 @@
                     <p class="p-text font-weight-bold">Original painting has been sold!</p>
                 {% endif %}
                 <!-- <p>Price varies between print sizes and original painting</p> -->
-                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">Open</a></span>
+                <span class="btn btn-success openproduct-btn"><a href="{% url 'get_single_product' product.id %}#content">View Product</a></span>
             </div>
         </div>
     </div>
